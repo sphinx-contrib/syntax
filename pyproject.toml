@@ -27,12 +27,12 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
-    "pytest-cov==6.2.1",
+    "pytest-cov==6.3.0",
     "sphinx-railroad-diagrams[test,lint,doc]",
 ]
 test = [
-    "pyright==1.1.404",
-    "pytest==7.4.4",
+    "pyright==1.1.405",
+    "pytest==8.4.2",
     "sybil==9.2.0",
 ]
 lint = [
