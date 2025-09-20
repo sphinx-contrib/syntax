@@ -1,3 +1,3 @@
-# Railroad diagrams
+# Sphinx Syntax
 
 ...

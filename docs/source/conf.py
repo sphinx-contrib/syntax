@@ -2,7 +2,7 @@ import datetime
 
 import sphinx_syntax
 
-project = "Sphinx Railroad Diagrams"
+project = "Sphinx Syntax"
 copyright = f"{datetime.date.today().year}, Tamika Nomara"
 author = "Tamika Nomara"
 release = version = sphinx_syntax.__version__

@@ -1,7 +1,7 @@
 [project]
 name = "sphinx-syntax"
 authors = [{name = "Tamika Nomara", email = "taminomara@gmail.com"}]
-description = "A library for generating railroad syntax diagrams in Sphinx"
+description = "A Sphinx plugin for documenting grammars"
 dynamic = ["version"]
 readme = "README.md"
 license = "MIT"

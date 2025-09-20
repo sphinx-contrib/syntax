@@ -1,5 +1,5 @@
-Sphinx Railroad Diagrams
-========================
+Sphinx Syntax
+=============
 
 .. syntax:diagram::
 

@@ -57,7 +57,7 @@ class DiagramDirective(sphinx_syntax.domain.ContextManagerMixin):
         hash = hashlib.sha1(
             json.dumps(data, sort_keys=True).encode(), usedforsecurity=False
         ).hexdigest()
-        uri = f"data:railroad-diagram;{hash}.svg"
+        uri = f"data:syntax-diagram;{hash}.svg"
 
         options = self.get_diagram_options(prefix="")
 
@@ -86,9 +86,9 @@ class DiagramDirective(sphinx_syntax.domain.ContextManagerMixin):
                 self._translate_yaml_mark(e.context_mark)
             if e.problem_mark is not None:
                 self._translate_yaml_mark(e.problem_mark)
-            raise self.error(f"can't parse railroad diagram description: {e}")
+            raise self.error(f"can't parse syntax diagram description: {e}")
         except yaml.error.YAMLError as e:
-            raise self.error(f"can't parse railroad diagram description: {e}")
+            raise self.error(f"can't parse syntax diagram description: {e}")
 
     def make_image(self, uri: str) -> list[docutils.nodes.Node]:
         """
@@ -118,7 +118,7 @@ class DiagramDirective(sphinx_syntax.domain.ContextManagerMixin):
             name, line = self.content.info(mark.line)
         except IndexError:
             name, line = self.state.document.source, self.content_offset
-        mark.name = name or "<railroad diagram description>"
+        mark.name = name or "<syntax diagram description>"
         mark.line = line or self.content_offset
 
 
@@ -241,10 +241,10 @@ class ProcessDiagrams(SphinxTransform):
         node: DiagramNode,
         diagram: rr.Element[HrefResolverData],
     ):
-        settings: rr.SvgRenderSettings = self.config["railroad_diagrams_svg_settings"]
+        settings: rr.SvgRenderSettings = self.config["syntax_diagrams_svg_settings"]
 
         classes = list(
-            filter(None, ["railroad-diagram", image.get("class"), settings.css_class])
+            filter(None, ["syntax-diagram", image.get("class"), settings.css_class])
         )
         if "align" in image:
             classes.append(f"align-{image["align"]}")
@@ -288,10 +288,10 @@ class ProcessDiagrams(SphinxTransform):
         content = rr.render_svg(diagram, settings=settings)
 
         uri = image["uri"]
-        if uri.startswith("data:railroad-diagram;"):
-            uri = uri[len("data:railroad-diagram;") :]
+        if uri.startswith("data:syntax-diagram;"):
+            uri = uri[len("data:syntax-diagram;") :]
 
-        dest = self.imagedir / "railroad_diagrams" / image["uri"]
+        dest = self.imagedir / "syntax_diagrams" / image["uri"]
         dest.parent.mkdir(parents=True, exist_ok=True)
         dest.write_text(content)
 
@@ -307,7 +307,7 @@ class ProcessDiagrams(SphinxTransform):
         node: DiagramNode,
         diagram: rr.Element[HrefResolverData],
     ):
-        settings: rr.TextRenderSettings = self.config["railroad_diagrams_text_settings"]
+        settings: rr.TextRenderSettings = self.config["syntax_diagrams_text_settings"]
 
         settings = dataclasses.replace(
             settings,

@@ -42,13 +42,13 @@ def setup(app: sphinx.application.Sphinx):
     )
     app.add_post_transform(sphinx_syntax.diagram.ProcessDiagrams)
     app.add_config_value(
-        "railroad_diagrams_text_settings",
+        "syntax_diagrams_text_settings",
         TextRenderSettings(),
         "html",
         TextRenderSettings,
     )
     app.add_config_value(
-        "railroad_diagrams_svg_settings",
+        "syntax_diagrams_svg_settings",
         SvgRenderSettings(),
         "html",
         SvgRenderSettings,

@@ -36,7 +36,7 @@ def test_regression(app, src, file_regression):
 def test_invalid_yaml(app):
     app.build()
     warnings = app.warning.getvalue()
-    assert "can't parse railroad diagram description" in warnings
+    assert "can't parse syntax diagram description" in warnings
     assert "invalid-yaml.rst" in warnings
     assert "line 9," in warnings
     assert "this yaml is invalid!" in warnings

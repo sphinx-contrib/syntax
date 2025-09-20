@@ -266,7 +266,7 @@ class RuleBase:
 
     is_doxygen_no_diagram: bool
     """Indicates that the ``'no_diagram'`` flag is set.
-    If true, generators should not produce railroad diagram for this rule.
+    If true, generators should not produce syntax diagram for this rule.
     """
 
     css_class: Optional[str]
