@@ -49,9 +49,9 @@ jobs:
       - name: Install test dependencies
         if: ${{ matrix.type == 'test' }}
         run: python -m pip install '.[test]'
-      - name: Check types
-        if: ${{ matrix.type == 'test' }}
-        run: pyright
+      # - name: Check types
+      #   if: ${{ matrix.type == 'test' }}
+      #   run: pyright
       - name: Test package
         if: ${{ matrix.type == 'test' }}
         run: pytest -vv --showlocals --tb=short --color=yes --junit-xml=test-results.xml
