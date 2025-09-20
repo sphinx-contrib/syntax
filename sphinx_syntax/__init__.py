@@ -30,7 +30,7 @@ __all__ = [
 
 def _copy_asset_files(app: sphinx.application.Sphinx, exc: Exception | None):
     if isinstance(app.builder, sphinx.builders.html.StandaloneHTMLBuilder) and not exc:
-        custom_file = pathlib.Path(__file__).parent / "static/railroad-diagrams.css"
+        custom_file = pathlib.Path(__file__).parent / "static/syntax-diagrams.css"
         static_dir = app.outdir / "_static"
         _copy_asset_file(custom_file, static_dir)
 
@@ -54,7 +54,7 @@ def setup(app: sphinx.application.Sphinx):
         SvgRenderSettings,
     )
     app.connect("build-finished", _copy_asset_files)
-    app.add_css_file("railroad-diagrams.css")
+    app.add_css_file("syntax-diagrams.css")
 
     return {
         "version": __version__,

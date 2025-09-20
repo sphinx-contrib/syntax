@@ -1,16 +1,16 @@
-# Contributing to Sphinx-LuaLs
+# Contributing
 
 ## Set up your environment
 
 1. Check out the repo:
 
    ```shell
-   git clone git@github.com:taminomara/neat-railroad-diagrams.git
+   git clone git@github.com:taminomara/sphinx-syntax.git
    ```
 
 2. Create a virtual environment with python `3.12` or newer.
 
-3. Install Neat Railroad Diagrams in development mode, and install dev dependencies:
+3. Install Sphinx Syntax in development mode, and install dev dependencies:
 
    ```shell
    pip install -e .[dev]
