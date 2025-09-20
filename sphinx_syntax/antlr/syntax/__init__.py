@@ -4,8 +4,8 @@ from .gen.syntax.ANTLRv4ParserListener import ANTLRv4ParserListener as ParserLis
 from .gen.syntax.ANTLRv4ParserVisitor import ANTLRv4ParserVisitor as ParserVisitor
 
 __all__ = [
-    'Lexer',
-    'Parser',
-    'ParserListener',
-    'ParserVisitor',
+    "Lexer",
+    "Parser",
+    "ParserListener",
+    "ParserVisitor",
 ]

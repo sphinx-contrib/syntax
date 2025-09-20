@@ -5,17 +5,17 @@ import typing as _t
 
 import docutils.nodes
 import docutils.parsers.rst.directives.images
-import syntax_diagrams as rr
 import sphinx.addnodes
 import sphinx.builders.html
 import sphinx.environment
-import yaml
-from sphinx.transforms import SphinxTransform
 import sphinx.util.logging
+import syntax_diagrams as rr
+import yaml
 from docutils.parsers.rst import directives
+from sphinx.transforms import SphinxTransform
 
-from sphinx_syntax._version import __version__, __version_tuple__
 import sphinx_syntax.domain
+from sphinx_syntax._version import __version__, __version_tuple__
 
 _logger = sphinx.util.logging.getLogger("sphinx_syntax")
 

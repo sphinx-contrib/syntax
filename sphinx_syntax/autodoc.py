@@ -1,12 +1,14 @@
-from docutils.nodes import Node
-from sphinx_syntax.domain import GrammarDescription, RuleDescription
-from sphinx_syntax.diagram import DiagramDirective
-from sphinx_syntax.api import Grammar, Rule
-from docutils.parsers.rst import directives
+import typing as _t
+
+import docutils.statemachine
 import sphinx.addnodes
 import sphinx.util.parsing
-import docutils.statemachine
-import typing as _t
+from docutils.nodes import Node
+from docutils.parsers.rst import directives
+
+from sphinx_syntax.api import Grammar, Rule
+from sphinx_syntax.diagram import DiagramDirective
+from sphinx_syntax.domain import GrammarDescription, RuleDescription
 
 
 class AutoGrammarDescription(GrammarDescription):
@@ -16,7 +18,6 @@ class AutoGrammarDescription(GrammarDescription):
         "no-mark-root-rule": directives.flag,
         "diagrams": directives.flag,
         "no-diagrams": directives.flag,
-
         # "only-reachable-from": directives.unchanged,
         # "lexer-rules"
         # "parser-rules"

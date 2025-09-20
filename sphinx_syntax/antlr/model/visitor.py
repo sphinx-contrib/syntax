@@ -1,17 +1,15 @@
+from typing import *
 from weakref import WeakKeyDictionary
 
-from sphinx_a4doc.model.model import RuleBase, LexerRule, ParserRule
-
-from typing import *
-
+from sphinx_a4doc.model.model import LexerRule, ParserRule, RuleBase
 
 __all__ = [
-    'RuleContentVisitor',
-    'CachedRuleContentVisitor',
+    "RuleContentVisitor",
+    "CachedRuleContentVisitor",
 ]
 
 
-T = TypeVar('T')
+T = TypeVar("T")
 
 
 class RuleContentVisitor(Generic[T]):
@@ -24,7 +22,7 @@ class RuleContentVisitor(Generic[T]):
         return getattr(self, r.__meta__.visitor_relay, self.visit_default)(r)
 
     def visit_default(self, r: RuleBase.RuleContent) -> T:
-        raise RuntimeError(f'no visitor for {r.__class__.__name__!r}')
+        raise RuntimeError(f"no visitor for {r.__class__.__name__!r}")
 
     # Lexer
 

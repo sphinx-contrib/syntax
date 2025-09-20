@@ -2,8 +2,8 @@ import pathlib
 
 import sphinx.application
 import sphinx.builders.html
-from syntax_diagrams import SvgRenderSettings, TextRenderSettings
 from sphinx.util.fileutil import copy_asset_file as _copy_asset_file
+from syntax_diagrams import SvgRenderSettings, TextRenderSettings
 
 import sphinx_syntax.diagram
 import sphinx_syntax.domain

@@ -1,12 +1,13 @@
 # Generated from sphinx_a4doc/syntax/ANTLRv4Lexer.g4 by ANTLR 4.9.2
-from antlr4 import *
-from io import StringIO
 import sys
+from io import StringIO
+
+from antlr4 import *
+
 if sys.version_info[1] > 5:
     from typing import TextIO
 else:
     from typing.io import TextIO
-
 
 from sphinx_a4doc.syntax.lexer_adaptor import LexerAdaptor
 
@@ -20,7 +21,7 @@ def serializedATN():
         buf.write("\4\21\t\21\4\22\t\22\4\23\t\23\4\24\t\24\4\25\t\25\4\26")
         buf.write("\t\26\4\27\t\27\4\30\t\30\4\31\t\31\4\32\t\32\4\33\t\33")
         buf.write("\4\34\t\34\4\35\t\35\4\36\t\36\4\37\t\37\4 \t \4!\t!\4")
-        buf.write("\"\t\"\4#\t#\4$\t$\4%\t%\4&\t&\4\'\t\'\4(\t(\4)\t)\4*")
+        buf.write("\"\t\"\4#\t#\4$\t$\4%\t%\4&\t&\4'\t'\4(\t(\4)\t)\4*")
         buf.write("\t*\4+\t+\4,\t,\4-\t-\4.\t.\4/\t/\4\60\t\60\4\61\t\61")
         buf.write("\4\62\t\62\4\63\t\63\4\64\t\64\4\65\t\65\4\66\t\66\4\67")
         buf.write("\t\67\48\t8\49\t9\4:\t:\4;\t;\4<\t<\4=\t=\4>\t>\4?\t?")
@@ -57,7 +58,7 @@ def serializedATN():
         buf.write("\3\30\3\30\3\30\3\30\3\31\3\31\3\31\3\31\3\31\3\31\3\32")
         buf.write("\3\32\3\32\3\32\3\32\3\32\3\32\3\32\3\33\3\33\3\33\3\33")
         buf.write("\3\33\3\34\3\34\3\35\3\35\3\36\3\36\3\37\3\37\3 \3 \3")
-        buf.write("!\3!\3\"\3\"\3#\3#\3$\3$\3%\3%\3&\3&\3\'\3\'\3(\3(\3)")
+        buf.write("!\3!\3\"\3\"\3#\3#\3$\3$\3%\3%\3&\3&\3'\3'\3(\3(\3)")
         buf.write("\3)\3*\3*\3+\3+\3,\3,\3-\3-\3.\3.\3/\3/\3\60\3\60\3\61")
         buf.write("\3\61\3\62\3\62\3\63\3\63\3\64\6\64\u022b\n\64\r\64\16")
         buf.write("\64\u022c\3\64\3\64\3\65\3\65\3\65\3\65\3\66\3\66\5\66")
@@ -104,9 +105,9 @@ def serializedATN():
         buf.write("\3\u0098\3\u0099\3\u0099\3\u0099\3\u0099\3\u009a\3\u009a")
         buf.write("\7\u009a\u03f2\n\u009a\f\u009a\16\u009a\u03f5\13\u009a")
         buf.write("\4\u0242\u0251\2\u009b\t\6\13\7\r\b\17\t\21\n\23\13\25")
-        buf.write("\f\27\r\31\16\33\17\35\20\37\21!\22#\23%\24\'\25)\26+")
-        buf.write("\27-\30/\31\61\32\63\33\65\34\67\359\36;\37= ?!A\"C#E")
-        buf.write("$G%I&K\'M(O)Q*S+U,W-Y.[/]\60_\61a\62c\63e\64g\65i\66k")
+        buf.write("\f\27\r\31\16\33\17\35\20\37\21!\22#\23%\24'\25)\26+")
+        buf.write('\27-\30/\31\61\32\63\33\65\34\67\359\36;\37= ?!A"C#E')
+        buf.write("$G%I&K'M(O)Q*S+U,W-Y.[/]\60_\61a\62c\63e\64g\65i\66k")
         buf.write("\67m8o9q\2s\2u\2w\2y\2{\2}\2\177\2\u0081\2\u0083\2\u0085")
         buf.write("\2\u0087\2\u0089\2\u008b\2\u008d\2\u008f\2\u0091\2\u0093")
         buf.write("\2\u0095\2\u0097\2\u0099\2\u009b\2\u009d\2\u009f\2\u00a1")
@@ -121,8 +122,8 @@ def serializedATN():
         buf.write("\2\u0113\2\u0115\2\u0117\2\u0119\2\u011b\2\u011d\2\u011f")
         buf.write("\2\u0121\2\u0123\2\u0125\2\u0127\2\u0129\2\u012b\2\u012d")
         buf.write("\2\u012f\2\u0131\2\u0133\2\u0135\5\u0137@\u0139\2\t\2")
-        buf.write("\3\4\5\6\7\b\17\4\2\f\f\17\17\5\2\13\f\16\17\"\"\4\2\13")
-        buf.write("\13\"\"\4\2\f\f\16\17\n\2$$))^^ddhhppttvv\3\2\63;\5\2")
+        buf.write('\3\4\5\6\7\b\17\4\2\f\f\17\17\5\2\13\f\16\17""\4\2\13')
+        buf.write('\13""\4\2\f\f\16\17\n\2$$))^^ddhhppttvv\3\2\63;\5\2')
         buf.write("\62;CHch\3\2\62;\6\2\f\f\17\17))^^\6\2\f\f\17\17$$^^\5")
         buf.write("\2\u00b9\u00b9\u0302\u0371\u2041\u2042\17\2C\\c|\u00c2")
         buf.write("\u00d8\u00da\u00f8\u00fa\u0301\u0372\u037f\u0381\u2001")
@@ -131,7 +132,7 @@ def serializedATN():
         buf.write("\2\2\2\r\3\2\2\2\2\17\3\2\2\2\2\21\3\2\2\2\2\23\3\2\2")
         buf.write("\2\2\25\3\2\2\2\2\27\3\2\2\2\2\31\3\2\2\2\2\33\3\2\2\2")
         buf.write("\2\35\3\2\2\2\2\37\3\2\2\2\2!\3\2\2\2\2#\3\2\2\2\2%\3")
-        buf.write("\2\2\2\2\'\3\2\2\2\2)\3\2\2\2\2+\3\2\2\2\2-\3\2\2\2\2")
+        buf.write("\2\2\2\2'\3\2\2\2\2)\3\2\2\2\2+\3\2\2\2\2-\3\2\2\2\2")
         buf.write("/\3\2\2\2\2\61\3\2\2\2\2\63\3\2\2\2\2\65\3\2\2\2\2\67")
         buf.write("\3\2\2\2\29\3\2\2\2\2;\3\2\2\2\2=\3\2\2\2\2?\3\2\2\2\2")
         buf.write("A\3\2\2\2\2C\3\2\2\2\2E\3\2\2\2\2G\3\2\2\2\2I\3\2\2\2")
@@ -158,7 +159,7 @@ def serializedATN():
         buf.write("\23\u0151\3\2\2\2\25\u0153\3\2\2\2\27\u0155\3\2\2\2\31")
         buf.write("\u0158\3\2\2\2\33\u015c\3\2\2\2\35\u016e\3\2\2\2\37\u017f")
         buf.write("\3\2\2\2!\u0192\3\2\2\2#\u0199\3\2\2\2%\u01a2\3\2\2\2")
-        buf.write("\'\u01a8\3\2\2\2)\u01af\3\2\2\2+\u01b7\3\2\2\2-\u01c1")
+        buf.write("'\u01a8\3\2\2\2)\u01af\3\2\2\2+\u01b7\3\2\2\2-\u01c1")
         buf.write("\3\2\2\2/\u01c8\3\2\2\2\61\u01d0\3\2\2\2\63\u01d8\3\2")
         buf.write("\2\2\65\u01df\3\2\2\2\67\u01e6\3\2\2\29\u01ec\3\2\2\2")
         buf.write(";\u01f4\3\2\2\2=\u01f9\3\2\2\2?\u01fb\3\2\2\2A\u01fd\3")
@@ -238,7 +239,7 @@ def serializedATN():
         buf.write("\2\2\2\u018e\u018f\7}\2\2\u018f\u0190\3\2\2\2\u0190\u0191")
         buf.write("\b\r\7\2\u0191 \3\2\2\2\u0192\u0193\7k\2\2\u0193\u0194")
         buf.write("\7o\2\2\u0194\u0195\7r\2\2\u0195\u0196\7q\2\2\u0196\u0197")
-        buf.write("\7t\2\2\u0197\u0198\7v\2\2\u0198\"\3\2\2\2\u0199\u019a")
+        buf.write('\7t\2\2\u0197\u0198\7v\2\2\u0198"\3\2\2\2\u0199\u019a')
         buf.write("\7h\2\2\u019a\u019b\7t\2\2\u019b\u019c\7c\2\2\u019c\u019d")
         buf.write("\7i\2\2\u019d\u019e\7o\2\2\u019e\u019f\7g\2\2\u019f\u01a0")
         buf.write("\7p\2\2\u01a0\u01a1\7v\2\2\u01a1$\3\2\2\2\u01a2\u01a3")
@@ -479,8 +480,8 @@ def serializedATN():
         buf.write("\u029c\u02a1\u02a8\u02aa\u02b2\u02b4\u02bc\u02be\u02c5")
         buf.write("\u0382\u03ae\u03da\u03e1\u03e3\u03f3\36\2\4\2\3\t\2\7")
         buf.write("\4\2\7\5\2\7\6\2\7\7\2\2\3\2\t<\2\7\3\2\3k\3\6\2\2\t?")
-        buf.write("\2\3u\4\t\6\2\t\b\2\t\t\2\t&\2\t\'\2\t\67\2\t\63\2\t+")
-        buf.write("\2\t\13\2\t\n\2\t-\2\t#\2\t8\2\t\"\2\5\2\2")
+        buf.write("\2\3u\4\t\6\2\t\b\2\t\t\2\t&\2\t'\2\t\67\2\t\63\2\t+")
+        buf.write('\2\t\13\2\t\n\2\t-\2\t#\2\t8\2\t"\2\5\2\2')
         return buf.getvalue()
 
 
@@ -488,7 +489,7 @@ class ANTLRv4Lexer(LexerAdaptor):
 
     atn = ATNDeserializer().deserialize(serializedATN())
 
-    decisionsToDFA = [ DFA(ds, i) for i, ds in enumerate(atn.decisionToState) ]
+    decisionsToDFA = [DFA(ds, i) for i, ds in enumerate(atn.decisionToState)]
 
     OFF_CHANNEL = 2
 
@@ -562,79 +563,275 @@ class ANTLRv4Lexer(LexerAdaptor):
     ACTION_CONTENT = 61
     UNTERMINATED_CHAR_SET = 62
 
-    channelNames = [ u"DEFAULT_TOKEN_CHANNEL", u"HIDDEN", u"OFF_CHANNEL" ]
+    channelNames = ["DEFAULT_TOKEN_CHANNEL", "HIDDEN", "OFF_CHANNEL"]
 
-    modeNames = [ "DEFAULT_MODE", "Argument", "Action", "Options", "Tokens", 
-                  "Channels", "LexerCharSet" ]
+    modeNames = [
+        "DEFAULT_MODE",
+        "Argument",
+        "Action",
+        "Options",
+        "Tokens",
+        "Channels",
+        "LexerCharSet",
+    ]
 
-    literalNames = [ "<INVALID>",
-            "'import'", "'fragment'", "'lexer'", "'parser'", "'grammar'", 
-            "'protected'", "'public'", "'private'", "'returns'", "'locals'", 
-            "'throws'", "'catch'", "'finally'", "'mode'" ]
+    literalNames = [
+        "<INVALID>",
+        "'import'",
+        "'fragment'",
+        "'lexer'",
+        "'parser'",
+        "'grammar'",
+        "'protected'",
+        "'public'",
+        "'private'",
+        "'returns'",
+        "'locals'",
+        "'throws'",
+        "'catch'",
+        "'finally'",
+        "'mode'",
+    ]
 
-    symbolicNames = [ "<INVALID>",
-            "TOKEN_REF", "RULE_REF", "LEXER_CHAR_SET", "DOC_COMMENT", "HEADER", 
-            "BLOCK_COMMENT", "LINE_COMMENT", "INT", "STRING_LITERAL", "UNTERMINATED_STRING_LITERAL", 
-            "BEGIN_ARGUMENT", "BEGIN_ACTION", "OPTIONS", "TOKENS", "CHANNELS", 
-            "IMPORT", "FRAGMENT", "LEXER", "PARSER", "GRAMMAR", "PROTECTED", 
-            "PUBLIC", "PRIVATE", "RETURNS", "LOCALS", "THROWS", "CATCH", 
-            "FINALLY", "MODE", "COLON", "COLONCOLON", "COMMA", "SEMI", "LPAREN", 
-            "RPAREN", "LBRACE", "RBRACE", "RARROW", "LT", "GT", "ASSIGN", 
-            "QUESTION", "STAR", "PLUS_ASSIGN", "PLUS", "OR", "DOLLAR", "RANGE", 
-            "DOT", "AT", "POUND", "NOT", "ID", "WS", "ERRCHAR", "END_ARGUMENT", 
-            "UNTERMINATED_ARGUMENT", "ARGUMENT_CONTENT", "END_ACTION", "UNTERMINATED_ACTION", 
-            "ACTION_CONTENT", "UNTERMINATED_CHAR_SET" ]
+    symbolicNames = [
+        "<INVALID>",
+        "TOKEN_REF",
+        "RULE_REF",
+        "LEXER_CHAR_SET",
+        "DOC_COMMENT",
+        "HEADER",
+        "BLOCK_COMMENT",
+        "LINE_COMMENT",
+        "INT",
+        "STRING_LITERAL",
+        "UNTERMINATED_STRING_LITERAL",
+        "BEGIN_ARGUMENT",
+        "BEGIN_ACTION",
+        "OPTIONS",
+        "TOKENS",
+        "CHANNELS",
+        "IMPORT",
+        "FRAGMENT",
+        "LEXER",
+        "PARSER",
+        "GRAMMAR",
+        "PROTECTED",
+        "PUBLIC",
+        "PRIVATE",
+        "RETURNS",
+        "LOCALS",
+        "THROWS",
+        "CATCH",
+        "FINALLY",
+        "MODE",
+        "COLON",
+        "COLONCOLON",
+        "COMMA",
+        "SEMI",
+        "LPAREN",
+        "RPAREN",
+        "LBRACE",
+        "RBRACE",
+        "RARROW",
+        "LT",
+        "GT",
+        "ASSIGN",
+        "QUESTION",
+        "STAR",
+        "PLUS_ASSIGN",
+        "PLUS",
+        "OR",
+        "DOLLAR",
+        "RANGE",
+        "DOT",
+        "AT",
+        "POUND",
+        "NOT",
+        "ID",
+        "WS",
+        "ERRCHAR",
+        "END_ARGUMENT",
+        "UNTERMINATED_ARGUMENT",
+        "ARGUMENT_CONTENT",
+        "END_ACTION",
+        "UNTERMINATED_ACTION",
+        "ACTION_CONTENT",
+        "UNTERMINATED_CHAR_SET",
+    ]
 
-    ruleNames = [ "DOC_COMMENT", "HEADER", "BLOCK_COMMENT", "LINE_COMMENT", 
-                  "INT", "STRING_LITERAL", "UNTERMINATED_STRING_LITERAL", 
-                  "BEGIN_ARGUMENT", "BEGIN_ACTION", "OPTIONS", "TOKENS", 
-                  "CHANNELS", "IMPORT", "FRAGMENT", "LEXER", "PARSER", "GRAMMAR", 
-                  "PROTECTED", "PUBLIC", "PRIVATE", "RETURNS", "LOCALS", 
-                  "THROWS", "CATCH", "FINALLY", "MODE", "COLON", "COLONCOLON", 
-                  "COMMA", "SEMI", "LPAREN", "RPAREN", "LBRACE", "RBRACE", 
-                  "RARROW", "LT", "GT", "ASSIGN", "QUESTION", "STAR", "PLUS_ASSIGN", 
-                  "PLUS", "OR", "DOLLAR", "RANGE", "DOT", "AT", "POUND", 
-                  "NOT", "ID", "WS", "ERRCHAR", "Ws", "Hws", "Vws", "BlockComment", 
-                  "DocComment", "LineComment", "EscSeq", "EscAny", "UnicodeEsc", 
-                  "DecimalNumeral", "HexDigit", "DecDigit", "BoolLiteral", 
-                  "CharLiteral", "SQuoteLiteral", "DQuoteLiteral", "USQuoteLiteral", 
-                  "NameChar", "NameStartChar", "Int", "Esc", "Colon", "DColon", 
-                  "SQuote", "DQuote", "LParen", "RParen", "LBrace", "RBrace", 
-                  "LBrack", "RBrack", "RArrow", "Lt", "Gt", "Equal", "Question", 
-                  "Star", "Plus", "PlusAssign", "Underscore", "Pipe", "Dollar", 
-                  "Comma", "Semi", "Dot", "Range", "At", "Pound", "Tilde", 
-                  "NESTED_ARGUMENT", "ARGUMENT_ESCAPE", "ARGUMENT_STRING_LITERAL", 
-                  "ARGUMENT_CHAR_LITERAL", "END_ARGUMENT", "UNTERMINATED_ARGUMENT", 
-                  "ARGUMENT_CONTENT", "NESTED_ACTION", "ACTION_ESCAPE", 
-                  "ACTION_STRING_LITERAL", "ACTION_CHAR_LITERAL", "ACTION_DOC_COMMENT", 
-                  "ACTION_BLOCK_COMMENT", "ACTION_LINE_COMMENT", "END_ACTION", 
-                  "UNTERMINATED_ACTION", "ACTION_CONTENT", "OPT_DOC_COMMENT", 
-                  "OPT_BLOCK_COMMENT", "OPT_LINE_COMMENT", "OPT_LBRACE", 
-                  "OPT_RBRACE", "OPT_ID", "OPT_DOT", "OPT_ASSIGN", "OPT_STRING_LITERAL", 
-                  "OPT_INT", "OPT_STAR", "OPT_SEMI", "OPT_WS", "TOK_DOC_COMMENT", 
-                  "TOK_BLOCK_COMMENT", "TOK_LINE_COMMENT", "TOK_LBRACE", 
-                  "TOK_RBRACE", "TOK_ID", "TOK_DOT", "TOK_COMMA", "TOK_WS", 
-                  "CHN_DOC_COMMENT", "CHN_BLOCK_COMMENT", "CHN_LINE_COMMENT", 
-                  "CHN_LBRACE", "CHN_RBRACE", "CHN_ID", "CHN_DOT", "CHN_COMMA", 
-                  "CHN_WS", "LEXER_CHAR_SET_BODY", "LEXER_CHAR_SET", "UNTERMINATED_CHAR_SET", 
-                  "Id" ]
+    ruleNames = [
+        "DOC_COMMENT",
+        "HEADER",
+        "BLOCK_COMMENT",
+        "LINE_COMMENT",
+        "INT",
+        "STRING_LITERAL",
+        "UNTERMINATED_STRING_LITERAL",
+        "BEGIN_ARGUMENT",
+        "BEGIN_ACTION",
+        "OPTIONS",
+        "TOKENS",
+        "CHANNELS",
+        "IMPORT",
+        "FRAGMENT",
+        "LEXER",
+        "PARSER",
+        "GRAMMAR",
+        "PROTECTED",
+        "PUBLIC",
+        "PRIVATE",
+        "RETURNS",
+        "LOCALS",
+        "THROWS",
+        "CATCH",
+        "FINALLY",
+        "MODE",
+        "COLON",
+        "COLONCOLON",
+        "COMMA",
+        "SEMI",
+        "LPAREN",
+        "RPAREN",
+        "LBRACE",
+        "RBRACE",
+        "RARROW",
+        "LT",
+        "GT",
+        "ASSIGN",
+        "QUESTION",
+        "STAR",
+        "PLUS_ASSIGN",
+        "PLUS",
+        "OR",
+        "DOLLAR",
+        "RANGE",
+        "DOT",
+        "AT",
+        "POUND",
+        "NOT",
+        "ID",
+        "WS",
+        "ERRCHAR",
+        "Ws",
+        "Hws",
+        "Vws",
+        "BlockComment",
+        "DocComment",
+        "LineComment",
+        "EscSeq",
+        "EscAny",
+        "UnicodeEsc",
+        "DecimalNumeral",
+        "HexDigit",
+        "DecDigit",
+        "BoolLiteral",
+        "CharLiteral",
+        "SQuoteLiteral",
+        "DQuoteLiteral",
+        "USQuoteLiteral",
+        "NameChar",
+        "NameStartChar",
+        "Int",
+        "Esc",
+        "Colon",
+        "DColon",
+        "SQuote",
+        "DQuote",
+        "LParen",
+        "RParen",
+        "LBrace",
+        "RBrace",
+        "LBrack",
+        "RBrack",
+        "RArrow",
+        "Lt",
+        "Gt",
+        "Equal",
+        "Question",
+        "Star",
+        "Plus",
+        "PlusAssign",
+        "Underscore",
+        "Pipe",
+        "Dollar",
+        "Comma",
+        "Semi",
+        "Dot",
+        "Range",
+        "At",
+        "Pound",
+        "Tilde",
+        "NESTED_ARGUMENT",
+        "ARGUMENT_ESCAPE",
+        "ARGUMENT_STRING_LITERAL",
+        "ARGUMENT_CHAR_LITERAL",
+        "END_ARGUMENT",
+        "UNTERMINATED_ARGUMENT",
+        "ARGUMENT_CONTENT",
+        "NESTED_ACTION",
+        "ACTION_ESCAPE",
+        "ACTION_STRING_LITERAL",
+        "ACTION_CHAR_LITERAL",
+        "ACTION_DOC_COMMENT",
+        "ACTION_BLOCK_COMMENT",
+        "ACTION_LINE_COMMENT",
+        "END_ACTION",
+        "UNTERMINATED_ACTION",
+        "ACTION_CONTENT",
+        "OPT_DOC_COMMENT",
+        "OPT_BLOCK_COMMENT",
+        "OPT_LINE_COMMENT",
+        "OPT_LBRACE",
+        "OPT_RBRACE",
+        "OPT_ID",
+        "OPT_DOT",
+        "OPT_ASSIGN",
+        "OPT_STRING_LITERAL",
+        "OPT_INT",
+        "OPT_STAR",
+        "OPT_SEMI",
+        "OPT_WS",
+        "TOK_DOC_COMMENT",
+        "TOK_BLOCK_COMMENT",
+        "TOK_LINE_COMMENT",
+        "TOK_LBRACE",
+        "TOK_RBRACE",
+        "TOK_ID",
+        "TOK_DOT",
+        "TOK_COMMA",
+        "TOK_WS",
+        "CHN_DOC_COMMENT",
+        "CHN_BLOCK_COMMENT",
+        "CHN_LINE_COMMENT",
+        "CHN_LBRACE",
+        "CHN_RBRACE",
+        "CHN_ID",
+        "CHN_DOT",
+        "CHN_COMMA",
+        "CHN_WS",
+        "LEXER_CHAR_SET_BODY",
+        "LEXER_CHAR_SET",
+        "UNTERMINATED_CHAR_SET",
+        "Id",
+    ]
 
     grammarFileName = "ANTLRv4Lexer.g4"
 
-    def __init__(self, input=None, output:TextIO = sys.stdout):
+    def __init__(self, input=None, output: TextIO = sys.stdout):
         super().__init__(input, output)
         self.checkVersion("4.9.2")
-        self._interp = LexerATNSimulator(self, self.atn, self.decisionsToDFA, PredictionContextCache())
+        self._interp = LexerATNSimulator(
+            self, self.atn, self.decisionsToDFA, PredictionContextCache()
+        )
         self._actions = None
         self._predicates = None
 
-
-    def action(self, localctx:RuleContext, ruleIndex:int, actionIndex:int):
+    def action(self, localctx: RuleContext, ruleIndex: int, actionIndex: int):
         if self._actions is None:
             actions = dict()
-            actions[7] = self.BEGIN_ARGUMENT_action 
-            actions[105] = self.END_ARGUMENT_action 
-            actions[115] = self.END_ACTION_action 
+            actions[7] = self.BEGIN_ARGUMENT_action
+            actions[105] = self.END_ARGUMENT_action
+            actions[115] = self.END_ACTION_action
             self._actions = actions
         action = self._actions.get(ruleIndex, None)
         if action is not None:
@@ -642,20 +839,14 @@ class ANTLRv4Lexer(LexerAdaptor):
         else:
             raise Exception("No registered action for:" + str(ruleIndex))
 
-
-    def BEGIN_ARGUMENT_action(self, localctx:RuleContext , actionIndex:int):
+    def BEGIN_ARGUMENT_action(self, localctx: RuleContext, actionIndex: int):
         if actionIndex == 0:
-             self.handleBeginArgument() 
-     
+            self.handleBeginArgument()
 
-    def END_ARGUMENT_action(self, localctx:RuleContext , actionIndex:int):
+    def END_ARGUMENT_action(self, localctx: RuleContext, actionIndex: int):
         if actionIndex == 1:
-             self.handleEndArgument() 
-     
+            self.handleEndArgument()
 
-    def END_ACTION_action(self, localctx:RuleContext , actionIndex:int):
+    def END_ACTION_action(self, localctx: RuleContext, actionIndex: int):
         if actionIndex == 2:
-             self.handleEndAction() 
-     
-
-
+            self.handleEndAction()

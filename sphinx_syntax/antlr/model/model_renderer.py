@@ -1,15 +1,14 @@
+import re
 from typing import *
 
-import re
-
-from sphinx_a4doc.model.model import RuleBase, LexerRule, ParserRule
+from sphinx_a4doc.model.model import LexerRule, ParserRule, RuleBase
 from sphinx_a4doc.model.visitor import *
 from sphinx_a4doc.settings import LiteralRendering
 
 
 def cc_to_dash(name: str) -> str:
-    s1 = re.sub('(.)([A-Z][a-z]+)', r'\1-\2', name)
-    return re.sub('([a-z0-9])([A-Z])', r'\1-\2', s1).lower()
+    s1 = re.sub("(.)([A-Z][a-z]+)", r"\1-\2", name)
+    return re.sub("([a-z0-9])([A-Z])", r"\1-\2", s1).lower()
 
 
 class ImportanceProvider(CachedRuleContentVisitor[int]):
@@ -64,7 +63,7 @@ class Renderer(CachedRuleContentVisitor[dict]):
         self,
         literal_rendering: LiteralRendering = LiteralRendering.CONTENTS_UNQUOTED,
         do_cc_to_dash: bool = False,
-        importance_provider: ImportanceProvider = ImportanceProvider()
+        importance_provider: ImportanceProvider = ImportanceProvider(),
     ):
         super().__init__()
 
@@ -97,15 +96,39 @@ class Renderer(CachedRuleContentVisitor[dict]):
         return dict(zero_or_more=item, repeat=repeat)
 
     @staticmethod
-    def _terminal(text: str, href: Optional[str]=None, resolve: bool = True, title_is_weak: bool = False, css_class: Optional[str] = None):
-        return dict(terminal=text, href=href, resolve=resolve, title_is_weak=title_is_weak, css_class=css_class)
+    def _terminal(
+        text: str,
+        href: Optional[str] = None,
+        resolve: bool = True,
+        title_is_weak: bool = False,
+        css_class: Optional[str] = None,
+    ):
+        return dict(
+            terminal=text,
+            href=href,
+            resolve=resolve,
+            title_is_weak=title_is_weak,
+            css_class=css_class,
+        )
 
     @staticmethod
-    def _non_terminal(text: str, href: Optional[str]=None, resolve: bool = True, title_is_weak: bool = False, css_class: Optional[str] = None):
-        return dict(non_terminal=text, href=href, resolve=resolve, title_is_weak=title_is_weak, css_class=css_class)
+    def _non_terminal(
+        text: str,
+        href: Optional[str] = None,
+        resolve: bool = True,
+        title_is_weak: bool = False,
+        css_class: Optional[str] = None,
+    ):
+        return dict(
+            non_terminal=text,
+            href=href,
+            resolve=resolve,
+            title_is_weak=title_is_weak,
+            css_class=css_class,
+        )
 
     @staticmethod
-    def _comment(text: str, href: Optional[str]=None):
+    def _comment(text: str, href: Optional[str] = None):
         return dict(comment=text, href=href)
 
     @staticmethod
@@ -136,7 +159,7 @@ class Renderer(CachedRuleContentVisitor[dict]):
         return self._literal(r.content)
 
     def visit_range(self, r: LexerRule.Range):
-        return self._range(f'{r.start}..{r.end}')
+        return self._range(f"{r.start}..{r.end}")
 
     def visit_charset(self, r: LexerRule.CharSet):
         return self._charset(r.content)
@@ -144,8 +167,8 @@ class Renderer(CachedRuleContentVisitor[dict]):
     def visit_reference(self, r: RuleBase.Reference):
         rule = r.get_reference()
         if rule is None:
-            if r.name and (r.name[0].isupper() or r.name.startswith('\'')):
-                if r.name.startswith('\'') and r.name.endswith('\''):
+            if r.name and (r.name[0].isupper() or r.name.startswith("'")):
+                if r.name.startswith("'") and r.name.endswith("'"):
                     if self.literal_rendering is LiteralRendering.CONTENTS_UNQUOTED:
                         name = r.name[1:-1]
                     else:
@@ -158,7 +181,7 @@ class Renderer(CachedRuleContentVisitor[dict]):
         elif rule.is_doxygen_inline and rule.content is not None:
             return self.visit(rule.content)
         elif isinstance(rule, LexerRule):
-            path = f'{rule.model.get_name()}.{rule.name}'
+            path = f"{rule.model.get_name()}.{rule.name}"
             if rule.is_literal and self.literal_rendering is not LiteralRendering.NAME:
                 literal = str(rule.content)
                 if self.literal_rendering is LiteralRendering.CONTENTS_UNQUOTED:
@@ -166,13 +189,16 @@ class Renderer(CachedRuleContentVisitor[dict]):
                 return self._terminal(literal, path, css_class=rule.css_class)
             else:
                 name = rule.display_name or self._cc_to_dash(rule.name)
-                return self._terminal(name, path, title_is_weak=True, css_class=rule.css_class)
+                return self._terminal(
+                    name, path, title_is_weak=True, css_class=rule.css_class
+                )
         elif isinstance(rule, ParserRule):
             return self._non_terminal(
                 rule.display_name or self._cc_to_dash(rule.name),
-                f'{rule.model.get_name()}.{rule.name}',
+                f"{rule.model.get_name()}.{rule.name}",
                 title_is_weak=True,
-                css_class=rule.css_class)
+                css_class=rule.css_class,
+            )
         else:
             assert False
 
@@ -180,7 +206,7 @@ class Renderer(CachedRuleContentVisitor[dict]):
         return self._comment(r.value)
 
     def visit_wildcard(self, r: RuleBase.Wildcard):
-        return self._wildcard('.')
+        return self._wildcard(".")
 
     def visit_negation(self, r: RuleBase.Negation):
         return self._negation(str(r))
@@ -194,10 +220,10 @@ class Renderer(CachedRuleContentVisitor[dict]):
 
     def visit_maybe(self, r: RuleBase.Maybe):
         if (
-            isinstance(r.child, RuleBase.Alternative) and
-            len(r.child.children) == 2 and
-            self.importance_provider.visit(r.child.children[0]) ==
-            self.importance_provider.visit(r.child.children[1])
+            isinstance(r.child, RuleBase.Alternative)
+            and len(r.child.children) == 2
+            and self.importance_provider.visit(r.child.children[0])
+            == self.importance_provider.visit(r.child.children[1])
         ):
             return self._choice(
                 self.visit(r.child.children[0]),
@@ -210,12 +236,12 @@ class Renderer(CachedRuleContentVisitor[dict]):
         return self._optional(self.visit(r.child), skip=skip)
 
     def visit_sequence(self, r: RuleBase.Sequence):
-        return self._optimize_sequence(list(r.children),
-                                       list(r.get_linebreaks()))
+        return self._optimize_sequence(list(r.children), list(r.get_linebreaks()))
 
     def visit_alternative(self, r: RuleBase.Alternative):
-        default = max(enumerate(r.children),
-                      key=lambda x: self.importance_provider.visit(x[1]))[0]
+        default = max(
+            enumerate(r.children), key=lambda x: self.importance_provider.visit(x[1])
+        )[0]
         return self._choice(*[self.visit(c) for c in r.children], default=default)
 
     def _optimize_sequence(self, seq: List[RuleBase.RuleContent], lb: List[bool]):
@@ -255,21 +281,23 @@ class Renderer(CachedRuleContentVisitor[dict]):
                 # matched no elements from the nested sequence
                 continue
 
-            repeat = self._optimize_sequence(nested_seq[:nested_seq_start],
-                                             nested_seq_lb[:nested_seq_start])
-            main = self._optimize_sequence(nested_seq[nested_seq_start:],
-                                           nested_seq_lb[nested_seq_start:])
+            repeat = self._optimize_sequence(
+                nested_seq[:nested_seq_start], nested_seq_lb[:nested_seq_start]
+            )
+            main = self._optimize_sequence(
+                nested_seq[nested_seq_start:], nested_seq_lb[nested_seq_start:]
+            )
 
             item = self._one_or_more(main, repeat)
 
-            seq[seq_start:i + 1] = [item]
-            lb[seq_start:i + 1] = [any(lb[seq_start:i + 1])]
+            seq[seq_start : i + 1] = [item]
+            lb[seq_start : i + 1] = [any(lb[seq_start : i + 1])]
 
             return self._optimize_sequence(seq, lb)
 
-        return self._sequence(*[
-            e if isinstance(e, dict) else self.visit(e) for e in seq
-        ], linebreaks=lb)
+        return self._sequence(
+            *[e if isinstance(e, dict) else self.visit(e) for e in seq], linebreaks=lb
+        )
 
     def _cc_to_dash(self, name):
         if self._do_cc_to_dash:

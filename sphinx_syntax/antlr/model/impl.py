@@ -1,33 +1,41 @@
 import os
 import re
 import textwrap
-
 from typing import *
 
+import sphinx.util.logging
 from antlr4 import CommonTokenStream, InputStream
 from antlr4.error.ErrorListener import ErrorListener
-
-from sphinx_a4doc.model.model import ModelCache, Model, Position, RuleBase, LexerRule, ParserRule, Section
+from sphinx_a4doc.model.model import (
+    LexerRule,
+    Model,
+    ModelCache,
+    ParserRule,
+    Position,
+    RuleBase,
+    Section,
+)
 from sphinx_a4doc.syntax import Lexer, Parser, ParserVisitor
 
-import sphinx.util.logging
-
 __all__ = [
-    'ModelCacheImpl',
-    'ModelImpl',
-    'MetaLoader',
-    'RuleLoader',
-    'LexerRuleLoader',
-    'ParserRuleLoader',
+    "ModelCacheImpl",
+    "ModelImpl",
+    "MetaLoader",
+    "RuleLoader",
+    "LexerRuleLoader",
+    "ParserRuleLoader",
 ]
 
 
 logger = sphinx.util.logging.getLogger(__name__)
 
 
-CMD_RE = re.compile(r'''
+CMD_RE = re.compile(
+    r"""
     //@\s*doc\s*:\s*(?P<cmd>[a-zA-Z0-9_-]+)\s*(?P<ctx>.*)
-    ''', re.UNICODE | re.VERBOSE)
+    """,
+    re.UNICODE | re.VERBOSE,
+)
 
 
 class LoggingErrorListener(ErrorListener):
@@ -36,14 +44,14 @@ class LoggingErrorListener(ErrorListener):
         self._offset = offset
 
     def syntaxError(self, recognizer, offending_symbol, line, column, msg, e):
-        logger.error(f'{self._path}:{line + self._offset}: WARNING: {msg}')
+        logger.error(f"{self._path}:{line + self._offset}: WARNING: {msg}")
 
 
 class ModelCacheImpl(ModelCache):
     def __init__(self):
         self._loaded: Dict[str, Model] = {}
 
-    def from_file(self, path: Union[str, Tuple[str, int]]) -> 'Model':
+    def from_file(self, path: Union[str, Tuple[str, int]]) -> "Model":
         if isinstance(path, tuple):
             path, offset = path
         else:
@@ -55,23 +63,30 @@ class ModelCacheImpl(ModelCache):
             return self._loaded[path]
 
         if not os.path.exists(path):
-            logger.error(f'unable to load {path!r}: file not found')
+            logger.error(f"unable to load {path!r}: file not found")
             model = self._loaded[path] = ModelImpl(path, offset, False, True)
             return model
 
-        with open(path, 'r', encoding='utf-8', errors='strict') as f:
+        with open(path, "r", encoding="utf-8", errors="strict") as f:
             self._loaded[path] = self._do_load(f.read(), path, offset, False, [])
 
         return self._loaded[path]
 
-    def from_text(self, text: str, path: Union[str, Tuple[str, int]] = '<in-memory>', imports: List['Model'] = None) -> 'Model':
+    def from_text(
+        self,
+        text: str,
+        path: Union[str, Tuple[str, int]] = "<in-memory>",
+        imports: List["Model"] = None,
+    ) -> "Model":
         if isinstance(path, tuple):
             path, offset = path
         else:
             path, offset = path, 0
         return self._do_load(text, path, offset, True, imports)
 
-    def _do_load(self, text: str, path: str, offset: int, in_memory: bool, imports: List['Model']) -> 'Model':
+    def _do_load(
+        self, text: str, path: str, offset: int, in_memory: bool, imports: List["Model"]
+    ) -> "Model":
         content = InputStream(text)
 
         lexer = Lexer(content)
@@ -146,7 +161,7 @@ class ModelImpl(Model):
     def get_offset(self) -> int:
         return self._offset
 
-    def add_import(self, model: 'Model'):
+    def add_import(self, model: "Model"):
         self._imports.add(model)
 
     def set_lexer_rule(self, name: str, rule: LexerRule):
@@ -184,24 +199,26 @@ class MetaLoader(ParserVisitor):
 
     def add_import(self, name: str, position: Position):
         if self._model.is_in_memory():
-            logger.error(f'{position}: WARNING: imports are not allowed for in-memory grammars')
+            logger.error(
+                f"{position}: WARNING: imports are not allowed for in-memory grammars"
+            )
         else:
-            model = self._cache.from_file(os.path.join(self._basedir, name + '.g4'))
+            model = self._cache.from_file(os.path.join(self._basedir, name + ".g4"))
             self._model.add_import(model)
 
     def visitGrammarSpec(self, ctx):
         t = ctx.gtype.getText()
-        if 'lexer' in t:  # that's nasty =(
-            t = 'lexer'   # in fact, the whole file is nasty =(
-        elif 'parser' in t:
-            t = 'parser'
+        if "lexer" in t:  # that's nasty =(
+            t = "lexer"  # in fact, the whole file is nasty =(
+        elif "parser" in t:
+            t = "parser"
         else:
             t = None
         self._model.set_name(ctx.gname.getText())
         self._model.set_type(t)
         if ctx.docs:
             docs = load_docs(self._model, ctx.docs, allow_cmd=False)
-            self._model.set_model_docs(docs['documentation'])
+            self._model.set_model_docs(docs["documentation"])
         return super(MetaLoader, self).visitGrammarSpec(ctx)
 
     def visitParserRuleSpec(self, ctx: Parser.ParserRuleSpecContext):
@@ -214,13 +231,19 @@ class MetaLoader(ParserVisitor):
         return None  # do not recurse into this
 
     def visitOption(self, ctx: Parser.OptionContext):
-        if ctx.name.getText() == 'tokenVocab':
-            self.add_import(ctx.value.getText(),
-                            Position(self._model.get_path(), ctx.start.line + self._model.get_offset()))
+        if ctx.name.getText() == "tokenVocab":
+            self.add_import(
+                ctx.value.getText(),
+                Position(
+                    self._model.get_path(), ctx.start.line + self._model.get_offset()
+                ),
+            )
 
     def visitDelegateGrammar(self, ctx: Parser.DelegateGrammarContext):
-        self.add_import(ctx.value.getText(),
-                        Position(self._model.get_path(), ctx.start.line + self._model.get_offset()))
+        self.add_import(
+            ctx.value.getText(),
+            Position(self._model.get_path(), ctx.start.line + self._model.get_offset()),
+        )
 
     def visitTokensSpec(self, ctx: Parser.TokensSpecContext):
         tokens: List[Parser.IdentifierContext] = ctx.defs.defs
@@ -229,7 +252,9 @@ class MetaLoader(ParserVisitor):
                 name=token.getText(),
                 display_name=None,
                 model=self._model,
-                position=Position(self._model.get_path(), token.start.line + self._model.get_offset()),
+                position=Position(
+                    self._model.get_path(), token.start.line + self._model.get_offset()
+                ),
                 is_literal=False,
                 is_fragment=False,
                 content=None,
@@ -238,7 +263,7 @@ class MetaLoader(ParserVisitor):
                 is_doxygen_no_diagram=True,
                 css_class=None,
                 importance=1,
-                documentation='',
+                documentation="",
                 section=None,
             )
 
@@ -258,14 +283,14 @@ class RuleLoader(ParserVisitor):
         if suffix is None:
             return element
         suffix: str = suffix.getText()
-        if suffix.startswith('?'):
+        if suffix.startswith("?"):
             if isinstance(element, self.rule_class.Maybe):
                 return element
             else:
                 return self.rule_class.Maybe(child=element)
-        if suffix.startswith('+'):
+        if suffix.startswith("+"):
             return self.rule_class.OnePlus(child=element)
-        if suffix.startswith('*'):
+        if suffix.startswith("*"):
             return self.rule_class.ZeroPlus(child=element)
         return element
 
@@ -312,8 +337,9 @@ class RuleLoader(ParserVisitor):
         if len(elements) == 1:
             return elements[0]
 
-        linebreaks = tuple(True if i in linebreaks else False
-                           for i in range(len(elements)))
+        linebreaks = tuple(
+            True if i in linebreaks else False for i in range(len(elements))
+        )
         return self.rule_class.Sequence(tuple(elements), linebreaks)
 
     def visitRuleSpec(self, ctx: Parser.RuleSpecContext):
@@ -324,7 +350,7 @@ class RuleLoader(ParserVisitor):
         cur_doc: List[str] = []
 
         for token in ctx.headers:
-            text: str = token.text.lstrip('/').strip()
+            text: str = token.text.lstrip("/").strip()
             line: int = token.line + self._model.get_offset()
 
             if start_line is None:
@@ -333,13 +359,13 @@ class RuleLoader(ParserVisitor):
             if cur_line is None or cur_line == line - 1:
                 cur_doc.append(text)
             else:
-                docs.append((start_line, '\n'.join(cur_doc)))
+                docs.append((start_line, "\n".join(cur_doc)))
                 start_line = line
                 cur_doc = [text]
             cur_line = line
 
         if cur_doc:
-            docs.append((start_line, '\n'.join(cur_doc)))
+            docs.append((start_line, "\n".join(cur_doc)))
 
         if docs:
             self._current_section = Section(docs)
@@ -367,20 +393,22 @@ class LexerRuleLoader(RuleLoader):
             literal = content.content
         else:
             is_literal = False
-            literal = ''
+            literal = ""
 
         rule = LexerRule(
             name=ctx.name.text,
-            display_name=doc_info['name'] or None,
+            display_name=doc_info["name"] or None,
             model=self._model,
-            position=Position(self._model.get_path(), ctx.start.line + self._model.get_offset()),
+            position=Position(
+                self._model.get_path(), ctx.start.line + self._model.get_offset()
+            ),
             content=content,
-            is_doxygen_nodoc=doc_info['is_doxygen_nodoc'],
-            is_doxygen_inline=doc_info['is_doxygen_inline'],
-            is_doxygen_no_diagram=doc_info['is_doxygen_no_diagram'],
-            css_class=doc_info['css_class'],
-            importance=doc_info['importance'],
-            documentation=doc_info['documentation'],
+            is_doxygen_nodoc=doc_info["is_doxygen_nodoc"],
+            is_doxygen_inline=doc_info["is_doxygen_inline"],
+            is_doxygen_no_diagram=doc_info["is_doxygen_no_diagram"],
+            css_class=doc_info["css_class"],
+            importance=doc_info["importance"],
+            documentation=doc_info["documentation"],
             is_fragment=bool(ctx.frag),
             is_literal=is_literal,
             section=self._current_section,
@@ -432,7 +460,7 @@ class LexerRuleLoader(RuleLoader):
 
     def visitLexerAtomCharSet(self, ctx: Parser.LexerAtomCharSetContext):
         content = ctx.value.text
-        if content == '[]':
+        if content == "[]":
             return LexerRule.EMPTY
         else:
             return LexerRule.CharSet(content=content)
@@ -441,8 +469,8 @@ class LexerRuleLoader(RuleLoader):
         return LexerRule.WILDCARD
 
     def visitLexerAtomDoc(self, ctx: Parser.LexerAtomDocContext):
-        docs = load_docs(self._model, [ctx.value], False)['documentation']
-        return LexerRule.Doc(value='\n'.join(d[1] for d in docs))
+        docs = load_docs(self._model, [ctx.value], False)["documentation"]
+        return LexerRule.Doc(value="\n".join(d[1] for d in docs))
 
     def visitNotElement(self, ctx: Parser.NotElementContext):
         return LexerRule.Negation(child=self.visit(ctx.value))
@@ -465,7 +493,7 @@ class LexerRuleLoader(RuleLoader):
 
     def visitSetElementCharSet(self, ctx: Parser.SetElementCharSetContext):
         content = ctx.value.text
-        if content == '[]':
+        if content == "[]":
             return LexerRule.EMPTY
         else:
             return LexerRule.CharSet(content=content)
@@ -479,16 +507,18 @@ class ParserRuleLoader(RuleLoader):
         doc_info = load_docs(self._model, ctx.docs)
         rule = ParserRule(
             name=ctx.name.text,
-            display_name=doc_info['name'] or None,
+            display_name=doc_info["name"] or None,
             model=self._model,
-            position=Position(self._model.get_path(), ctx.start.line + self._model.get_offset()),
+            position=Position(
+                self._model.get_path(), ctx.start.line + self._model.get_offset()
+            ),
             content=content,
-            is_doxygen_nodoc=doc_info['is_doxygen_nodoc'],
-            is_doxygen_inline=doc_info['is_doxygen_inline'],
-            is_doxygen_no_diagram=doc_info['is_doxygen_no_diagram'],
-            css_class=doc_info['css_class'],
-            importance=doc_info['importance'],
-            documentation=doc_info['documentation'],
+            is_doxygen_nodoc=doc_info["is_doxygen_nodoc"],
+            is_doxygen_inline=doc_info["is_doxygen_inline"],
+            is_doxygen_no_diagram=doc_info["is_doxygen_no_diagram"],
+            css_class=doc_info["css_class"],
+            importance=doc_info["importance"],
+            documentation=doc_info["documentation"],
             section=self._current_section,
         )
 
@@ -528,8 +558,8 @@ class ParserRuleLoader(RuleLoader):
         return ParserRule.EMPTY
 
     def visitParserInlineDoc(self, ctx: Parser.ParserInlineDocContext):
-        docs = load_docs(self._model, [ctx.value], False)['documentation']
-        return ParserRule.Doc(value='\n'.join(d[1] for d in docs))
+        docs = load_docs(self._model, [ctx.value], False)["documentation"]
+        return ParserRule.Doc(value="\n".join(d[1] for d in docs))
 
     def visitLabeledElement(self, ctx: Parser.LabeledElementContext):
         return self.visit(ctx.atom() or ctx.block())
@@ -575,96 +605,104 @@ class ParserRuleLoader(RuleLoader):
 
 
 def load_docs(model, tokens, allow_cmd=True):
-        is_doxygen_nodoc = False
-        is_doxygen_inline = False
-        is_doxygen_no_diagram = False
-        css_class = None
-        importance = 1
-        name = None
-        docs: List[Tuple[int, str]] = []
+    is_doxygen_nodoc = False
+    is_doxygen_inline = False
+    is_doxygen_no_diagram = False
+    css_class = None
+    importance = 1
+    name = None
+    docs: List[Tuple[int, str]] = []
 
-        for token in tokens:
-            text: str = token.text
-            position = Position(model.get_path(), token.line + model.get_offset())
-            if text.startswith('//@'):
-                match = CMD_RE.match(text)
+    for token in tokens:
+        text: str = token.text
+        position = Position(model.get_path(), token.line + model.get_offset())
+        if text.startswith("//@"):
+            match = CMD_RE.match(text)
 
-                if match is None:
-                    logger.error(f'{position}: WARNING: invalid command {text!r}')
+            if match is None:
+                logger.error(f"{position}: WARNING: invalid command {text!r}")
+                continue
+
+            if not allow_cmd:
+                logger.error(f"{position}: WARNING: commands not allowed here")
+                continue
+
+            cmd = match["cmd"]
+
+            if cmd == "nodoc":
+                is_doxygen_nodoc = True
+            elif cmd == "inline":
+                is_doxygen_inline = True
+            elif cmd == "no-diagram":
+                is_doxygen_no_diagram = True
+            elif cmd == "unimportant":
+                importance = 0
+            elif cmd == "importance":
+                try:
+                    val = int(match["ctx"].strip())
+                except ValueError:
+                    logger.error(
+                        f"{position}: WARNING: importance requires an integer argument"
+                    )
                     continue
-
-                if not allow_cmd:
-                    logger.error(f'{position}: WARNING: commands not allowed here')
+                if val < 0:
+                    logger.error(
+                        f"{position}: WARNING: importance should not be negative"
+                    )
+                importance = val
+            elif cmd == "name":
+                name = match["ctx"].strip()
+                if not name:
+                    logger.error(
+                        f"{position}: WARNING: name command requires an argument"
+                    )
                     continue
-
-                cmd = match['cmd']
-
-                if cmd == 'nodoc':
-                    is_doxygen_nodoc = True
-                elif cmd == 'inline':
-                    is_doxygen_inline = True
-                elif cmd == 'no-diagram':
-                    is_doxygen_no_diagram = True
-                elif cmd == 'unimportant':
-                    importance = 0
-                elif cmd == 'importance':
-                    try:
-                        val = int(match['ctx'].strip())
-                    except ValueError:
-                        logger.error(f'{position}: WARNING: importance requires an integer argument')
-                        continue
-                    if val < 0:
-                        logger.error(f'{position}: WARNING: importance should not be negative')
-                    importance = val
-                elif cmd == 'name':
-                    name = match['ctx'].strip()
-                    if not name:
-                        logger.error(f'{position}: WARNING: name command requires an argument')
-                        continue
-                elif cmd == 'css-class':
-                    css_class = match['ctx'].strip()
-                    if not name:
-                        logger.error(f'{position}: WARNING: css-class command requires an argument')
-                        continue
-                else:
-                    logger.error(f'{position}: WARNING: unknown command {cmd!r}')
-
-                if cmd not in ['name', 'class', 'importance'] and match['ctx']:
-                    logger.warning(f'argument for {cmd!r} command is ignored')
+            elif cmd == "css-class":
+                css_class = match["ctx"].strip()
+                if not name:
+                    logger.error(
+                        f"{position}: WARNING: css-class command requires an argument"
+                    )
+                    continue
             else:
-                documentation_lines = []
+                logger.error(f"{position}: WARNING: unknown command {cmd!r}")
 
-                lines = text.splitlines()
+            if cmd not in ["name", "class", "importance"] and match["ctx"]:
+                logger.warning(f"argument for {cmd!r} command is ignored")
+        else:
+            documentation_lines = []
 
-                if len(lines) == 1:
-                    documentation_lines.append(lines[0][3:-2].strip())
-                else:
-                    first_line = lines[0]
-                    lines = lines[1:]
+            lines = text.splitlines()
 
-                    first_line = first_line[3:].strip()
-                    documentation_lines.append(first_line)
+            if len(lines) == 1:
+                documentation_lines.append(lines[0][3:-2].strip())
+            else:
+                first_line = lines[0]
+                lines = lines[1:]
 
-                    lines[-1] = lines[-1][:-2].rstrip()
+                first_line = first_line[3:].strip()
+                documentation_lines.append(first_line)
 
-                    if not lines[-1].lstrip():
-                        lines.pop()
+                lines[-1] = lines[-1][:-2].rstrip()
 
-                    if all(line.lstrip().startswith('*') for line in lines):
-                        lines = [line.lstrip()[1:] for line in lines]
+                if not lines[-1].lstrip():
+                    lines.pop()
 
-                    text = textwrap.dedent('\n'.join(lines))
+                if all(line.lstrip().startswith("*") for line in lines):
+                    lines = [line.lstrip()[1:] for line in lines]
 
-                    documentation_lines.append(text)
+                text = textwrap.dedent("\n".join(lines))
 
-                docs.append((position.line, '\n'.join(documentation_lines)))
+                documentation_lines.append(text)
 
-        return dict(
-            importance=importance,
-            is_doxygen_inline=is_doxygen_inline,
-            is_doxygen_nodoc=is_doxygen_nodoc,
-            is_doxygen_no_diagram=is_doxygen_no_diagram,
-            css_class=css_class,
-            name=name,
-            documentation=docs
-        )
+            docs.append((position.line, "\n".join(documentation_lines)))
+
+    return dict(
+        importance=importance,
+        is_doxygen_inline=is_doxygen_inline,
+        is_doxygen_nodoc=is_doxygen_nodoc,
+        is_doxygen_no_diagram=is_doxygen_no_diagram,
+        css_class=css_class,
+        name=name,
+        documentation=docs,
+    )

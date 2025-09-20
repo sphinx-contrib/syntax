@@ -5,11 +5,12 @@ import typing as _t
 from dataclasses import dataclass
 
 import docutils.nodes
-import syntax_diagrams as rr
 import sphinx.addnodes
 import sphinx.builders
 import sphinx.directives
+import syntax_diagrams as rr
 from docutils.parsers.rst import directives
+from docutils.parsers.rst.states import RSTStateMachine
 from sphinx.addnodes import pending_xref
 from sphinx.builders import Builder
 from sphinx.directives import ObjectDescription
@@ -19,7 +20,6 @@ from sphinx.locale import _
 from sphinx.roles import XRefRole
 from sphinx.util import logging
 from sphinx.util.docutils import SphinxDirective
-from docutils.parsers.rst.states import RSTStateMachine
 from sphinx.util.nodes import make_id, make_refnode
 
 logger = logging.getLogger("sphinx_syntax")
@@ -79,7 +79,6 @@ OPTION_SPEC_DIAGRAMS = {
     "reverse": directives.flag,
     "no-reverse": directives.flag,
     "end-class": _end_class,
-
     "svg-padding": _padding,
     "svg-title": _non_negative_int,
     "svg-description": _non_negative_int,
@@ -110,7 +109,6 @@ OPTION_SPEC_DIAGRAMS = {
     "svg-group-radius": _non_negative_int,
     "svg-group-text-vertical-offset": _non_negative_int,
     "svg-group-text-horizontal-offset": _non_negative_int,
-
     "text-padding": _padding,
     "text-vertical-choice-separation-outer": _non_negative_int,
     "text-vertical-choice-separation": _non_negative_int,

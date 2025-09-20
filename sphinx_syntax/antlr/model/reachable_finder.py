@@ -1,7 +1,7 @@
+from typing import *
+
 from sphinx_a4doc.model.model import RuleBase
 from sphinx_a4doc.model.visitor import RuleContentVisitor, T
-
-from typing import *
 
 
 class _ReachableFiner(RuleContentVisitor[Set[RuleBase]]):

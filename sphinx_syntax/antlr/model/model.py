@@ -9,12 +9,12 @@ except ImportError:
 
 
 __all__ = [
-    'ModelCache',
-    'Model',
-    'Position',
-    'RuleBase',
-    'ParserRule',
-    'LexerRule',
+    "ModelCache",
+    "Model",
+    "Position",
+    "RuleBase",
+    "ParserRule",
+    "LexerRule",
 ]
 
 
@@ -23,16 +23,17 @@ _global_cache = None
 
 class ModelCache(metaclass=ABCMeta):
     @staticmethod
-    def create() -> 'ModelCache':
+    def create() -> "ModelCache":
         """
         Create the default cache implementation.
 
         """
         from sphinx_a4doc.model.impl import ModelCacheImpl
+
         return ModelCacheImpl()
 
     @staticmethod
-    def instance() -> 'ModelCache':
+    def instance() -> "ModelCache":
         """
         Get a global cache instance.
 
@@ -43,7 +44,7 @@ class ModelCache(metaclass=ABCMeta):
         return _global_cache
 
     @abstractmethod
-    def from_file(self, path: Union[str, Tuple[str, int]]) -> 'Model':
+    def from_file(self, path: Union[str, Tuple[str, int]]) -> "Model":
         """
         Load model from file. If file is not found, returns an empty model.
         Models are cached by absolute path.
@@ -51,7 +52,12 @@ class ModelCache(metaclass=ABCMeta):
         """
 
     @abstractmethod
-    def from_text(self, text: str, path: Union[str, Tuple[str, int]] = '<in-memory>', imports: List['Model'] = None) -> 'Model':
+    def from_text(
+        self,
+        text: str,
+        path: Union[str, Tuple[str, int]] = "<in-memory>",
+        imports: List["Model"] = None,
+    ) -> "Model":
         """
         Load model from text.
         Models are not cached; they also cannot have any imports.
@@ -111,14 +117,14 @@ class Model(metaclass=ABCMeta):
         """
 
     @abstractmethod
-    def lookup_local(self, name: str) -> Optional['RuleBase']:
+    def lookup_local(self, name: str) -> Optional["RuleBase"]:
         """
         Lookup symbol with the given name.
         Imported models are not checked.
 
         """
 
-    def lookup(self, name: str) -> Optional['RuleBase']:
+    def lookup(self, name: str) -> Optional["RuleBase"]:
         """
         Lookup symbol with the given name.
 
@@ -150,7 +156,7 @@ class Model(metaclass=ABCMeta):
         return None
 
     @abstractmethod
-    def get_imports(self) -> Iterable['Model']:
+    def get_imports(self) -> Iterable["Model"]:
         """
         Get all imported models.
 
@@ -161,7 +167,7 @@ class Model(metaclass=ABCMeta):
         """
 
     @abstractmethod
-    def get_terminals(self) -> Iterable['LexerRule']:
+    def get_terminals(self) -> Iterable["LexerRule"]:
         """
         Get all terminals (including fragments) declared in this model.
 
@@ -173,7 +179,7 @@ class Model(metaclass=ABCMeta):
         """
 
     @abstractmethod
-    def get_non_terminals(self) -> Iterable['ParserRule']:
+    def get_non_terminals(self) -> Iterable["ParserRule"]:
         """
         Get all non-terminals (parser rules) declared in this model.
 
@@ -197,10 +203,10 @@ class Position:
         return self.file, self.line
 
     def __repr__(self):
-        return 'Position({!r}, {!r})'.format(self.file, self.line)
+        return "Position({!r}, {!r})".format(self.file, self.line)
 
     def __str__(self):
-        return '{}:{}'.format(self.file, self.line)
+        return "{}:{}".format(self.file, self.line)
 
 
 def meta(**kwargs):
@@ -208,9 +214,11 @@ def meta(**kwargs):
     Decorator that sets meta for the given AST node.
 
     """
-    def wrapper(cls: 'RuleBase.RuleContent'):
+
+    def wrapper(cls: "RuleBase.RuleContent"):
         cls.__meta__ = replace(cls.__meta__, **kwargs)
         return cls
+
     return wrapper
 
 
@@ -245,7 +253,7 @@ class RuleBase:
     position: Position
     """A position at which this rule is declared"""
 
-    content: Optional['RuleBase.RuleContent']
+    content: Optional["RuleBase.RuleContent"]
     """Body of the token or rule definition.
     May be omitted for implicitly declared tokens or tokens that were declared
     in the `tokens` section of a lexer.
@@ -285,22 +293,22 @@ class RuleBase:
         lines = [self.name]
 
         if self.content is None:
-            lines.append('  <implicit>')
+            lines.append("  <implicit>")
         else:
             if isinstance(self.content, self.Alternative):
                 alts = self.content.children
             else:
-                alts = self.content,
+                alts = (self.content,)
 
             for i, alt in enumerate(alts):
                 if i == 0:
-                    lines.append('  : ' + str(alt))
+                    lines.append("  : " + str(alt))
                 else:
-                    lines.append('  | ' + str(alt))
+                    lines.append("  | " + str(alt))
 
-        lines.append('  ;')
+        lines.append("  ;")
 
-        return '\n'.join(lines)
+        return "\n".join(lines)
 
     class RuleContent:
         """
@@ -311,7 +319,7 @@ class RuleBase:
         @dataclass(frozen=True)
         class Meta:
             precedence: int = 0
-            visitor_relay: str = 'visit_default'
+            visitor_relay: str = "visit_default"
             formatter: Callable = field(default=lambda x, _: repr(x))
 
         __meta__ = Meta()
@@ -319,13 +327,12 @@ class RuleBase:
         def __str__(self):
             p = self.__meta__.precedence
             return self.__meta__.formatter(
-                self,
-                lambda x: f'{x}' if x.__meta__.precedence > p else f'({x})'
+                self, lambda x: f"{x}" if x.__meta__.precedence > p else f"({x})"
             )
 
     @dataclass(frozen=True)
-    @meta(visitor_relay='visit_reference')
-    @meta(precedence=4, formatter=lambda x, f: f'{x.name}')
+    @meta(visitor_relay="visit_reference")
+    @meta(precedence=4, formatter=lambda x, f: f"{x.name}")
     class Reference(RuleContent):
         """
         Refers another parser or lexer rule.
@@ -338,7 +345,7 @@ class RuleBase:
         name: str
         """Referenced rule name"""
 
-        def get_reference(self) -> Optional['RuleBase']:
+        def get_reference(self) -> Optional["RuleBase"]:
             """
             Lookup and return the actual rule class.
             Returns None if reference is invalid.
@@ -347,8 +354,8 @@ class RuleBase:
             return self.model.lookup(self.name)
 
     @dataclass(frozen=True)
-    @meta(visitor_relay='visit_doc')
-    @meta(precedence=4, formatter=lambda x, f: f'/** {x.value} */')
+    @meta(visitor_relay="visit_doc")
+    @meta(precedence=4, formatter=lambda x, f: f"/** {x.value} */")
     class Doc(RuleContent):
         """
         Inline documentation.
@@ -358,8 +365,8 @@ class RuleBase:
         value: str
 
     @dataclass(frozen=True)
-    @meta(visitor_relay='visit_wildcard')
-    @meta(precedence=4, formatter=lambda x, f: f'.')
+    @meta(visitor_relay="visit_wildcard")
+    @meta(precedence=4, formatter=lambda x, f: f".")
     class Wildcard(RuleContent):
         """
         Matches any token.
@@ -367,72 +374,72 @@ class RuleBase:
         """
 
     @dataclass(frozen=True)
-    @meta(visitor_relay='visit_negation')
-    @meta(precedence=3, formatter=lambda x, f: f'~{f(x.child)}')
+    @meta(visitor_relay="visit_negation")
+    @meta(precedence=3, formatter=lambda x, f: f"~{f(x.child)}")
     class Negation(RuleContent):
         """
         Matches anything but the child rules.
 
         """
 
-        child: 'RuleBase.RuleContent'
+        child: "RuleBase.RuleContent"
         """Rules that will be negated"""
 
     @dataclass(frozen=True)
-    @meta(visitor_relay='visit_zero_plus')
-    @meta(precedence=3, formatter=lambda x, f: f'{f(x.child)}*')
+    @meta(visitor_relay="visit_zero_plus")
+    @meta(precedence=3, formatter=lambda x, f: f"{f(x.child)}*")
     class ZeroPlus(RuleContent):
         """
         Matches the child zero or more times.
 
         """
 
-        child: 'RuleBase.RuleContent'
+        child: "RuleBase.RuleContent"
         """Rule which will be parsed zero or more times"""
 
     @dataclass(frozen=True)
-    @meta(visitor_relay='visit_one_plus')
-    @meta(precedence=3, formatter=lambda x, f: f'{f(x.child)}+')
+    @meta(visitor_relay="visit_one_plus")
+    @meta(precedence=3, formatter=lambda x, f: f"{f(x.child)}+")
     class OnePlus(RuleContent):
         """
         Matches the child one or more times.
 
         """
 
-        child: 'RuleBase.RuleContent'
+        child: "RuleBase.RuleContent"
         """Rule which will be parsed one or more times"""
 
     @dataclass(frozen=True)
-    @meta(visitor_relay='visit_maybe')
-    @meta(precedence=3, formatter=lambda x, f: f'{f(x.child)}?')
+    @meta(visitor_relay="visit_maybe")
+    @meta(precedence=3, formatter=lambda x, f: f"{f(x.child)}?")
     class Maybe(RuleContent):
         """
         Matches child or nothing.
 
         """
 
-        child: 'RuleBase.RuleContent'
+        child: "RuleBase.RuleContent"
         """Rule which will be parsed"""
 
     @dataclass(frozen=True)
-    @meta(visitor_relay='visit_sequence')
-    @meta(precedence=1, formatter=lambda x, f: ' '.join(map(f, x.children)))
+    @meta(visitor_relay="visit_sequence")
+    @meta(precedence=1, formatter=lambda x, f: " ".join(map(f, x.children)))
     class Sequence(RuleContent):
         """
         Matches a sequence of elements.
 
         """
 
-        children: Tuple['RuleBase.RuleContent', ...]
+        children: Tuple["RuleBase.RuleContent", ...]
         """Children rules that will be parsed in order"""
 
         linebreaks: Optional[Tuple[bool, ...]] = field(
-            default=None, compare=False, repr=False)
+            default=None, compare=False, repr=False
+        )
         """Bitmask which describes where it is preferable to wrap sequence"""
 
         def __post_init__(self):
-            assert self.linebreaks is None or \
-                   len(self.linebreaks) == len(self.children)
+            assert self.linebreaks is None or len(self.linebreaks) == len(self.children)
 
         def get_linebreaks(self):
             if self.linebreaks is not None:
@@ -441,21 +448,21 @@ class RuleBase:
                 return tuple([False] * len(self.children))
 
     @dataclass(frozen=True)
-    @meta(visitor_relay='visit_alternative')
-    @meta(precedence=0, formatter=lambda x, f: ' | '.join(map(f, x.children)))
+    @meta(visitor_relay="visit_alternative")
+    @meta(precedence=0, formatter=lambda x, f: " | ".join(map(f, x.children)))
     class Alternative(RuleContent):
         """
         Matches either of children.
 
         """
 
-        children: Tuple['RuleBase.RuleContent', ...]
+        children: Tuple["RuleBase.RuleContent", ...]
         """Children rules"""
 
 
 @dataclass(eq=False, frozen=True)
 class LexerRule(RuleBase):
-    content: Optional['LexerRule.RuleContent']
+    content: Optional["LexerRule.RuleContent"]
 
     is_literal: bool
     """Indicates that this token is a literal token.
@@ -473,8 +480,8 @@ class LexerRule(RuleBase):
         """
 
     @dataclass(frozen=True)
-    @meta(visitor_relay='visit_lexer_literal')
-    @meta(precedence=4, formatter=lambda x, f: f'{x.content}')
+    @meta(visitor_relay="visit_lexer_literal")
+    @meta(precedence=4, formatter=lambda x, f: f"{x.content}")
     class Literal(RuleContent):
         """
         A sequence of symbols (e.g. `'kwd'`).
@@ -485,8 +492,8 @@ class LexerRule(RuleBase):
         """Formatted content of the literal, with special symbols escaped"""
 
     @dataclass(frozen=True)
-    @meta(visitor_relay='visit_lexer_range')
-    @meta(precedence=4, formatter=lambda x, f: f'{x.start}..{x.end}')
+    @meta(visitor_relay="visit_lexer_range")
+    @meta(precedence=4, formatter=lambda x, f: f"{x.start}..{x.end}")
     class Range(RuleContent):
         """
         A range of symbols (e.g. `a..b`).
@@ -500,8 +507,8 @@ class LexerRule(RuleBase):
         """Range last symbol"""
 
     @dataclass(frozen=True)
-    @meta(visitor_relay='visit_lexer_charset')
-    @meta(precedence=4, formatter=lambda x, f: f'{x.content}')
+    @meta(visitor_relay="visit_lexer_charset")
+    @meta(precedence=4, formatter=lambda x, f: f"{x.content}")
     class CharSet(RuleContent):
         """
         A character set (e.g. `[a-zA-Z]`).
@@ -512,53 +519,53 @@ class LexerRule(RuleBase):
         """Character set description, bracks included"""
 
     @dataclass(frozen=True)
-    @meta(visitor_relay='visit_lexer_reference')
+    @meta(visitor_relay="visit_lexer_reference")
     class Reference(RuleContent, RuleBase.Reference):
-        def get_reference(self) -> Optional['LexerRule']:
+        def get_reference(self) -> Optional["LexerRule"]:
             rule = super().get_reference()
             if rule is not None:
                 assert isinstance(rule, LexerRule)
             return rule
 
     @dataclass(frozen=True)
-    @meta(visitor_relay='visit_lexer_doc')
+    @meta(visitor_relay="visit_lexer_doc")
     class Doc(RuleContent, RuleBase.Doc):
         pass
 
     @dataclass(frozen=True)
-    @meta(visitor_relay='visit_lexer_wildcard')
+    @meta(visitor_relay="visit_lexer_wildcard")
     class Wildcard(RuleContent, RuleBase.Wildcard):
         pass
 
     @dataclass(frozen=True)
-    @meta(visitor_relay='visit_lexer_negation')
+    @meta(visitor_relay="visit_lexer_negation")
     class Negation(RuleContent, RuleBase.Negation):
-        child: 'LexerRule.RuleContent'
+        child: "LexerRule.RuleContent"
 
     @dataclass(frozen=True)
-    @meta(visitor_relay='visit_lexer_zero_plus')
+    @meta(visitor_relay="visit_lexer_zero_plus")
     class ZeroPlus(RuleContent, RuleBase.ZeroPlus):
-        child: 'LexerRule.RuleContent'
+        child: "LexerRule.RuleContent"
 
     @dataclass(frozen=True)
-    @meta(visitor_relay='visit_lexer_one_plus')
+    @meta(visitor_relay="visit_lexer_one_plus")
     class OnePlus(RuleContent, RuleBase.OnePlus):
-        child: 'LexerRule.RuleContent'
+        child: "LexerRule.RuleContent"
 
     @dataclass(frozen=True)
-    @meta(visitor_relay='visit_lexer_maybe')
+    @meta(visitor_relay="visit_lexer_maybe")
     class Maybe(RuleContent, RuleBase.Maybe):
-        child: 'LexerRule.RuleContent'
+        child: "LexerRule.RuleContent"
 
     @dataclass(frozen=True)
-    @meta(visitor_relay='visit_lexer_sequence')
+    @meta(visitor_relay="visit_lexer_sequence")
     class Sequence(RuleContent, RuleBase.Sequence):
-        children: Tuple['LexerRule.RuleContent', ...]
+        children: Tuple["LexerRule.RuleContent", ...]
 
     @dataclass(frozen=True)
-    @meta(visitor_relay='visit_lexer_alternative')
+    @meta(visitor_relay="visit_lexer_alternative")
     class Alternative(RuleContent, RuleBase.Alternative):
-        children: Tuple['LexerRule.RuleContent', ...]
+        children: Tuple["LexerRule.RuleContent", ...]
 
     WILDCARD = Wildcard()
     EMPTY = Sequence(())
@@ -566,7 +573,7 @@ class LexerRule(RuleBase):
 
 @dataclass(eq=False, frozen=True)
 class ParserRule(RuleBase):
-    content: Optional['ParserRule.RuleContent']
+    content: Optional["ParserRule.RuleContent"]
 
     @dataclass(frozen=True)
     class RuleContent(RuleBase.RuleContent):
@@ -576,49 +583,49 @@ class ParserRule(RuleBase):
         """
 
     @dataclass(frozen=True)
-    @meta(visitor_relay='visit_parser_reference')
+    @meta(visitor_relay="visit_parser_reference")
     class Reference(RuleContent, RuleBase.Reference):
         pass
 
     @dataclass(frozen=True)
-    @meta(visitor_relay='visit_parser_doc')
+    @meta(visitor_relay="visit_parser_doc")
     class Doc(RuleContent, RuleBase.Doc):
         pass
 
     @dataclass(frozen=True)
-    @meta(visitor_relay='visit_parser_wildcard')
+    @meta(visitor_relay="visit_parser_wildcard")
     class Wildcard(RuleContent, RuleBase.Wildcard):
         pass
 
     @dataclass(frozen=True)
-    @meta(visitor_relay='visit_parser_negation')
+    @meta(visitor_relay="visit_parser_negation")
     class Negation(RuleContent, RuleBase.Negation):
-        child: 'ParserRule.RuleContent'
+        child: "ParserRule.RuleContent"
 
     @dataclass(frozen=True)
-    @meta(visitor_relay='visit_parser_zero_plus')
+    @meta(visitor_relay="visit_parser_zero_plus")
     class ZeroPlus(RuleContent, RuleBase.ZeroPlus):
-        child: 'ParserRule.RuleContent'
+        child: "ParserRule.RuleContent"
 
     @dataclass(frozen=True)
-    @meta(visitor_relay='visit_parser_one_plus')
+    @meta(visitor_relay="visit_parser_one_plus")
     class OnePlus(RuleContent, RuleBase.OnePlus):
-        child: 'ParserRule.RuleContent'
+        child: "ParserRule.RuleContent"
 
     @dataclass(frozen=True)
-    @meta(visitor_relay='visit_parser_maybe')
+    @meta(visitor_relay="visit_parser_maybe")
     class Maybe(RuleContent, RuleBase.Maybe):
-        child: 'ParserRule.RuleContent'
+        child: "ParserRule.RuleContent"
 
     @dataclass(frozen=True)
-    @meta(visitor_relay='visit_parser_sequence')
+    @meta(visitor_relay="visit_parser_sequence")
     class Sequence(RuleContent, RuleBase.Sequence):
-        children: Tuple['ParserRule.RuleContent', ...]
+        children: Tuple["ParserRule.RuleContent", ...]
 
     @dataclass(frozen=True)
-    @meta(visitor_relay='visit_parser_alternative')
+    @meta(visitor_relay="visit_parser_alternative")
     class Alternative(RuleContent, RuleBase.Alternative):
-        children: Tuple['ParserRule.RuleContent', ...]
+        children: Tuple["ParserRule.RuleContent", ...]
 
     WILDCARD = Wildcard()
     EMPTY = Sequence(())

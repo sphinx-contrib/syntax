@@ -1,12 +1,14 @@
 # Generated from sphinx_a4doc/syntax/ANTLRv4Parser.g4 by ANTLR 4.9.2
 # encoding: utf-8
-from antlr4 import *
-from io import StringIO
 import sys
+from io import StringIO
+
+from antlr4 import *
+
 if sys.version_info[1] > 5:
-	from typing import TextIO
+    from typing import TextIO
 else:
-	from typing.io import TextIO
+    from typing.io import TextIO
 
 
 def serializedATN():
@@ -17,8 +19,8 @@ def serializedATN():
         buf.write("\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22\4\23\t\23")
         buf.write("\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\4\30\t\30\4\31")
         buf.write("\t\31\4\32\t\32\4\33\t\33\4\34\t\34\4\35\t\35\4\36\t\36")
-        buf.write("\4\37\t\37\4 \t \4!\t!\4\"\t\"\4#\t#\4$\t$\4%\t%\4&\t")
-        buf.write("&\4\'\t\'\4(\t(\4)\t)\4*\t*\4+\t+\4,\t,\4-\t-\4.\t.\4")
+        buf.write('\4\37\t\37\4 \t \4!\t!\4"\t"\4#\t#\4$\t$\4%\t%\4&\t')
+        buf.write("&\4'\t'\4(\t(\4)\t)\4*\t*\4+\t+\4,\t,\4-\t-\4.\t.\4")
         buf.write("/\t/\4\60\t\60\4\61\t\61\4\62\t\62\4\63\t\63\4\64\t\64")
         buf.write("\4\65\t\65\4\66\t\66\4\67\t\67\48\t8\49\t9\4:\t:\4;\t")
         buf.write(";\4<\t<\4=\t=\4>\t>\3\2\7\2~\n\2\f\2\16\2\u0081\13\2\3")
@@ -48,12 +50,12 @@ def serializedATN():
         buf.write("\3\32\3\32\3\32\7\32\u0158\n\32\f\32\16\32\u015b\13\32")
         buf.write("\3\33\3\33\3\33\3\34\3\34\3\34\3\34\3\35\6\35\u0165\n")
         buf.write("\35\r\35\16\35\u0166\3\36\3\36\3\37\3\37\3 \3 \3 \7 \u0170")
-        buf.write("\n \f \16 \u0173\13 \3!\3!\3!\5!\u0178\n!\3\"\7\"\u017b")
-        buf.write("\n\"\f\"\16\"\u017e\13\"\3\"\5\"\u0181\n\"\3\"\3\"\3\"")
-        buf.write("\3\"\3\"\3#\3#\3$\3$\3$\7$\u018d\n$\f$\16$\u0190\13$\3")
+        buf.write('\n \f \16 \u0173\13 \3!\3!\3!\5!\u0178\n!\3"\7"\u017b')
+        buf.write('\n"\f"\16"\u017e\13"\3"\5"\u0181\n"\3"\3"\3"')
+        buf.write('\3"\3"\3#\3#\3$\3$\3$\7$\u018d\n$\f$\16$\u0190\13$\3')
         buf.write("%\3%\5%\u0194\n%\3%\5%\u0197\n%\3&\6&\u019a\n&\r&\16&")
-        buf.write("\u019b\3\'\3\'\5\'\u01a0\n\'\3\'\3\'\5\'\u01a4\n\'\3\'")
-        buf.write("\3\'\5\'\u01a8\n\'\3\'\3\'\5\'\u01ac\n\'\5\'\u01ae\n\'")
+        buf.write("\u019b\3'\3'\5'\u01a0\n'\3'\3'\5'\u01a4\n'\3'")
+        buf.write("\3'\5'\u01a8\n'\3'\3'\5'\u01ac\n'\5'\u01ae\n'")
         buf.write("\3(\3(\3(\3(\5(\u01b4\n(\3)\3)\3)\3)\3*\3*\3*\3*\7*\u01be")
         buf.write("\n*\f*\16*\u01c1\13*\3+\3+\3+\3+\3+\3+\5+\u01c9\n+\3,")
         buf.write("\3,\5,\u01cd\n,\3-\3-\5-\u01d1\n-\3.\3.\3.\7.\u01d6\n")
@@ -74,14 +76,14 @@ def serializedATN():
         buf.write(";\3;\5;\u025b\n;\3;\3;\5;\u025f\n;\5;\u0261\n;\3<\3<\3")
         buf.write("<\3<\7<\u0267\n<\f<\16<\u026a\13<\3<\3<\3=\3=\3=\3=\3")
         buf.write("=\5=\u0273\n=\5=\u0275\n=\3>\3>\5>\u0279\n>\3>\2\2?\2")
-        buf.write("\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \"$&(*,.\60\62\64")
+        buf.write('\4\6\b\n\f\16\20\22\24\26\30\32\34\36 "$&(*,.\60\62\64')
         buf.write("\668:<>@BDFHJLNPRTVXZ\\^`bdfhjlnprtvxz\2\4\4\2\23\23\27")
         buf.write("\31\4\2++..\2\u02a8\2\177\3\2\2\2\4\u0099\3\2\2\2\6\u00a0")
         buf.write("\3\2\2\2\b\u00a2\3\2\2\2\n\u00ad\3\2\2\2\f\u00bc\3\2\2")
         buf.write("\2\16\u00be\3\2\2\2\20\u00c9\3\2\2\2\22\u00cb\3\2\2\2")
         buf.write("\24\u00d1\3\2\2\2\26\u00d7\3\2\2\2\30\u00e2\3\2\2\2\32")
         buf.write("\u00ee\3\2\2\2\34\u00f0\3\2\2\2\36\u00f9\3\2\2\2 \u0102")
-        buf.write("\3\2\2\2\"\u010e\3\2\2\2$\u0114\3\2\2\2&\u011e\3\2\2\2")
+        buf.write('\3\2\2\2"\u010e\3\2\2\2$\u0114\3\2\2\2&\u011e\3\2\2\2')
         buf.write("(\u013f\3\2\2\2*\u0145\3\2\2\2,\u0149\3\2\2\2.\u014e\3")
         buf.write("\2\2\2\60\u0150\3\2\2\2\62\u0153\3\2\2\2\64\u015c\3\2")
         buf.write("\2\2\66\u015f\3\2\2\28\u0164\3\2\2\2:\u0168\3\2\2\2<\u016a")
@@ -99,7 +101,7 @@ def serializedATN():
         buf.write("\u0084\5z>\2\u0084\u0088\7#\2\2\u0085\u0087\5\6\4\2\u0086")
         buf.write("\u0085\3\2\2\2\u0087\u008a\3\2\2\2\u0088\u0086\3\2\2\2")
         buf.write("\u0088\u0089\3\2\2\2\u0089\u008b\3\2\2\2\u008a\u0088\3")
-        buf.write("\2\2\2\u008b\u008f\5\"\22\2\u008c\u008e\5 \21\2\u008d")
+        buf.write('\2\2\2\u008b\u008f\5"\22\2\u008c\u008e\5 \21\2\u008d')
         buf.write("\u008c\3\2\2\2\u008e\u0091\3\2\2\2\u008f\u008d\3\2\2\2")
         buf.write("\u008f\u0090\3\2\2\2\u0090\u0092\3\2\2\2\u0091\u008f\3")
         buf.write("\2\2\2\u0092\u0093\7\2\2\3\u0093\3\3\2\2\2\u0094\u0095")
@@ -114,7 +116,7 @@ def serializedATN():
         buf.write("\7#\2\2\u00a5\u00a7\3\2\2\2\u00a6\u00a3\3\2\2\2\u00a7")
         buf.write("\u00aa\3\2\2\2\u00a8\u00a6\3\2\2\2\u00a8\u00a9\3\2\2\2")
         buf.write("\u00a9\u00ab\3\2\2\2\u00aa\u00a8\3\2\2\2\u00ab\u00ac\7")
-        buf.write("\'\2\2\u00ac\t\3\2\2\2\u00ad\u00ae\5z>\2\u00ae\u00af\7")
+        buf.write("'\2\2\u00ac\t\3\2\2\2\u00ad\u00ae\5z>\2\u00ae\u00af\7")
         buf.write("+\2\2\u00af\u00b0\5\f\7\2\u00b0\13\3\2\2\2\u00b1\u00b6")
         buf.write("\5z>\2\u00b2\u00b3\7\63\2\2\u00b3\u00b5\5z>\2\u00b4\u00b2")
         buf.write("\3\2\2\2\u00b5\u00b8\3\2\2\2\u00b6\u00b4\3\2\2\2\u00b6")
@@ -122,20 +124,20 @@ def serializedATN():
         buf.write("\u00b9\u00bd\7\13\2\2\u00ba\u00bd\5\34\17\2\u00bb\u00bd")
         buf.write("\7\n\2\2\u00bc\u00b1\3\2\2\2\u00bc\u00b9\3\2\2\2\u00bc")
         buf.write("\u00ba\3\2\2\2\u00bc\u00bb\3\2\2\2\u00bd\r\3\2\2\2\u00be")
-        buf.write("\u00bf\7\22\2\2\u00bf\u00c4\5\20\t\2\u00c0\u00c1\7\"\2")
+        buf.write('\u00bf\7\22\2\2\u00bf\u00c4\5\20\t\2\u00c0\u00c1\7"\2')
         buf.write("\2\u00c1\u00c3\5\20\t\2\u00c2\u00c0\3\2\2\2\u00c3\u00c6")
         buf.write("\3\2\2\2\u00c4\u00c2\3\2\2\2\u00c4\u00c5\3\2\2\2\u00c5")
         buf.write("\u00c7\3\2\2\2\u00c6\u00c4\3\2\2\2\u00c7\u00c8\7#\2\2")
         buf.write("\u00c8\17\3\2\2\2\u00c9\u00ca\5z>\2\u00ca\21\3\2\2\2\u00cb")
         buf.write("\u00cd\7\20\2\2\u00cc\u00ce\5\26\f\2\u00cd\u00cc\3\2\2")
         buf.write("\2\u00cd\u00ce\3\2\2\2\u00ce\u00cf\3\2\2\2\u00cf\u00d0")
-        buf.write("\7\'\2\2\u00d0\23\3\2\2\2\u00d1\u00d3\7\21\2\2\u00d2\u00d4")
+        buf.write("\7'\2\2\u00d0\23\3\2\2\2\u00d1\u00d3\7\21\2\2\u00d2\u00d4")
         buf.write("\5\26\f\2\u00d3\u00d2\3\2\2\2\u00d3\u00d4\3\2\2\2\u00d4")
-        buf.write("\u00d5\3\2\2\2\u00d5\u00d6\7\'\2\2\u00d6\25\3\2\2\2\u00d7")
-        buf.write("\u00dc\5z>\2\u00d8\u00d9\7\"\2\2\u00d9\u00db\5z>\2\u00da")
+        buf.write("\u00d5\3\2\2\2\u00d5\u00d6\7'\2\2\u00d6\25\3\2\2\2\u00d7")
+        buf.write('\u00dc\5z>\2\u00d8\u00d9\7"\2\2\u00d9\u00db\5z>\2\u00da')
         buf.write("\u00d8\3\2\2\2\u00db\u00de\3\2\2\2\u00dc\u00da\3\2\2\2")
         buf.write("\u00dc\u00dd\3\2\2\2\u00dd\u00e0\3\2\2\2\u00de\u00dc\3")
-        buf.write("\2\2\2\u00df\u00e1\7\"\2\2\u00e0\u00df\3\2\2\2\u00e0\u00e1")
+        buf.write('\2\2\2\u00df\u00e1\7"\2\2\u00e0\u00df\3\2\2\2\u00e0\u00e1')
         buf.write("\3\2\2\2\u00e1\27\3\2\2\2\u00e2\u00e6\7\64\2\2\u00e3\u00e4")
         buf.write("\5\32\16\2\u00e4\u00e5\7!\2\2\u00e5\u00e7\3\2\2\2\u00e6")
         buf.write("\u00e3\3\2\2\2\u00e6\u00e7\3\2\2\2\u00e7\u00e8\3\2\2\2")
@@ -151,7 +153,7 @@ def serializedATN():
         buf.write("\u00fd\u00fe\3\2\2\2\u00fe\u0100\3\2\2\2\u00ff\u00fd\3")
         buf.write("\2\2\2\u0100\u0101\7:\2\2\u0101\37\3\2\2\2\u0102\u0103")
         buf.write("\7\37\2\2\u0103\u0104\5z>\2\u0104\u0108\7#\2\2\u0105\u0107")
-        buf.write("\5B\"\2\u0106\u0105\3\2\2\2\u0107\u010a\3\2\2\2\u0108")
+        buf.write('\5B"\2\u0106\u0105\3\2\2\2\u0107\u010a\3\2\2\2\u0108')
         buf.write("\u0106\3\2\2\2\u0108\u0109\3\2\2\2\u0109!\3\2\2\2\u010a")
         buf.write("\u0108\3\2\2\2\u010b\u010d\5$\23\2\u010c\u010b\3\2\2\2")
         buf.write("\u010d\u0110\3\2\2\2\u010e\u010c\3\2\2\2\u010e\u010f\3")
@@ -159,7 +161,7 @@ def serializedATN():
         buf.write("\7\7\2\2\u0112\u0111\3\2\2\2\u0113\u0116\3\2\2\2\u0114")
         buf.write("\u0112\3\2\2\2\u0114\u0115\3\2\2\2\u0115\u0119\3\2\2\2")
         buf.write("\u0116\u0114\3\2\2\2\u0117\u011a\5&\24\2\u0118\u011a\5")
-        buf.write("B\"\2\u0119\u0117\3\2\2\2\u0119\u0118\3\2\2\2\u011a%\3")
+        buf.write('B"\2\u0119\u0117\3\2\2\2\u0119\u0118\3\2\2\2\u011a%\3')
         buf.write("\2\2\2\u011b\u011d\7\6\2\2\u011c\u011b\3\2\2\2\u011d\u0120")
         buf.write("\3\2\2\2\u011e\u011c\3\2\2\2\u011e\u011f\3\2\2\2\u011f")
         buf.write("\u0122\3\2\2\2\u0120\u011e\3\2\2\2\u0121\u0123\58\35\2")
@@ -174,7 +176,7 @@ def serializedATN():
         buf.write("\u0131\3\2\2\2\u0133\u0136\3\2\2\2\u0134\u0132\3\2\2\2")
         buf.write("\u0134\u0135\3\2\2\2\u0135\u0137\3\2\2\2\u0136\u0134\3")
         buf.write("\2\2\2\u0137\u0138\7 \2\2\u0138\u0139\5<\37\2\u0139\u013a")
-        buf.write("\7#\2\2\u013a\u013b\5(\25\2\u013b\'\3\2\2\2\u013c\u013e")
+        buf.write("\7#\2\2\u013a\u013b\5(\25\2\u013b'\3\2\2\2\u013c\u013e")
         buf.write("\5*\26\2\u013d\u013c\3\2\2\2\u013e\u0141\3\2\2\2\u013f")
         buf.write("\u013d\3\2\2\2\u013f\u0140\3\2\2\2\u0140\u0143\3\2\2\2")
         buf.write("\u0141\u013f\3\2\2\2\u0142\u0144\5,\27\2\u0143\u0142\3")
@@ -185,7 +187,7 @@ def serializedATN():
         buf.write("\66\34\2\u014e\u014c\3\2\2\2\u014e\u014d\3\2\2\2\u014f")
         buf.write("/\3\2\2\2\u0150\u0151\7\32\2\2\u0151\u0152\5\36\20\2\u0152")
         buf.write("\61\3\2\2\2\u0153\u0154\7\34\2\2\u0154\u0159\5z>\2\u0155")
-        buf.write("\u0156\7\"\2\2\u0156\u0158\5z>\2\u0157\u0155\3\2\2\2\u0158")
+        buf.write('\u0156\7"\2\2\u0156\u0158\5z>\2\u0157\u0155\3\2\2\2\u0158')
         buf.write("\u015b\3\2\2\2\u0159\u0157\3\2\2\2\u0159\u015a\3\2\2\2")
         buf.write("\u015a\63\3\2\2\2\u015b\u0159\3\2\2\2\u015c\u015d\7\33")
         buf.write("\2\2\u015d\u015e\5\36\20\2\u015e\65\3\2\2\2\u015f\u0160")
@@ -211,7 +213,7 @@ def serializedATN():
         buf.write("\u018e\3\2\2\2\u0191\u0193\5J&\2\u0192\u0194\5R*\2\u0193")
         buf.write("\u0192\3\2\2\2\u0193\u0194\3\2\2\2\u0194\u0197\3\2\2\2")
         buf.write("\u0195\u0197\3\2\2\2\u0196\u0191\3\2\2\2\u0196\u0195\3")
-        buf.write("\2\2\2\u0197I\3\2\2\2\u0198\u019a\5L\'\2\u0199\u0198\3")
+        buf.write("\2\2\2\u0197I\3\2\2\2\u0198\u019a\5L'\2\u0199\u0198\3")
         buf.write("\2\2\2\u019a\u019b\3\2\2\2\u019b\u0199\3\2\2\2\u019b\u019c")
         buf.write("\3\2\2\2\u019cK\3\2\2\2\u019d\u019f\5N(\2\u019e\u01a0")
         buf.write("\5b\62\2\u019f\u019e\3\2\2\2\u019f\u01a0\3\2\2\2\u01a0")
@@ -227,7 +229,7 @@ def serializedATN():
         buf.write("\u01b1\3\2\2\2\u01b3\u01b2\3\2\2\2\u01b4O\3\2\2\2\u01b5")
         buf.write("\u01b6\7$\2\2\u01b6\u01b7\5F$\2\u01b7\u01b8\7%\2\2\u01b8")
         buf.write("Q\3\2\2\2\u01b9\u01ba\7(\2\2\u01ba\u01bf\5T+\2\u01bb\u01bc")
-        buf.write("\7\"\2\2\u01bc\u01be\5T+\2\u01bd\u01bb\3\2\2\2\u01be\u01c1")
+        buf.write('\7"\2\2\u01bc\u01be\5T+\2\u01bd\u01bb\3\2\2\2\u01be\u01c1')
         buf.write("\3\2\2\2\u01bf\u01bd\3\2\2\2\u01bf\u01c0\3\2\2\2\u01c0")
         buf.write("S\3\2\2\2\u01c1\u01bf\3\2\2\2\u01c2\u01c3\5V,\2\u01c3")
         buf.write("\u01c4\7$\2\2\u01c4\u01c5\5X-\2\u01c5\u01c6\7%\2\2\u01c6")
@@ -303,7 +305,7 @@ def serializedATN():
         buf.write("\u025e\u025d\3\2\2\2\u025e\u025f\3\2\2\2\u025f\u0261\3")
         buf.write("\2\2\2\u0260\u0258\3\2\2\2\u0260\u025c\3\2\2\2\u0261u")
         buf.write("\3\2\2\2\u0262\u0263\7)\2\2\u0263\u0268\5x=\2\u0264\u0265")
-        buf.write("\7\"\2\2\u0265\u0267\5x=\2\u0266\u0264\3\2\2\2\u0267\u026a")
+        buf.write('\7"\2\2\u0265\u0267\5x=\2\u0266\u0264\3\2\2\2\u0267\u026a')
         buf.write("\3\2\2\2\u0268\u0266\3\2\2\2\u0268\u0269\3\2\2\2\u0269")
         buf.write("\u026b\3\2\2\2\u026a\u0268\3\2\2\2\u026b\u026c\7*\2\2")
         buf.write("\u026cw\3\2\2\2\u026d\u0275\5z>\2\u026e\u026f\5z>\2\u026f")
@@ -325,38 +327,114 @@ def serializedATN():
         return buf.getvalue()
 
 
-class ANTLRv4Parser ( Parser ):
+class ANTLRv4Parser(Parser):
 
     grammarFileName = "ANTLRv4Parser.g4"
 
     atn = ATNDeserializer().deserialize(serializedATN())
 
-    decisionsToDFA = [ DFA(ds, i) for i, ds in enumerate(atn.decisionToState) ]
+    decisionsToDFA = [DFA(ds, i) for i, ds in enumerate(atn.decisionToState)]
 
     sharedContextCache = PredictionContextCache()
 
-    literalNames = [ "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                     "'import'", "'fragment'", "'lexer'", "'parser'", "'grammar'", 
-                     "'protected'", "'public'", "'private'", "'returns'", 
-                     "'locals'", "'throws'", "'catch'", "'finally'", "'mode'" ]
+    literalNames = [
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "'import'",
+        "'fragment'",
+        "'lexer'",
+        "'parser'",
+        "'grammar'",
+        "'protected'",
+        "'public'",
+        "'private'",
+        "'returns'",
+        "'locals'",
+        "'throws'",
+        "'catch'",
+        "'finally'",
+        "'mode'",
+    ]
 
-    symbolicNames = [ "<INVALID>", "TOKEN_REF", "RULE_REF", "LEXER_CHAR_SET", 
-                      "DOC_COMMENT", "HEADER", "BLOCK_COMMENT", "LINE_COMMENT", 
-                      "INT", "STRING_LITERAL", "UNTERMINATED_STRING_LITERAL", 
-                      "BEGIN_ARGUMENT", "BEGIN_ACTION", "OPTIONS", "TOKENS", 
-                      "CHANNELS", "IMPORT", "FRAGMENT", "LEXER", "PARSER", 
-                      "GRAMMAR", "PROTECTED", "PUBLIC", "PRIVATE", "RETURNS", 
-                      "LOCALS", "THROWS", "CATCH", "FINALLY", "MODE", "COLON", 
-                      "COLONCOLON", "COMMA", "SEMI", "LPAREN", "RPAREN", 
-                      "LBRACE", "RBRACE", "RARROW", "LT", "GT", "ASSIGN", 
-                      "QUESTION", "STAR", "PLUS_ASSIGN", "PLUS", "OR", "DOLLAR", 
-                      "RANGE", "DOT", "AT", "POUND", "NOT", "ID", "WS", 
-                      "ERRCHAR", "END_ARGUMENT", "UNTERMINATED_ARGUMENT", 
-                      "ARGUMENT_CONTENT", "END_ACTION", "UNTERMINATED_ACTION", 
-                      "ACTION_CONTENT", "UNTERMINATED_CHAR_SET" ]
+    symbolicNames = [
+        "<INVALID>",
+        "TOKEN_REF",
+        "RULE_REF",
+        "LEXER_CHAR_SET",
+        "DOC_COMMENT",
+        "HEADER",
+        "BLOCK_COMMENT",
+        "LINE_COMMENT",
+        "INT",
+        "STRING_LITERAL",
+        "UNTERMINATED_STRING_LITERAL",
+        "BEGIN_ARGUMENT",
+        "BEGIN_ACTION",
+        "OPTIONS",
+        "TOKENS",
+        "CHANNELS",
+        "IMPORT",
+        "FRAGMENT",
+        "LEXER",
+        "PARSER",
+        "GRAMMAR",
+        "PROTECTED",
+        "PUBLIC",
+        "PRIVATE",
+        "RETURNS",
+        "LOCALS",
+        "THROWS",
+        "CATCH",
+        "FINALLY",
+        "MODE",
+        "COLON",
+        "COLONCOLON",
+        "COMMA",
+        "SEMI",
+        "LPAREN",
+        "RPAREN",
+        "LBRACE",
+        "RBRACE",
+        "RARROW",
+        "LT",
+        "GT",
+        "ASSIGN",
+        "QUESTION",
+        "STAR",
+        "PLUS_ASSIGN",
+        "PLUS",
+        "OR",
+        "DOLLAR",
+        "RANGE",
+        "DOT",
+        "AT",
+        "POUND",
+        "NOT",
+        "ID",
+        "WS",
+        "ERRCHAR",
+        "END_ARGUMENT",
+        "UNTERMINATED_ARGUMENT",
+        "ARGUMENT_CONTENT",
+        "END_ACTION",
+        "UNTERMINATED_ACTION",
+        "ACTION_CONTENT",
+        "UNTERMINATED_CHAR_SET",
+    ]
 
     RULE_grammarSpec = 0
     RULE_grammarType = 1
@@ -420,140 +498,185 @@ class ANTLRv4Parser ( Parser ):
     RULE_elementOption = 59
     RULE_identifier = 60
 
-    ruleNames =  [ "grammarSpec", "grammarType", "prequelConstruct", "optionsSpec", 
-                   "option", "optionValue", "delegateGrammars", "delegateGrammar", 
-                   "tokensSpec", "channelsSpec", "idList", "action", "actionScopeName", 
-                   "actionBlock", "argActionBlock", "modeSpec", "rules", 
-                   "ruleSpec", "parserRuleSpec", "exceptionGroup", "exceptionHandler", 
-                   "finallyClause", "rulePrequel", "ruleReturns", "throwsSpec", 
-                   "localsSpec", "ruleAction", "ruleModifiers", "ruleModifier", 
-                   "ruleBlock", "ruleAltList", "labeledAlt", "lexerRuleSpec", 
-                   "lexerRuleBlock", "lexerAltList", "lexerAlt", "lexerElements", 
-                   "lexerElement", "labeledLexerElement", "lexerBlock", 
-                   "lexerCommands", "lexerCommand", "lexerCommandName", 
-                   "lexerCommandExpr", "altList", "alternative", "element", 
-                   "labeledElement", "ebnfSuffix", "lexerAtom", "atom", 
-                   "notSet", "blockSet", "setElement", "block", "ruleref", 
-                   "characterRange", "terminal", "elementOptions", "elementOption", 
-                   "identifier" ]
+    ruleNames = [
+        "grammarSpec",
+        "grammarType",
+        "prequelConstruct",
+        "optionsSpec",
+        "option",
+        "optionValue",
+        "delegateGrammars",
+        "delegateGrammar",
+        "tokensSpec",
+        "channelsSpec",
+        "idList",
+        "action",
+        "actionScopeName",
+        "actionBlock",
+        "argActionBlock",
+        "modeSpec",
+        "rules",
+        "ruleSpec",
+        "parserRuleSpec",
+        "exceptionGroup",
+        "exceptionHandler",
+        "finallyClause",
+        "rulePrequel",
+        "ruleReturns",
+        "throwsSpec",
+        "localsSpec",
+        "ruleAction",
+        "ruleModifiers",
+        "ruleModifier",
+        "ruleBlock",
+        "ruleAltList",
+        "labeledAlt",
+        "lexerRuleSpec",
+        "lexerRuleBlock",
+        "lexerAltList",
+        "lexerAlt",
+        "lexerElements",
+        "lexerElement",
+        "labeledLexerElement",
+        "lexerBlock",
+        "lexerCommands",
+        "lexerCommand",
+        "lexerCommandName",
+        "lexerCommandExpr",
+        "altList",
+        "alternative",
+        "element",
+        "labeledElement",
+        "ebnfSuffix",
+        "lexerAtom",
+        "atom",
+        "notSet",
+        "blockSet",
+        "setElement",
+        "block",
+        "ruleref",
+        "characterRange",
+        "terminal",
+        "elementOptions",
+        "elementOption",
+        "identifier",
+    ]
 
     EOF = Token.EOF
-    TOKEN_REF=1
-    RULE_REF=2
-    LEXER_CHAR_SET=3
-    DOC_COMMENT=4
-    HEADER=5
-    BLOCK_COMMENT=6
-    LINE_COMMENT=7
-    INT=8
-    STRING_LITERAL=9
-    UNTERMINATED_STRING_LITERAL=10
-    BEGIN_ARGUMENT=11
-    BEGIN_ACTION=12
-    OPTIONS=13
-    TOKENS=14
-    CHANNELS=15
-    IMPORT=16
-    FRAGMENT=17
-    LEXER=18
-    PARSER=19
-    GRAMMAR=20
-    PROTECTED=21
-    PUBLIC=22
-    PRIVATE=23
-    RETURNS=24
-    LOCALS=25
-    THROWS=26
-    CATCH=27
-    FINALLY=28
-    MODE=29
-    COLON=30
-    COLONCOLON=31
-    COMMA=32
-    SEMI=33
-    LPAREN=34
-    RPAREN=35
-    LBRACE=36
-    RBRACE=37
-    RARROW=38
-    LT=39
-    GT=40
-    ASSIGN=41
-    QUESTION=42
-    STAR=43
-    PLUS_ASSIGN=44
-    PLUS=45
-    OR=46
-    DOLLAR=47
-    RANGE=48
-    DOT=49
-    AT=50
-    POUND=51
-    NOT=52
-    ID=53
-    WS=54
-    ERRCHAR=55
-    END_ARGUMENT=56
-    UNTERMINATED_ARGUMENT=57
-    ARGUMENT_CONTENT=58
-    END_ACTION=59
-    UNTERMINATED_ACTION=60
-    ACTION_CONTENT=61
-    UNTERMINATED_CHAR_SET=62
+    TOKEN_REF = 1
+    RULE_REF = 2
+    LEXER_CHAR_SET = 3
+    DOC_COMMENT = 4
+    HEADER = 5
+    BLOCK_COMMENT = 6
+    LINE_COMMENT = 7
+    INT = 8
+    STRING_LITERAL = 9
+    UNTERMINATED_STRING_LITERAL = 10
+    BEGIN_ARGUMENT = 11
+    BEGIN_ACTION = 12
+    OPTIONS = 13
+    TOKENS = 14
+    CHANNELS = 15
+    IMPORT = 16
+    FRAGMENT = 17
+    LEXER = 18
+    PARSER = 19
+    GRAMMAR = 20
+    PROTECTED = 21
+    PUBLIC = 22
+    PRIVATE = 23
+    RETURNS = 24
+    LOCALS = 25
+    THROWS = 26
+    CATCH = 27
+    FINALLY = 28
+    MODE = 29
+    COLON = 30
+    COLONCOLON = 31
+    COMMA = 32
+    SEMI = 33
+    LPAREN = 34
+    RPAREN = 35
+    LBRACE = 36
+    RBRACE = 37
+    RARROW = 38
+    LT = 39
+    GT = 40
+    ASSIGN = 41
+    QUESTION = 42
+    STAR = 43
+    PLUS_ASSIGN = 44
+    PLUS = 45
+    OR = 46
+    DOLLAR = 47
+    RANGE = 48
+    DOT = 49
+    AT = 50
+    POUND = 51
+    NOT = 52
+    ID = 53
+    WS = 54
+    ERRCHAR = 55
+    END_ARGUMENT = 56
+    UNTERMINATED_ARGUMENT = 57
+    ARGUMENT_CONTENT = 58
+    END_ACTION = 59
+    UNTERMINATED_ACTION = 60
+    ACTION_CONTENT = 61
+    UNTERMINATED_CHAR_SET = 62
 
-    def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
+    def __init__(self, input: TokenStream, output: TextIO = sys.stdout):
         super().__init__(input, output)
         self.checkVersion("4.9.2")
-        self._interp = ParserATNSimulator(self, self.atn, self.decisionsToDFA, self.sharedContextCache)
+        self._interp = ParserATNSimulator(
+            self, self.atn, self.decisionsToDFA, self.sharedContextCache
+        )
         self._predicates = None
 
-
-
-
     class GrammarSpecContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
-            self._DOC_COMMENT = None # Token
-            self.docs = list() # of Tokens
-            self.gtype = None # GrammarTypeContext
-            self.gname = None # IdentifierContext
+            self._DOC_COMMENT = None  # Token
+            self.docs = list()  # of Tokens
+            self.gtype = None  # GrammarTypeContext
+            self.gname = None  # IdentifierContext
 
         def SEMI(self):
             return self.getToken(ANTLRv4Parser.SEMI, 0)
 
         def rules(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.RulesContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.RulesContext, 0)
 
         def EOF(self):
             return self.getToken(ANTLRv4Parser.EOF, 0)
 
         def grammarType(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.GrammarTypeContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.GrammarTypeContext, 0)
 
         def identifier(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.IdentifierContext,0)
+            return self.getTypedRuleContext(ANTLRv4Parser.IdentifierContext, 0)
 
-
-        def prequelConstruct(self, i:int=None):
+        def prequelConstruct(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ANTLRv4Parser.PrequelConstructContext)
             else:
-                return self.getTypedRuleContext(ANTLRv4Parser.PrequelConstructContext,i)
+                return self.getTypedRuleContext(
+                    ANTLRv4Parser.PrequelConstructContext, i
+                )
 
-
-        def modeSpec(self, i:int=None):
+        def modeSpec(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ANTLRv4Parser.ModeSpecContext)
             else:
-                return self.getTypedRuleContext(ANTLRv4Parser.ModeSpecContext,i)
+                return self.getTypedRuleContext(ANTLRv4Parser.ModeSpecContext, i)
 
-
-        def DOC_COMMENT(self, i:int=None):
+        def DOC_COMMENT(self, i: int = None):
             if i is None:
                 return self.getTokens(ANTLRv4Parser.DOC_COMMENT)
             else:
@@ -562,34 +685,31 @@ class ANTLRv4Parser ( Parser ):
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_grammarSpec
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterGrammarSpec" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterGrammarSpec"):
                 listener.enterGrammarSpec(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitGrammarSpec" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitGrammarSpec"):
                 listener.exitGrammarSpec(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitGrammarSpec" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitGrammarSpec"):
                 return visitor.visitGrammarSpec(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def grammarSpec(self):
 
         localctx = ANTLRv4Parser.GrammarSpecContext(self, self._ctx, self.state)
         self.enterRule(localctx, 0, self.RULE_grammarSpec)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 125
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==ANTLRv4Parser.DOC_COMMENT:
+            while _la == ANTLRv4Parser.DOC_COMMENT:
                 self.state = 122
                 localctx._DOC_COMMENT = self.match(ANTLRv4Parser.DOC_COMMENT)
                 localctx.docs.append(localctx._DOC_COMMENT)
@@ -606,7 +726,16 @@ class ANTLRv4Parser ( Parser ):
             self.state = 134
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ANTLRv4Parser.OPTIONS) | (1 << ANTLRv4Parser.TOKENS) | (1 << ANTLRv4Parser.CHANNELS) | (1 << ANTLRv4Parser.IMPORT) | (1 << ANTLRv4Parser.AT))) != 0):
+            while ((_la) & ~0x3F) == 0 and (
+                (1 << _la)
+                & (
+                    (1 << ANTLRv4Parser.OPTIONS)
+                    | (1 << ANTLRv4Parser.TOKENS)
+                    | (1 << ANTLRv4Parser.CHANNELS)
+                    | (1 << ANTLRv4Parser.IMPORT)
+                    | (1 << ANTLRv4Parser.AT)
+                )
+            ) != 0:
                 self.state = 131
                 self.prequelConstruct()
                 self.state = 136
@@ -618,7 +747,7 @@ class ANTLRv4Parser ( Parser ):
             self.state = 141
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==ANTLRv4Parser.MODE:
+            while _la == ANTLRv4Parser.MODE:
                 self.state = 138
                 self.modeSpec()
                 self.state = 143
@@ -635,11 +764,12 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class GrammarTypeContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -655,22 +785,19 @@ class ANTLRv4Parser ( Parser ):
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_grammarType
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterGrammarType" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterGrammarType"):
                 listener.enterGrammarType(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitGrammarType" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitGrammarType"):
                 listener.exitGrammarType(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitGrammarType" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitGrammarType"):
                 return visitor.visitGrammarType(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def grammarType(self):
 
@@ -708,53 +835,46 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class PrequelConstructContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def optionsSpec(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.OptionsSpecContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.OptionsSpecContext, 0)
 
         def delegateGrammars(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.DelegateGrammarsContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.DelegateGrammarsContext, 0)
 
         def tokensSpec(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.TokensSpecContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.TokensSpecContext, 0)
 
         def channelsSpec(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.ChannelsSpecContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.ChannelsSpecContext, 0)
 
         def action(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.ActionContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.ActionContext, 0)
 
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_prequelConstruct
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterPrequelConstruct" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterPrequelConstruct"):
                 listener.enterPrequelConstruct(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitPrequelConstruct" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitPrequelConstruct"):
                 listener.exitPrequelConstruct(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitPrequelConstruct" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitPrequelConstruct"):
                 return visitor.visitPrequelConstruct(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def prequelConstruct(self):
 
@@ -800,11 +920,12 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class OptionsSpecContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -814,14 +935,13 @@ class ANTLRv4Parser ( Parser ):
         def RBRACE(self):
             return self.getToken(ANTLRv4Parser.RBRACE, 0)
 
-        def option(self, i:int=None):
+        def option(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ANTLRv4Parser.OptionContext)
             else:
-                return self.getTypedRuleContext(ANTLRv4Parser.OptionContext,i)
+                return self.getTypedRuleContext(ANTLRv4Parser.OptionContext, i)
 
-
-        def SEMI(self, i:int=None):
+        def SEMI(self, i: int = None):
             if i is None:
                 return self.getTokens(ANTLRv4Parser.SEMI)
             else:
@@ -830,28 +950,25 @@ class ANTLRv4Parser ( Parser ):
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_optionsSpec
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterOptionsSpec" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterOptionsSpec"):
                 listener.enterOptionsSpec(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitOptionsSpec" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitOptionsSpec"):
                 listener.exitOptionsSpec(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitOptionsSpec" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitOptionsSpec"):
                 return visitor.visitOptionsSpec(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def optionsSpec(self):
 
         localctx = ANTLRv4Parser.OptionsSpecContext(self, self._ctx, self.state)
         self.enterRule(localctx, 6, self.RULE_optionsSpec)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 160
@@ -859,7 +976,7 @@ class ANTLRv4Parser ( Parser ):
             self.state = 166
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==ANTLRv4Parser.TOKEN_REF or _la==ANTLRv4Parser.RULE_REF:
+            while _la == ANTLRv4Parser.TOKEN_REF or _la == ANTLRv4Parser.RULE_REF:
                 self.state = 161
                 self.option()
                 self.state = 162
@@ -878,46 +995,42 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class OptionContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
-            self.name = None # IdentifierContext
-            self.value = None # OptionValueContext
+            self.name = None  # IdentifierContext
+            self.value = None  # OptionValueContext
 
         def ASSIGN(self):
             return self.getToken(ANTLRv4Parser.ASSIGN, 0)
 
         def identifier(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.IdentifierContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.IdentifierContext, 0)
 
         def optionValue(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.OptionValueContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.OptionValueContext, 0)
 
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_option
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterOption" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterOption"):
                 listener.enterOption(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitOption" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitOption"):
                 listener.exitOption(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitOption" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitOption"):
                 return visitor.visitOption(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def option(self):
 
@@ -939,141 +1052,140 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class OptionValueContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
-
 
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_optionValue
 
-     
-        def copyFrom(self, ctx:ParserRuleContext):
+        def copyFrom(self, ctx: ParserRuleContext):
             super().copyFrom(ctx)
-
-
 
     class StringOptionContext(OptionValueContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ANTLRv4Parser.OptionValueContext
+        def __init__(
+            self, parser, ctx: ParserRuleContext
+        ):  # actually a ANTLRv4Parser.OptionValueContext
             super().__init__(parser)
-            self.value = None # Token
+            self.value = None  # Token
             self.copyFrom(ctx)
 
         def STRING_LITERAL(self):
             return self.getToken(ANTLRv4Parser.STRING_LITERAL, 0)
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterStringOption" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterStringOption"):
                 listener.enterStringOption(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitStringOption" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitStringOption"):
                 listener.exitStringOption(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitStringOption" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitStringOption"):
                 return visitor.visitStringOption(self)
             else:
                 return visitor.visitChildren(self)
 
-
     class IntOptionContext(OptionValueContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ANTLRv4Parser.OptionValueContext
+        def __init__(
+            self, parser, ctx: ParserRuleContext
+        ):  # actually a ANTLRv4Parser.OptionValueContext
             super().__init__(parser)
-            self.value = None # Token
+            self.value = None  # Token
             self.copyFrom(ctx)
 
         def INT(self):
             return self.getToken(ANTLRv4Parser.INT, 0)
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterIntOption" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterIntOption"):
                 listener.enterIntOption(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitIntOption" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitIntOption"):
                 listener.exitIntOption(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitIntOption" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitIntOption"):
                 return visitor.visitIntOption(self)
             else:
                 return visitor.visitChildren(self)
 
-
     class ActionOptionContext(OptionValueContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ANTLRv4Parser.OptionValueContext
+        def __init__(
+            self, parser, ctx: ParserRuleContext
+        ):  # actually a ANTLRv4Parser.OptionValueContext
             super().__init__(parser)
-            self.value = None # ActionBlockContext
+            self.value = None  # ActionBlockContext
             self.copyFrom(ctx)
 
         def actionBlock(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.ActionBlockContext,0)
+            return self.getTypedRuleContext(ANTLRv4Parser.ActionBlockContext, 0)
 
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterActionOption" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterActionOption"):
                 listener.enterActionOption(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitActionOption" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitActionOption"):
                 listener.exitActionOption(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitActionOption" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitActionOption"):
                 return visitor.visitActionOption(self)
             else:
                 return visitor.visitChildren(self)
 
-
     class PathOptionContext(OptionValueContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ANTLRv4Parser.OptionValueContext
+        def __init__(
+            self, parser, ctx: ParserRuleContext
+        ):  # actually a ANTLRv4Parser.OptionValueContext
             super().__init__(parser)
-            self._identifier = None # IdentifierContext
-            self.value = list() # of IdentifierContexts
+            self._identifier = None  # IdentifierContext
+            self.value = list()  # of IdentifierContexts
             self.copyFrom(ctx)
 
-        def identifier(self, i:int=None):
+        def identifier(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ANTLRv4Parser.IdentifierContext)
             else:
-                return self.getTypedRuleContext(ANTLRv4Parser.IdentifierContext,i)
+                return self.getTypedRuleContext(ANTLRv4Parser.IdentifierContext, i)
 
-        def DOT(self, i:int=None):
+        def DOT(self, i: int = None):
             if i is None:
                 return self.getTokens(ANTLRv4Parser.DOT)
             else:
                 return self.getToken(ANTLRv4Parser.DOT, i)
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterPathOption" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterPathOption"):
                 listener.enterPathOption(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitPathOption" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitPathOption"):
                 listener.exitPathOption(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitPathOption" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitPathOption"):
                 return visitor.visitPathOption(self)
             else:
                 return visitor.visitChildren(self)
-
-
 
     def optionValue(self):
 
         localctx = ANTLRv4Parser.OptionValueContext(self, self._ctx, self.state)
         self.enterRule(localctx, 10, self.RULE_optionValue)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.state = 186
             self._errHandler.sync(self)
@@ -1087,7 +1199,7 @@ class ANTLRv4Parser ( Parser ):
                 self.state = 180
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                while _la==ANTLRv4Parser.DOT:
+                while _la == ANTLRv4Parser.DOT:
                     self.state = 176
                     self.match(ANTLRv4Parser.DOT)
                     self.state = 177
@@ -1127,28 +1239,28 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class DelegateGrammarsContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def IMPORT(self):
             return self.getToken(ANTLRv4Parser.IMPORT, 0)
 
-        def delegateGrammar(self, i:int=None):
+        def delegateGrammar(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ANTLRv4Parser.DelegateGrammarContext)
             else:
-                return self.getTypedRuleContext(ANTLRv4Parser.DelegateGrammarContext,i)
-
+                return self.getTypedRuleContext(ANTLRv4Parser.DelegateGrammarContext, i)
 
         def SEMI(self):
             return self.getToken(ANTLRv4Parser.SEMI, 0)
 
-        def COMMA(self, i:int=None):
+        def COMMA(self, i: int = None):
             if i is None:
                 return self.getTokens(ANTLRv4Parser.COMMA)
             else:
@@ -1157,28 +1269,25 @@ class ANTLRv4Parser ( Parser ):
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_delegateGrammars
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterDelegateGrammars" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterDelegateGrammars"):
                 listener.enterDelegateGrammars(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitDelegateGrammars" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitDelegateGrammars"):
                 listener.exitDelegateGrammars(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitDelegateGrammars" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitDelegateGrammars"):
                 return visitor.visitDelegateGrammars(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def delegateGrammars(self):
 
         localctx = ANTLRv4Parser.DelegateGrammarsContext(self, self._ctx, self.state)
         self.enterRule(localctx, 12, self.RULE_delegateGrammars)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 188
@@ -1188,7 +1297,7 @@ class ANTLRv4Parser ( Parser ):
             self.state = 194
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==ANTLRv4Parser.COMMA:
+            while _la == ANTLRv4Parser.COMMA:
                 self.state = 190
                 self.match(ANTLRv4Parser.COMMA)
                 self.state = 191
@@ -1207,38 +1316,35 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class DelegateGrammarContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
-            self.value = None # IdentifierContext
+            self.value = None  # IdentifierContext
 
         def identifier(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.IdentifierContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.IdentifierContext, 0)
 
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_delegateGrammar
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterDelegateGrammar" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterDelegateGrammar"):
                 listener.enterDelegateGrammar(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitDelegateGrammar" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitDelegateGrammar"):
                 listener.exitDelegateGrammar(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitDelegateGrammar" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitDelegateGrammar"):
                 return visitor.visitDelegateGrammar(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def delegateGrammar(self):
 
@@ -1256,14 +1362,15 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class TokensSpecContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
-            self.defs = None # IdListContext
+            self.defs = None  # IdListContext
 
         def TOKENS(self):
             return self.getToken(ANTLRv4Parser.TOKENS, 0)
@@ -1272,34 +1379,30 @@ class ANTLRv4Parser ( Parser ):
             return self.getToken(ANTLRv4Parser.RBRACE, 0)
 
         def idList(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.IdListContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.IdListContext, 0)
 
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_tokensSpec
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTokensSpec" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTokensSpec"):
                 listener.enterTokensSpec(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTokensSpec" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTokensSpec"):
                 listener.exitTokensSpec(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTokensSpec" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTokensSpec"):
                 return visitor.visitTokensSpec(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def tokensSpec(self):
 
         localctx = ANTLRv4Parser.TokensSpecContext(self, self._ctx, self.state)
         self.enterRule(localctx, 16, self.RULE_tokensSpec)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 201
@@ -1307,10 +1410,9 @@ class ANTLRv4Parser ( Parser ):
             self.state = 203
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==ANTLRv4Parser.TOKEN_REF or _la==ANTLRv4Parser.RULE_REF:
+            if _la == ANTLRv4Parser.TOKEN_REF or _la == ANTLRv4Parser.RULE_REF:
                 self.state = 202
                 localctx.defs = self.idList()
-
 
             self.state = 205
             self.match(ANTLRv4Parser.RBRACE)
@@ -1322,11 +1424,12 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class ChannelsSpecContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -1337,34 +1440,30 @@ class ANTLRv4Parser ( Parser ):
             return self.getToken(ANTLRv4Parser.RBRACE, 0)
 
         def idList(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.IdListContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.IdListContext, 0)
 
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_channelsSpec
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterChannelsSpec" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterChannelsSpec"):
                 listener.enterChannelsSpec(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitChannelsSpec" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitChannelsSpec"):
                 listener.exitChannelsSpec(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitChannelsSpec" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitChannelsSpec"):
                 return visitor.visitChannelsSpec(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def channelsSpec(self):
 
         localctx = ANTLRv4Parser.ChannelsSpecContext(self, self._ctx, self.state)
         self.enterRule(localctx, 18, self.RULE_channelsSpec)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 207
@@ -1372,10 +1471,9 @@ class ANTLRv4Parser ( Parser ):
             self.state = 209
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==ANTLRv4Parser.TOKEN_REF or _la==ANTLRv4Parser.RULE_REF:
+            if _la == ANTLRv4Parser.TOKEN_REF or _la == ANTLRv4Parser.RULE_REF:
                 self.state = 208
                 self.idList()
-
 
             self.state = 211
             self.match(ANTLRv4Parser.RBRACE)
@@ -1387,24 +1485,24 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class IdListContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
-            self._identifier = None # IdentifierContext
-            self.defs = list() # of IdentifierContexts
+            self._identifier = None  # IdentifierContext
+            self.defs = list()  # of IdentifierContexts
 
-        def identifier(self, i:int=None):
+        def identifier(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ANTLRv4Parser.IdentifierContext)
             else:
-                return self.getTypedRuleContext(ANTLRv4Parser.IdentifierContext,i)
+                return self.getTypedRuleContext(ANTLRv4Parser.IdentifierContext, i)
 
-
-        def COMMA(self, i:int=None):
+        def COMMA(self, i: int = None):
             if i is None:
                 return self.getTokens(ANTLRv4Parser.COMMA)
             else:
@@ -1413,28 +1511,25 @@ class ANTLRv4Parser ( Parser ):
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_idList
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterIdList" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterIdList"):
                 listener.enterIdList(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitIdList" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitIdList"):
                 listener.exitIdList(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitIdList" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitIdList"):
                 return visitor.visitIdList(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def idList(self):
 
         localctx = ANTLRv4Parser.IdListContext(self, self._ctx, self.state)
         self.enterRule(localctx, 20, self.RULE_idList)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 213
@@ -1442,25 +1537,24 @@ class ANTLRv4Parser ( Parser ):
             localctx.defs.append(localctx._identifier)
             self.state = 218
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,11,self._ctx)
-            while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
-                if _alt==1:
+            _alt = self._interp.adaptivePredict(self._input, 11, self._ctx)
+            while _alt != 2 and _alt != ATN.INVALID_ALT_NUMBER:
+                if _alt == 1:
                     self.state = 214
                     self.match(ANTLRv4Parser.COMMA)
                     self.state = 215
                     localctx._identifier = self.identifier()
-                    localctx.defs.append(localctx._identifier) 
+                    localctx.defs.append(localctx._identifier)
                 self.state = 220
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,11,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input, 11, self._ctx)
 
             self.state = 222
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==ANTLRv4Parser.COMMA:
+            if _la == ANTLRv4Parser.COMMA:
                 self.state = 221
                 self.match(ANTLRv4Parser.COMMA)
-
 
         except RecognitionException as re:
             localctx.exception = re
@@ -1470,11 +1564,12 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class ActionContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -1482,16 +1577,13 @@ class ANTLRv4Parser ( Parser ):
             return self.getToken(ANTLRv4Parser.AT, 0)
 
         def identifier(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.IdentifierContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.IdentifierContext, 0)
 
         def actionBlock(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.ActionBlockContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.ActionBlockContext, 0)
 
         def actionScopeName(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.ActionScopeNameContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.ActionScopeNameContext, 0)
 
         def COLONCOLON(self):
             return self.getToken(ANTLRv4Parser.COLONCOLON, 0)
@@ -1499,22 +1591,19 @@ class ANTLRv4Parser ( Parser ):
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_action
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterAction" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterAction"):
                 listener.enterAction(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitAction" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitAction"):
                 listener.exitAction(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitAction" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitAction"):
                 return visitor.visitAction(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def action(self):
 
@@ -1526,13 +1615,12 @@ class ANTLRv4Parser ( Parser ):
             self.match(ANTLRv4Parser.AT)
             self.state = 228
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,13,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 13, self._ctx)
             if la_ == 1:
                 self.state = 225
                 self.actionScopeName()
                 self.state = 226
                 self.match(ANTLRv4Parser.COLONCOLON)
-
 
             self.state = 230
             self.identifier()
@@ -1546,17 +1634,17 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class ActionScopeNameContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def identifier(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.IdentifierContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.IdentifierContext, 0)
 
         def LEXER(self):
             return self.getToken(ANTLRv4Parser.LEXER, 0)
@@ -1567,22 +1655,19 @@ class ANTLRv4Parser ( Parser ):
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_actionScopeName
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterActionScopeName" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterActionScopeName"):
                 listener.enterActionScopeName(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitActionScopeName" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitActionScopeName"):
                 listener.exitActionScopeName(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitActionScopeName" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitActionScopeName"):
                 return visitor.visitActionScopeName(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def actionScopeName(self):
 
@@ -1618,11 +1703,12 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class ActionBlockContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -1632,7 +1718,7 @@ class ANTLRv4Parser ( Parser ):
         def END_ACTION(self):
             return self.getToken(ANTLRv4Parser.END_ACTION, 0)
 
-        def ACTION_CONTENT(self, i:int=None):
+        def ACTION_CONTENT(self, i: int = None):
             if i is None:
                 return self.getTokens(ANTLRv4Parser.ACTION_CONTENT)
             else:
@@ -1641,28 +1727,25 @@ class ANTLRv4Parser ( Parser ):
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_actionBlock
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterActionBlock" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterActionBlock"):
                 listener.enterActionBlock(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitActionBlock" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitActionBlock"):
                 listener.exitActionBlock(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitActionBlock" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitActionBlock"):
                 return visitor.visitActionBlock(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def actionBlock(self):
 
         localctx = ANTLRv4Parser.ActionBlockContext(self, self._ctx, self.state)
         self.enterRule(localctx, 26, self.RULE_actionBlock)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 238
@@ -1670,7 +1753,7 @@ class ANTLRv4Parser ( Parser ):
             self.state = 242
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==ANTLRv4Parser.ACTION_CONTENT:
+            while _la == ANTLRv4Parser.ACTION_CONTENT:
                 self.state = 239
                 self.match(ANTLRv4Parser.ACTION_CONTENT)
                 self.state = 244
@@ -1687,11 +1770,12 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class ArgActionBlockContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -1701,7 +1785,7 @@ class ANTLRv4Parser ( Parser ):
         def END_ARGUMENT(self):
             return self.getToken(ANTLRv4Parser.END_ARGUMENT, 0)
 
-        def ARGUMENT_CONTENT(self, i:int=None):
+        def ARGUMENT_CONTENT(self, i: int = None):
             if i is None:
                 return self.getTokens(ANTLRv4Parser.ARGUMENT_CONTENT)
             else:
@@ -1710,28 +1794,25 @@ class ANTLRv4Parser ( Parser ):
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_argActionBlock
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterArgActionBlock" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterArgActionBlock"):
                 listener.enterArgActionBlock(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitArgActionBlock" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitArgActionBlock"):
                 listener.exitArgActionBlock(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitArgActionBlock" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitArgActionBlock"):
                 return visitor.visitArgActionBlock(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def argActionBlock(self):
 
         localctx = ANTLRv4Parser.ArgActionBlockContext(self, self._ctx, self.state)
         self.enterRule(localctx, 28, self.RULE_argActionBlock)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 247
@@ -1739,7 +1820,7 @@ class ANTLRv4Parser ( Parser ):
             self.state = 251
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==ANTLRv4Parser.ARGUMENT_CONTENT:
+            while _la == ANTLRv4Parser.ARGUMENT_CONTENT:
                 self.state = 248
                 self.match(ANTLRv4Parser.ARGUMENT_CONTENT)
                 self.state = 253
@@ -1756,11 +1837,12 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class ModeSpecContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -1768,44 +1850,39 @@ class ANTLRv4Parser ( Parser ):
             return self.getToken(ANTLRv4Parser.MODE, 0)
 
         def identifier(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.IdentifierContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.IdentifierContext, 0)
 
         def SEMI(self):
             return self.getToken(ANTLRv4Parser.SEMI, 0)
 
-        def lexerRuleSpec(self, i:int=None):
+        def lexerRuleSpec(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ANTLRv4Parser.LexerRuleSpecContext)
             else:
-                return self.getTypedRuleContext(ANTLRv4Parser.LexerRuleSpecContext,i)
-
+                return self.getTypedRuleContext(ANTLRv4Parser.LexerRuleSpecContext, i)
 
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_modeSpec
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterModeSpec" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterModeSpec"):
                 listener.enterModeSpec(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitModeSpec" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitModeSpec"):
                 listener.exitModeSpec(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitModeSpec" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitModeSpec"):
                 return visitor.visitModeSpec(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def modeSpec(self):
 
         localctx = ANTLRv4Parser.ModeSpecContext(self, self._ctx, self.state)
         self.enterRule(localctx, 30, self.RULE_modeSpec)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 256
@@ -1817,7 +1894,14 @@ class ANTLRv4Parser ( Parser ):
             self.state = 262
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ANTLRv4Parser.TOKEN_REF) | (1 << ANTLRv4Parser.DOC_COMMENT) | (1 << ANTLRv4Parser.FRAGMENT))) != 0):
+            while ((_la) & ~0x3F) == 0 and (
+                (1 << _la)
+                & (
+                    (1 << ANTLRv4Parser.TOKEN_REF)
+                    | (1 << ANTLRv4Parser.DOC_COMMENT)
+                    | (1 << ANTLRv4Parser.FRAGMENT)
+                )
+            ) != 0:
                 self.state = 259
                 self.lexerRuleSpec()
                 self.state = 264
@@ -1832,52 +1916,61 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class RulesContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def ruleSpec(self, i:int=None):
+        def ruleSpec(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ANTLRv4Parser.RuleSpecContext)
             else:
-                return self.getTypedRuleContext(ANTLRv4Parser.RuleSpecContext,i)
-
+                return self.getTypedRuleContext(ANTLRv4Parser.RuleSpecContext, i)
 
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_rules
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterRules" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterRules"):
                 listener.enterRules(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitRules" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitRules"):
                 listener.exitRules(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitRules" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitRules"):
                 return visitor.visitRules(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def rules(self):
 
         localctx = ANTLRv4Parser.RulesContext(self, self._ctx, self.state)
         self.enterRule(localctx, 32, self.RULE_rules)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 268
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ANTLRv4Parser.TOKEN_REF) | (1 << ANTLRv4Parser.RULE_REF) | (1 << ANTLRv4Parser.DOC_COMMENT) | (1 << ANTLRv4Parser.HEADER) | (1 << ANTLRv4Parser.FRAGMENT) | (1 << ANTLRv4Parser.PROTECTED) | (1 << ANTLRv4Parser.PUBLIC) | (1 << ANTLRv4Parser.PRIVATE))) != 0):
+            while ((_la) & ~0x3F) == 0 and (
+                (1 << _la)
+                & (
+                    (1 << ANTLRv4Parser.TOKEN_REF)
+                    | (1 << ANTLRv4Parser.RULE_REF)
+                    | (1 << ANTLRv4Parser.DOC_COMMENT)
+                    | (1 << ANTLRv4Parser.HEADER)
+                    | (1 << ANTLRv4Parser.FRAGMENT)
+                    | (1 << ANTLRv4Parser.PROTECTED)
+                    | (1 << ANTLRv4Parser.PUBLIC)
+                    | (1 << ANTLRv4Parser.PRIVATE)
+                )
+            ) != 0:
                 self.state = 265
                 self.ruleSpec()
                 self.state = 270
@@ -1892,25 +1985,24 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class RuleSpecContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
-            self._HEADER = None # Token
-            self.headers = list() # of Tokens
+            self._HEADER = None  # Token
+            self.headers = list()  # of Tokens
 
         def parserRuleSpec(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.ParserRuleSpecContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.ParserRuleSpecContext, 0)
 
         def lexerRuleSpec(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.LexerRuleSpecContext,0)
+            return self.getTypedRuleContext(ANTLRv4Parser.LexerRuleSpecContext, 0)
 
-
-        def HEADER(self, i:int=None):
+        def HEADER(self, i: int = None):
             if i is None:
                 return self.getTokens(ANTLRv4Parser.HEADER)
             else:
@@ -1919,34 +2011,31 @@ class ANTLRv4Parser ( Parser ):
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_ruleSpec
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterRuleSpec" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterRuleSpec"):
                 listener.enterRuleSpec(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitRuleSpec" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitRuleSpec"):
                 listener.exitRuleSpec(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitRuleSpec" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitRuleSpec"):
                 return visitor.visitRuleSpec(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def ruleSpec(self):
 
         localctx = ANTLRv4Parser.RuleSpecContext(self, self._ctx, self.state)
         self.enterRule(localctx, 34, self.RULE_ruleSpec)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 274
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==ANTLRv4Parser.HEADER:
+            while _la == ANTLRv4Parser.HEADER:
                 self.state = 271
                 localctx._HEADER = self.match(ANTLRv4Parser.HEADER)
                 localctx.headers.append(localctx._HEADER)
@@ -1956,7 +2045,7 @@ class ANTLRv4Parser ( Parser ):
 
             self.state = 279
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,20,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 20, self._ctx)
             if la_ == 1:
                 self.state = 277
                 self.parserRuleSpec()
@@ -1967,7 +2056,6 @@ class ANTLRv4Parser ( Parser ):
                 self.lexerRuleSpec()
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1976,62 +2064,55 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class ParserRuleSpecContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
-            self._DOC_COMMENT = None # Token
-            self.docs = list() # of Tokens
-            self.name = None # Token
+            self._DOC_COMMENT = None  # Token
+            self.docs = list()  # of Tokens
+            self.name = None  # Token
 
         def COLON(self):
             return self.getToken(ANTLRv4Parser.COLON, 0)
 
         def ruleBlock(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.RuleBlockContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.RuleBlockContext, 0)
 
         def SEMI(self):
             return self.getToken(ANTLRv4Parser.SEMI, 0)
 
         def exceptionGroup(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.ExceptionGroupContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.ExceptionGroupContext, 0)
 
         def RULE_REF(self):
             return self.getToken(ANTLRv4Parser.RULE_REF, 0)
 
         def ruleModifiers(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.RuleModifiersContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.RuleModifiersContext, 0)
 
         def argActionBlock(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.ArgActionBlockContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.ArgActionBlockContext, 0)
 
         def ruleReturns(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.RuleReturnsContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.RuleReturnsContext, 0)
 
         def throwsSpec(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.ThrowsSpecContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.ThrowsSpecContext, 0)
 
         def localsSpec(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.LocalsSpecContext,0)
+            return self.getTypedRuleContext(ANTLRv4Parser.LocalsSpecContext, 0)
 
-
-        def rulePrequel(self, i:int=None):
+        def rulePrequel(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ANTLRv4Parser.RulePrequelContext)
             else:
-                return self.getTypedRuleContext(ANTLRv4Parser.RulePrequelContext,i)
+                return self.getTypedRuleContext(ANTLRv4Parser.RulePrequelContext, i)
 
-
-        def DOC_COMMENT(self, i:int=None):
+        def DOC_COMMENT(self, i: int = None):
             if i is None:
                 return self.getTokens(ANTLRv4Parser.DOC_COMMENT)
             else:
@@ -2040,34 +2121,31 @@ class ANTLRv4Parser ( Parser ):
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_parserRuleSpec
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterParserRuleSpec" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterParserRuleSpec"):
                 listener.enterParserRuleSpec(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitParserRuleSpec" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitParserRuleSpec"):
                 listener.exitParserRuleSpec(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitParserRuleSpec" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitParserRuleSpec"):
                 return visitor.visitParserRuleSpec(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def parserRuleSpec(self):
 
         localctx = ANTLRv4Parser.ParserRuleSpecContext(self, self._ctx, self.state)
         self.enterRule(localctx, 36, self.RULE_parserRuleSpec)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 284
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==ANTLRv4Parser.DOC_COMMENT:
+            while _la == ANTLRv4Parser.DOC_COMMENT:
                 self.state = 281
                 localctx._DOC_COMMENT = self.match(ANTLRv4Parser.DOC_COMMENT)
                 localctx.docs.append(localctx._DOC_COMMENT)
@@ -2078,49 +2156,52 @@ class ANTLRv4Parser ( Parser ):
             self.state = 288
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ANTLRv4Parser.FRAGMENT) | (1 << ANTLRv4Parser.PROTECTED) | (1 << ANTLRv4Parser.PUBLIC) | (1 << ANTLRv4Parser.PRIVATE))) != 0):
+            if ((_la) & ~0x3F) == 0 and (
+                (1 << _la)
+                & (
+                    (1 << ANTLRv4Parser.FRAGMENT)
+                    | (1 << ANTLRv4Parser.PROTECTED)
+                    | (1 << ANTLRv4Parser.PUBLIC)
+                    | (1 << ANTLRv4Parser.PRIVATE)
+                )
+            ) != 0:
                 self.state = 287
                 self.ruleModifiers()
-
 
             self.state = 290
             localctx.name = self.match(ANTLRv4Parser.RULE_REF)
             self.state = 292
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==ANTLRv4Parser.BEGIN_ARGUMENT:
+            if _la == ANTLRv4Parser.BEGIN_ARGUMENT:
                 self.state = 291
                 self.argActionBlock()
-
 
             self.state = 295
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==ANTLRv4Parser.RETURNS:
+            if _la == ANTLRv4Parser.RETURNS:
                 self.state = 294
                 self.ruleReturns()
-
 
             self.state = 298
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==ANTLRv4Parser.THROWS:
+            if _la == ANTLRv4Parser.THROWS:
                 self.state = 297
                 self.throwsSpec()
-
 
             self.state = 301
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==ANTLRv4Parser.LOCALS:
+            if _la == ANTLRv4Parser.LOCALS:
                 self.state = 300
                 self.localsSpec()
-
 
             self.state = 306
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==ANTLRv4Parser.OPTIONS or _la==ANTLRv4Parser.AT:
+            while _la == ANTLRv4Parser.OPTIONS or _la == ANTLRv4Parser.AT:
                 self.state = 303
                 self.rulePrequel()
                 self.state = 308
@@ -2143,56 +2224,54 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class ExceptionGroupContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def exceptionHandler(self, i:int=None):
+        def exceptionHandler(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ANTLRv4Parser.ExceptionHandlerContext)
             else:
-                return self.getTypedRuleContext(ANTLRv4Parser.ExceptionHandlerContext,i)
-
+                return self.getTypedRuleContext(
+                    ANTLRv4Parser.ExceptionHandlerContext, i
+                )
 
         def finallyClause(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.FinallyClauseContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.FinallyClauseContext, 0)
 
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_exceptionGroup
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterExceptionGroup" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterExceptionGroup"):
                 listener.enterExceptionGroup(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitExceptionGroup" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitExceptionGroup"):
                 listener.exitExceptionGroup(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitExceptionGroup" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitExceptionGroup"):
                 return visitor.visitExceptionGroup(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def exceptionGroup(self):
 
         localctx = ANTLRv4Parser.ExceptionGroupContext(self, self._ctx, self.state)
         self.enterRule(localctx, 38, self.RULE_exceptionGroup)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 317
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==ANTLRv4Parser.CATCH:
+            while _la == ANTLRv4Parser.CATCH:
                 self.state = 314
                 self.exceptionHandler()
                 self.state = 319
@@ -2202,10 +2281,9 @@ class ANTLRv4Parser ( Parser ):
             self.state = 321
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==ANTLRv4Parser.FINALLY:
+            if _la == ANTLRv4Parser.FINALLY:
                 self.state = 320
                 self.finallyClause()
-
 
         except RecognitionException as re:
             localctx.exception = re
@@ -2215,11 +2293,12 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class ExceptionHandlerContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -2227,32 +2306,27 @@ class ANTLRv4Parser ( Parser ):
             return self.getToken(ANTLRv4Parser.CATCH, 0)
 
         def argActionBlock(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.ArgActionBlockContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.ArgActionBlockContext, 0)
 
         def actionBlock(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.ActionBlockContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.ActionBlockContext, 0)
 
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_exceptionHandler
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterExceptionHandler" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterExceptionHandler"):
                 listener.enterExceptionHandler(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitExceptionHandler" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitExceptionHandler"):
                 listener.exitExceptionHandler(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitExceptionHandler" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitExceptionHandler"):
                 return visitor.visitExceptionHandler(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def exceptionHandler(self):
 
@@ -2274,11 +2348,12 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class FinallyClauseContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -2286,28 +2361,24 @@ class ANTLRv4Parser ( Parser ):
             return self.getToken(ANTLRv4Parser.FINALLY, 0)
 
         def actionBlock(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.ActionBlockContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.ActionBlockContext, 0)
 
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_finallyClause
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterFinallyClause" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterFinallyClause"):
                 listener.enterFinallyClause(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitFinallyClause" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitFinallyClause"):
                 listener.exitFinallyClause(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitFinallyClause" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitFinallyClause"):
                 return visitor.visitFinallyClause(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def finallyClause(self):
 
@@ -2327,41 +2398,37 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class RulePrequelContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def optionsSpec(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.OptionsSpecContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.OptionsSpecContext, 0)
 
         def ruleAction(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.RuleActionContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.RuleActionContext, 0)
 
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_rulePrequel
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterRulePrequel" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterRulePrequel"):
                 listener.enterRulePrequel(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitRulePrequel" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitRulePrequel"):
                 listener.exitRulePrequel(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitRulePrequel" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitRulePrequel"):
                 return visitor.visitRulePrequel(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def rulePrequel(self):
 
@@ -2392,11 +2459,12 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class RuleReturnsContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -2404,28 +2472,24 @@ class ANTLRv4Parser ( Parser ):
             return self.getToken(ANTLRv4Parser.RETURNS, 0)
 
         def argActionBlock(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.ArgActionBlockContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.ArgActionBlockContext, 0)
 
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_ruleReturns
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterRuleReturns" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterRuleReturns"):
                 listener.enterRuleReturns(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitRuleReturns" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitRuleReturns"):
                 listener.exitRuleReturns(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitRuleReturns" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitRuleReturns"):
                 return visitor.visitRuleReturns(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def ruleReturns(self):
 
@@ -2445,25 +2509,25 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class ThrowsSpecContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def THROWS(self):
             return self.getToken(ANTLRv4Parser.THROWS, 0)
 
-        def identifier(self, i:int=None):
+        def identifier(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ANTLRv4Parser.IdentifierContext)
             else:
-                return self.getTypedRuleContext(ANTLRv4Parser.IdentifierContext,i)
+                return self.getTypedRuleContext(ANTLRv4Parser.IdentifierContext, i)
 
-
-        def COMMA(self, i:int=None):
+        def COMMA(self, i: int = None):
             if i is None:
                 return self.getTokens(ANTLRv4Parser.COMMA)
             else:
@@ -2472,28 +2536,25 @@ class ANTLRv4Parser ( Parser ):
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_throwsSpec
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterThrowsSpec" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterThrowsSpec"):
                 listener.enterThrowsSpec(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitThrowsSpec" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitThrowsSpec"):
                 listener.exitThrowsSpec(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitThrowsSpec" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitThrowsSpec"):
                 return visitor.visitThrowsSpec(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def throwsSpec(self):
 
         localctx = ANTLRv4Parser.ThrowsSpecContext(self, self._ctx, self.state)
         self.enterRule(localctx, 48, self.RULE_throwsSpec)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 337
@@ -2503,7 +2564,7 @@ class ANTLRv4Parser ( Parser ):
             self.state = 343
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==ANTLRv4Parser.COMMA:
+            while _la == ANTLRv4Parser.COMMA:
                 self.state = 339
                 self.match(ANTLRv4Parser.COMMA)
                 self.state = 340
@@ -2520,11 +2581,12 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class LocalsSpecContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -2532,28 +2594,24 @@ class ANTLRv4Parser ( Parser ):
             return self.getToken(ANTLRv4Parser.LOCALS, 0)
 
         def argActionBlock(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.ArgActionBlockContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.ArgActionBlockContext, 0)
 
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_localsSpec
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterLocalsSpec" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterLocalsSpec"):
                 listener.enterLocalsSpec(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitLocalsSpec" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitLocalsSpec"):
                 listener.exitLocalsSpec(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitLocalsSpec" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitLocalsSpec"):
                 return visitor.visitLocalsSpec(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def localsSpec(self):
 
@@ -2573,11 +2631,12 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class RuleActionContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -2585,32 +2644,27 @@ class ANTLRv4Parser ( Parser ):
             return self.getToken(ANTLRv4Parser.AT, 0)
 
         def identifier(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.IdentifierContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.IdentifierContext, 0)
 
         def actionBlock(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.ActionBlockContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.ActionBlockContext, 0)
 
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_ruleAction
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterRuleAction" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterRuleAction"):
                 listener.enterRuleAction(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitRuleAction" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitRuleAction"):
                 listener.exitRuleAction(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitRuleAction" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitRuleAction"):
                 return visitor.visitRuleAction(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def ruleAction(self):
 
@@ -2632,58 +2686,69 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class RuleModifiersContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def ruleModifier(self, i:int=None):
+        def ruleModifier(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ANTLRv4Parser.RuleModifierContext)
             else:
-                return self.getTypedRuleContext(ANTLRv4Parser.RuleModifierContext,i)
-
+                return self.getTypedRuleContext(ANTLRv4Parser.RuleModifierContext, i)
 
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_ruleModifiers
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterRuleModifiers" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterRuleModifiers"):
                 listener.enterRuleModifiers(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitRuleModifiers" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitRuleModifiers"):
                 listener.exitRuleModifiers(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitRuleModifiers" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitRuleModifiers"):
                 return visitor.visitRuleModifiers(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def ruleModifiers(self):
 
         localctx = ANTLRv4Parser.RuleModifiersContext(self, self._ctx, self.state)
         self.enterRule(localctx, 54, self.RULE_ruleModifiers)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 354 
+            self.state = 354
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while True:
                 self.state = 353
                 self.ruleModifier()
-                self.state = 356 
+                self.state = 356
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ANTLRv4Parser.FRAGMENT) | (1 << ANTLRv4Parser.PROTECTED) | (1 << ANTLRv4Parser.PUBLIC) | (1 << ANTLRv4Parser.PRIVATE))) != 0)):
+                if not (
+                    (
+                        ((_la) & ~0x3F) == 0
+                        and (
+                            (1 << _la)
+                            & (
+                                (1 << ANTLRv4Parser.FRAGMENT)
+                                | (1 << ANTLRv4Parser.PROTECTED)
+                                | (1 << ANTLRv4Parser.PUBLIC)
+                                | (1 << ANTLRv4Parser.PRIVATE)
+                            )
+                        )
+                        != 0
+                    )
+                ):
                     break
 
         except RecognitionException as re:
@@ -2694,11 +2759,12 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class RuleModifierContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -2717,33 +2783,44 @@ class ANTLRv4Parser ( Parser ):
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_ruleModifier
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterRuleModifier" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterRuleModifier"):
                 listener.enterRuleModifier(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitRuleModifier" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitRuleModifier"):
                 listener.exitRuleModifier(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitRuleModifier" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitRuleModifier"):
                 return visitor.visitRuleModifier(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def ruleModifier(self):
 
         localctx = ANTLRv4Parser.RuleModifierContext(self, self._ctx, self.state)
         self.enterRule(localctx, 56, self.RULE_ruleModifier)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 358
             _la = self._input.LA(1)
-            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ANTLRv4Parser.FRAGMENT) | (1 << ANTLRv4Parser.PROTECTED) | (1 << ANTLRv4Parser.PUBLIC) | (1 << ANTLRv4Parser.PRIVATE))) != 0)):
+            if not (
+                (
+                    ((_la) & ~0x3F) == 0
+                    and (
+                        (1 << _la)
+                        & (
+                            (1 << ANTLRv4Parser.FRAGMENT)
+                            | (1 << ANTLRv4Parser.PROTECTED)
+                            | (1 << ANTLRv4Parser.PUBLIC)
+                            | (1 << ANTLRv4Parser.PRIVATE)
+                        )
+                    )
+                    != 0
+                )
+            ):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
@@ -2756,37 +2833,34 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class RuleBlockContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def ruleAltList(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.RuleAltListContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.RuleAltListContext, 0)
 
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_ruleBlock
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterRuleBlock" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterRuleBlock"):
                 listener.enterRuleBlock(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitRuleBlock" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitRuleBlock"):
                 listener.exitRuleBlock(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitRuleBlock" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitRuleBlock"):
                 return visitor.visitRuleBlock(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def ruleBlock(self):
 
@@ -2804,24 +2878,24 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class RuleAltListContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
-            self._labeledAlt = None # LabeledAltContext
-            self.alts = list() # of LabeledAltContexts
+            self._labeledAlt = None  # LabeledAltContext
+            self.alts = list()  # of LabeledAltContexts
 
-        def labeledAlt(self, i:int=None):
+        def labeledAlt(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ANTLRv4Parser.LabeledAltContext)
             else:
-                return self.getTypedRuleContext(ANTLRv4Parser.LabeledAltContext,i)
+                return self.getTypedRuleContext(ANTLRv4Parser.LabeledAltContext, i)
 
-
-        def OR(self, i:int=None):
+        def OR(self, i: int = None):
             if i is None:
                 return self.getTokens(ANTLRv4Parser.OR)
             else:
@@ -2830,28 +2904,25 @@ class ANTLRv4Parser ( Parser ):
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_ruleAltList
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterRuleAltList" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterRuleAltList"):
                 listener.enterRuleAltList(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitRuleAltList" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitRuleAltList"):
                 listener.exitRuleAltList(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitRuleAltList" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitRuleAltList"):
                 return visitor.visitRuleAltList(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def ruleAltList(self):
 
         localctx = ANTLRv4Parser.RuleAltListContext(self, self._ctx, self.state)
         self.enterRule(localctx, 60, self.RULE_ruleAltList)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 362
@@ -2860,7 +2931,7 @@ class ANTLRv4Parser ( Parser ):
             self.state = 367
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==ANTLRv4Parser.OR:
+            while _la == ANTLRv4Parser.OR:
                 self.state = 363
                 self.match(ANTLRv4Parser.OR)
                 self.state = 364
@@ -2878,50 +2949,46 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class LabeledAltContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def alternative(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.AlternativeContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.AlternativeContext, 0)
 
         def POUND(self):
             return self.getToken(ANTLRv4Parser.POUND, 0)
 
         def identifier(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.IdentifierContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.IdentifierContext, 0)
 
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_labeledAlt
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterLabeledAlt" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterLabeledAlt"):
                 listener.enterLabeledAlt(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitLabeledAlt" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitLabeledAlt"):
                 listener.exitLabeledAlt(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitLabeledAlt" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitLabeledAlt"):
                 return visitor.visitLabeledAlt(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def labeledAlt(self):
 
         localctx = ANTLRv4Parser.LabeledAltContext(self, self._ctx, self.state)
         self.enterRule(localctx, 62, self.RULE_labeledAlt)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 370
@@ -2929,12 +2996,11 @@ class ANTLRv4Parser ( Parser ):
             self.state = 373
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==ANTLRv4Parser.POUND:
+            if _la == ANTLRv4Parser.POUND:
                 self.state = 371
                 self.match(ANTLRv4Parser.POUND)
                 self.state = 372
                 self.identifier()
-
 
         except RecognitionException as re:
             localctx.exception = re
@@ -2944,24 +3010,24 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class LexerRuleSpecContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
-            self._DOC_COMMENT = None # Token
-            self.docs = list() # of Tokens
-            self.frag = None # Token
-            self.name = None # Token
+            self._DOC_COMMENT = None  # Token
+            self.docs = list()  # of Tokens
+            self.frag = None  # Token
+            self.name = None  # Token
 
         def COLON(self):
             return self.getToken(ANTLRv4Parser.COLON, 0)
 
         def lexerRuleBlock(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.LexerRuleBlockContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.LexerRuleBlockContext, 0)
 
         def SEMI(self):
             return self.getToken(ANTLRv4Parser.SEMI, 0)
@@ -2969,7 +3035,7 @@ class ANTLRv4Parser ( Parser ):
         def TOKEN_REF(self):
             return self.getToken(ANTLRv4Parser.TOKEN_REF, 0)
 
-        def DOC_COMMENT(self, i:int=None):
+        def DOC_COMMENT(self, i: int = None):
             if i is None:
                 return self.getTokens(ANTLRv4Parser.DOC_COMMENT)
             else:
@@ -2981,34 +3047,31 @@ class ANTLRv4Parser ( Parser ):
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_lexerRuleSpec
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterLexerRuleSpec" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterLexerRuleSpec"):
                 listener.enterLexerRuleSpec(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitLexerRuleSpec" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitLexerRuleSpec"):
                 listener.exitLexerRuleSpec(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitLexerRuleSpec" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitLexerRuleSpec"):
                 return visitor.visitLexerRuleSpec(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def lexerRuleSpec(self):
 
         localctx = ANTLRv4Parser.LexerRuleSpecContext(self, self._ctx, self.state)
         self.enterRule(localctx, 64, self.RULE_lexerRuleSpec)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 378
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==ANTLRv4Parser.DOC_COMMENT:
+            while _la == ANTLRv4Parser.DOC_COMMENT:
                 self.state = 375
                 localctx._DOC_COMMENT = self.match(ANTLRv4Parser.DOC_COMMENT)
                 localctx.docs.append(localctx._DOC_COMMENT)
@@ -3019,10 +3082,9 @@ class ANTLRv4Parser ( Parser ):
             self.state = 382
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==ANTLRv4Parser.FRAGMENT:
+            if _la == ANTLRv4Parser.FRAGMENT:
                 self.state = 381
                 localctx.frag = self.match(ANTLRv4Parser.FRAGMENT)
-
 
             self.state = 384
             localctx.name = self.match(ANTLRv4Parser.TOKEN_REF)
@@ -3040,37 +3102,34 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class LexerRuleBlockContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def lexerAltList(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.LexerAltListContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.LexerAltListContext, 0)
 
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_lexerRuleBlock
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterLexerRuleBlock" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterLexerRuleBlock"):
                 listener.enterLexerRuleBlock(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitLexerRuleBlock" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitLexerRuleBlock"):
                 listener.exitLexerRuleBlock(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitLexerRuleBlock" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitLexerRuleBlock"):
                 return visitor.visitLexerRuleBlock(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def lexerRuleBlock(self):
 
@@ -3088,24 +3147,24 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class LexerAltListContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
-            self._lexerAlt = None # LexerAltContext
-            self.alts = list() # of LexerAltContexts
+            self._lexerAlt = None  # LexerAltContext
+            self.alts = list()  # of LexerAltContexts
 
-        def lexerAlt(self, i:int=None):
+        def lexerAlt(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ANTLRv4Parser.LexerAltContext)
             else:
-                return self.getTypedRuleContext(ANTLRv4Parser.LexerAltContext,i)
+                return self.getTypedRuleContext(ANTLRv4Parser.LexerAltContext, i)
 
-
-        def OR(self, i:int=None):
+        def OR(self, i: int = None):
             if i is None:
                 return self.getTokens(ANTLRv4Parser.OR)
             else:
@@ -3114,28 +3173,25 @@ class ANTLRv4Parser ( Parser ):
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_lexerAltList
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterLexerAltList" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterLexerAltList"):
                 listener.enterLexerAltList(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitLexerAltList" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitLexerAltList"):
                 listener.exitLexerAltList(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitLexerAltList" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitLexerAltList"):
                 return visitor.visitLexerAltList(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def lexerAltList(self):
 
         localctx = ANTLRv4Parser.LexerAltListContext(self, self._ctx, self.state)
         self.enterRule(localctx, 68, self.RULE_lexerAltList)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 391
@@ -3144,7 +3200,7 @@ class ANTLRv4Parser ( Parser ):
             self.state = 396
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==ANTLRv4Parser.OR:
+            while _la == ANTLRv4Parser.OR:
                 self.state = 392
                 self.match(ANTLRv4Parser.OR)
                 self.state = 393
@@ -3162,62 +3218,67 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class LexerAltContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def lexerElements(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.LexerElementsContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.LexerElementsContext, 0)
 
         def lexerCommands(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.LexerCommandsContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.LexerCommandsContext, 0)
 
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_lexerAlt
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterLexerAlt" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterLexerAlt"):
                 listener.enterLexerAlt(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitLexerAlt" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitLexerAlt"):
                 listener.exitLexerAlt(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitLexerAlt" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitLexerAlt"):
                 return visitor.visitLexerAlt(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def lexerAlt(self):
 
         localctx = ANTLRv4Parser.LexerAltContext(self, self._ctx, self.state)
         self.enterRule(localctx, 70, self.RULE_lexerAlt)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.state = 404
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [ANTLRv4Parser.TOKEN_REF, ANTLRv4Parser.RULE_REF, ANTLRv4Parser.LEXER_CHAR_SET, ANTLRv4Parser.DOC_COMMENT, ANTLRv4Parser.STRING_LITERAL, ANTLRv4Parser.BEGIN_ACTION, ANTLRv4Parser.LPAREN, ANTLRv4Parser.DOT, ANTLRv4Parser.NOT]:
+            if token in [
+                ANTLRv4Parser.TOKEN_REF,
+                ANTLRv4Parser.RULE_REF,
+                ANTLRv4Parser.LEXER_CHAR_SET,
+                ANTLRv4Parser.DOC_COMMENT,
+                ANTLRv4Parser.STRING_LITERAL,
+                ANTLRv4Parser.BEGIN_ACTION,
+                ANTLRv4Parser.LPAREN,
+                ANTLRv4Parser.DOT,
+                ANTLRv4Parser.NOT,
+            ]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 399
                 self.lexerElements()
                 self.state = 401
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if _la==ANTLRv4Parser.RARROW:
+                if _la == ANTLRv4Parser.RARROW:
                     self.state = 400
                     self.lexerCommands()
-
 
                 pass
             elif token in [ANTLRv4Parser.SEMI, ANTLRv4Parser.RPAREN, ANTLRv4Parser.OR]:
@@ -3235,61 +3296,77 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class LexerElementsContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
-            self._lexerElement = None # LexerElementContext
-            self.elements = list() # of LexerElementContexts
+            self._lexerElement = None  # LexerElementContext
+            self.elements = list()  # of LexerElementContexts
 
-        def lexerElement(self, i:int=None):
+        def lexerElement(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ANTLRv4Parser.LexerElementContext)
             else:
-                return self.getTypedRuleContext(ANTLRv4Parser.LexerElementContext,i)
-
+                return self.getTypedRuleContext(ANTLRv4Parser.LexerElementContext, i)
 
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_lexerElements
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterLexerElements" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterLexerElements"):
                 listener.enterLexerElements(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitLexerElements" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitLexerElements"):
                 listener.exitLexerElements(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitLexerElements" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitLexerElements"):
                 return visitor.visitLexerElements(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def lexerElements(self):
 
         localctx = ANTLRv4Parser.LexerElementsContext(self, self._ctx, self.state)
         self.enterRule(localctx, 72, self.RULE_lexerElements)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 407 
+            self.state = 407
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while True:
                 self.state = 406
                 localctx._lexerElement = self.lexerElement()
                 localctx.elements.append(localctx._lexerElement)
-                self.state = 409 
+                self.state = 409
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ANTLRv4Parser.TOKEN_REF) | (1 << ANTLRv4Parser.RULE_REF) | (1 << ANTLRv4Parser.LEXER_CHAR_SET) | (1 << ANTLRv4Parser.DOC_COMMENT) | (1 << ANTLRv4Parser.STRING_LITERAL) | (1 << ANTLRv4Parser.BEGIN_ACTION) | (1 << ANTLRv4Parser.LPAREN) | (1 << ANTLRv4Parser.DOT) | (1 << ANTLRv4Parser.NOT))) != 0)):
+                if not (
+                    (
+                        ((_la) & ~0x3F) == 0
+                        and (
+                            (1 << _la)
+                            & (
+                                (1 << ANTLRv4Parser.TOKEN_REF)
+                                | (1 << ANTLRv4Parser.RULE_REF)
+                                | (1 << ANTLRv4Parser.LEXER_CHAR_SET)
+                                | (1 << ANTLRv4Parser.DOC_COMMENT)
+                                | (1 << ANTLRv4Parser.STRING_LITERAL)
+                                | (1 << ANTLRv4Parser.BEGIN_ACTION)
+                                | (1 << ANTLRv4Parser.LPAREN)
+                                | (1 << ANTLRv4Parser.DOT)
+                                | (1 << ANTLRv4Parser.NOT)
+                            )
+                        )
+                        != 0
+                    )
+                ):
                     break
 
         except RecognitionException as re:
@@ -3300,151 +3377,148 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class LexerElementContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
-
 
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_lexerElement
 
-     
-        def copyFrom(self, ctx:ParserRuleContext):
+        def copyFrom(self, ctx: ParserRuleContext):
             super().copyFrom(ctx)
-
-
 
     class LexerElementLabeledContext(LexerElementContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ANTLRv4Parser.LexerElementContext
+        def __init__(
+            self, parser, ctx: ParserRuleContext
+        ):  # actually a ANTLRv4Parser.LexerElementContext
             super().__init__(parser)
-            self.value = None # LabeledLexerElementContext
-            self.suffix = None # EbnfSuffixContext
+            self.value = None  # LabeledLexerElementContext
+            self.suffix = None  # EbnfSuffixContext
             self.copyFrom(ctx)
 
         def labeledLexerElement(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.LabeledLexerElementContext,0)
+            return self.getTypedRuleContext(ANTLRv4Parser.LabeledLexerElementContext, 0)
 
         def ebnfSuffix(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.EbnfSuffixContext,0)
+            return self.getTypedRuleContext(ANTLRv4Parser.EbnfSuffixContext, 0)
 
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterLexerElementLabeled" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterLexerElementLabeled"):
                 listener.enterLexerElementLabeled(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitLexerElementLabeled" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitLexerElementLabeled"):
                 listener.exitLexerElementLabeled(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitLexerElementLabeled" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitLexerElementLabeled"):
                 return visitor.visitLexerElementLabeled(self)
             else:
                 return visitor.visitChildren(self)
 
-
     class LexerElementBlockContext(LexerElementContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ANTLRv4Parser.LexerElementContext
+        def __init__(
+            self, parser, ctx: ParserRuleContext
+        ):  # actually a ANTLRv4Parser.LexerElementContext
             super().__init__(parser)
-            self.value = None # LexerBlockContext
-            self.suffix = None # EbnfSuffixContext
+            self.value = None  # LexerBlockContext
+            self.suffix = None  # EbnfSuffixContext
             self.copyFrom(ctx)
 
         def lexerBlock(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.LexerBlockContext,0)
+            return self.getTypedRuleContext(ANTLRv4Parser.LexerBlockContext, 0)
 
         def ebnfSuffix(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.EbnfSuffixContext,0)
+            return self.getTypedRuleContext(ANTLRv4Parser.EbnfSuffixContext, 0)
 
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterLexerElementBlock" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterLexerElementBlock"):
                 listener.enterLexerElementBlock(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitLexerElementBlock" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitLexerElementBlock"):
                 listener.exitLexerElementBlock(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitLexerElementBlock" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitLexerElementBlock"):
                 return visitor.visitLexerElementBlock(self)
             else:
                 return visitor.visitChildren(self)
 
-
     class LexerElementActionContext(LexerElementContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ANTLRv4Parser.LexerElementContext
+        def __init__(
+            self, parser, ctx: ParserRuleContext
+        ):  # actually a ANTLRv4Parser.LexerElementContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def actionBlock(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.ActionBlockContext,0)
+            return self.getTypedRuleContext(ANTLRv4Parser.ActionBlockContext, 0)
 
         def QUESTION(self):
             return self.getToken(ANTLRv4Parser.QUESTION, 0)
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterLexerElementAction" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterLexerElementAction"):
                 listener.enterLexerElementAction(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitLexerElementAction" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitLexerElementAction"):
                 listener.exitLexerElementAction(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitLexerElementAction" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitLexerElementAction"):
                 return visitor.visitLexerElementAction(self)
             else:
                 return visitor.visitChildren(self)
 
-
     class LexerElementAtomContext(LexerElementContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ANTLRv4Parser.LexerElementContext
+        def __init__(
+            self, parser, ctx: ParserRuleContext
+        ):  # actually a ANTLRv4Parser.LexerElementContext
             super().__init__(parser)
-            self.value = None # LexerAtomContext
-            self.suffix = None # EbnfSuffixContext
+            self.value = None  # LexerAtomContext
+            self.suffix = None  # EbnfSuffixContext
             self.copyFrom(ctx)
 
         def lexerAtom(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.LexerAtomContext,0)
+            return self.getTypedRuleContext(ANTLRv4Parser.LexerAtomContext, 0)
 
         def ebnfSuffix(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.EbnfSuffixContext,0)
+            return self.getTypedRuleContext(ANTLRv4Parser.EbnfSuffixContext, 0)
 
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterLexerElementAtom" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterLexerElementAtom"):
                 listener.enterLexerElementAtom(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitLexerElementAtom" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitLexerElementAtom"):
                 listener.exitLexerElementAtom(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitLexerElementAtom" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitLexerElementAtom"):
                 return visitor.visitLexerElementAtom(self)
             else:
                 return visitor.visitChildren(self)
-
-
 
     def lexerElement(self):
 
         localctx = ANTLRv4Parser.LexerElementContext(self, self._ctx, self.state)
         self.enterRule(localctx, 74, self.RULE_lexerElement)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.state = 427
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,45,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 45, self._ctx)
             if la_ == 1:
                 localctx = ANTLRv4Parser.LexerElementLabeledContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
@@ -3453,10 +3527,16 @@ class ANTLRv4Parser ( Parser ):
                 self.state = 413
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ANTLRv4Parser.QUESTION) | (1 << ANTLRv4Parser.STAR) | (1 << ANTLRv4Parser.PLUS))) != 0):
+                if ((_la) & ~0x3F) == 0 and (
+                    (1 << _la)
+                    & (
+                        (1 << ANTLRv4Parser.QUESTION)
+                        | (1 << ANTLRv4Parser.STAR)
+                        | (1 << ANTLRv4Parser.PLUS)
+                    )
+                ) != 0:
                     self.state = 412
                     localctx.suffix = self.ebnfSuffix()
-
 
                 pass
 
@@ -3468,10 +3548,16 @@ class ANTLRv4Parser ( Parser ):
                 self.state = 417
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ANTLRv4Parser.QUESTION) | (1 << ANTLRv4Parser.STAR) | (1 << ANTLRv4Parser.PLUS))) != 0):
+                if ((_la) & ~0x3F) == 0 and (
+                    (1 << _la)
+                    & (
+                        (1 << ANTLRv4Parser.QUESTION)
+                        | (1 << ANTLRv4Parser.STAR)
+                        | (1 << ANTLRv4Parser.PLUS)
+                    )
+                ) != 0:
                     self.state = 416
                     localctx.suffix = self.ebnfSuffix()
-
 
                 pass
 
@@ -3483,10 +3569,16 @@ class ANTLRv4Parser ( Parser ):
                 self.state = 421
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ANTLRv4Parser.QUESTION) | (1 << ANTLRv4Parser.STAR) | (1 << ANTLRv4Parser.PLUS))) != 0):
+                if ((_la) & ~0x3F) == 0 and (
+                    (1 << _la)
+                    & (
+                        (1 << ANTLRv4Parser.QUESTION)
+                        | (1 << ANTLRv4Parser.STAR)
+                        | (1 << ANTLRv4Parser.PLUS)
+                    )
+                ) != 0:
                     self.state = 420
                     localctx.suffix = self.ebnfSuffix()
-
 
                 pass
 
@@ -3498,13 +3590,11 @@ class ANTLRv4Parser ( Parser ):
                 self.state = 425
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if _la==ANTLRv4Parser.QUESTION:
+                if _la == ANTLRv4Parser.QUESTION:
                     self.state = 424
                     self.match(ANTLRv4Parser.QUESTION)
 
-
                 pass
-
 
         except RecognitionException as re:
             localctx.exception = re
@@ -3514,17 +3604,17 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class LabeledLexerElementContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def identifier(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.IdentifierContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.IdentifierContext, 0)
 
         def ASSIGN(self):
             return self.getToken(ANTLRv4Parser.ASSIGN, 0)
@@ -3533,45 +3623,40 @@ class ANTLRv4Parser ( Parser ):
             return self.getToken(ANTLRv4Parser.PLUS_ASSIGN, 0)
 
         def lexerAtom(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.LexerAtomContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.LexerAtomContext, 0)
 
         def lexerBlock(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.LexerBlockContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.LexerBlockContext, 0)
 
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_labeledLexerElement
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterLabeledLexerElement" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterLabeledLexerElement"):
                 listener.enterLabeledLexerElement(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitLabeledLexerElement" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitLabeledLexerElement"):
                 listener.exitLabeledLexerElement(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitLabeledLexerElement" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitLabeledLexerElement"):
                 return visitor.visitLabeledLexerElement(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def labeledLexerElement(self):
 
         localctx = ANTLRv4Parser.LabeledLexerElementContext(self, self._ctx, self.state)
         self.enterRule(localctx, 76, self.RULE_labeledLexerElement)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 429
             self.identifier()
             self.state = 430
             _la = self._input.LA(1)
-            if not(_la==ANTLRv4Parser.ASSIGN or _la==ANTLRv4Parser.PLUS_ASSIGN):
+            if not (_la == ANTLRv4Parser.ASSIGN or _la == ANTLRv4Parser.PLUS_ASSIGN):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
@@ -3579,7 +3664,14 @@ class ANTLRv4Parser ( Parser ):
             self.state = 433
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [ANTLRv4Parser.TOKEN_REF, ANTLRv4Parser.LEXER_CHAR_SET, ANTLRv4Parser.DOC_COMMENT, ANTLRv4Parser.STRING_LITERAL, ANTLRv4Parser.DOT, ANTLRv4Parser.NOT]:
+            if token in [
+                ANTLRv4Parser.TOKEN_REF,
+                ANTLRv4Parser.LEXER_CHAR_SET,
+                ANTLRv4Parser.DOC_COMMENT,
+                ANTLRv4Parser.STRING_LITERAL,
+                ANTLRv4Parser.DOT,
+                ANTLRv4Parser.NOT,
+            ]:
                 self.state = 431
                 self.lexerAtom()
                 pass
@@ -3598,11 +3690,12 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class LexerBlockContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -3610,8 +3703,7 @@ class ANTLRv4Parser ( Parser ):
             return self.getToken(ANTLRv4Parser.LPAREN, 0)
 
         def lexerAltList(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.LexerAltListContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.LexerAltListContext, 0)
 
         def RPAREN(self):
             return self.getToken(ANTLRv4Parser.RPAREN, 0)
@@ -3619,22 +3711,19 @@ class ANTLRv4Parser ( Parser ):
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_lexerBlock
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterLexerBlock" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterLexerBlock"):
                 listener.enterLexerBlock(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitLexerBlock" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitLexerBlock"):
                 listener.exitLexerBlock(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitLexerBlock" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitLexerBlock"):
                 return visitor.visitLexerBlock(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def lexerBlock(self):
 
@@ -3656,25 +3745,25 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class LexerCommandsContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def RARROW(self):
             return self.getToken(ANTLRv4Parser.RARROW, 0)
 
-        def lexerCommand(self, i:int=None):
+        def lexerCommand(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ANTLRv4Parser.LexerCommandContext)
             else:
-                return self.getTypedRuleContext(ANTLRv4Parser.LexerCommandContext,i)
+                return self.getTypedRuleContext(ANTLRv4Parser.LexerCommandContext, i)
 
-
-        def COMMA(self, i:int=None):
+        def COMMA(self, i: int = None):
             if i is None:
                 return self.getTokens(ANTLRv4Parser.COMMA)
             else:
@@ -3683,28 +3772,25 @@ class ANTLRv4Parser ( Parser ):
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_lexerCommands
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterLexerCommands" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterLexerCommands"):
                 listener.enterLexerCommands(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitLexerCommands" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitLexerCommands"):
                 listener.exitLexerCommands(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitLexerCommands" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitLexerCommands"):
                 return visitor.visitLexerCommands(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def lexerCommands(self):
 
         localctx = ANTLRv4Parser.LexerCommandsContext(self, self._ctx, self.state)
         self.enterRule(localctx, 80, self.RULE_lexerCommands)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 439
@@ -3714,7 +3800,7 @@ class ANTLRv4Parser ( Parser ):
             self.state = 445
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==ANTLRv4Parser.COMMA:
+            while _la == ANTLRv4Parser.COMMA:
                 self.state = 441
                 self.match(ANTLRv4Parser.COMMA)
                 self.state = 442
@@ -3731,24 +3817,23 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class LexerCommandContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def lexerCommandName(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.LexerCommandNameContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.LexerCommandNameContext, 0)
 
         def LPAREN(self):
             return self.getToken(ANTLRv4Parser.LPAREN, 0)
 
         def lexerCommandExpr(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.LexerCommandExprContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.LexerCommandExprContext, 0)
 
         def RPAREN(self):
             return self.getToken(ANTLRv4Parser.RPAREN, 0)
@@ -3756,22 +3841,19 @@ class ANTLRv4Parser ( Parser ):
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_lexerCommand
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterLexerCommand" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterLexerCommand"):
                 listener.enterLexerCommand(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitLexerCommand" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitLexerCommand"):
                 listener.exitLexerCommand(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitLexerCommand" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitLexerCommand"):
                 return visitor.visitLexerCommand(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def lexerCommand(self):
 
@@ -3780,7 +3862,7 @@ class ANTLRv4Parser ( Parser ):
         try:
             self.state = 454
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,48,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 48, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 448
@@ -3799,7 +3881,6 @@ class ANTLRv4Parser ( Parser ):
                 self.lexerCommandName()
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -3808,17 +3889,17 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class LexerCommandNameContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def identifier(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.IdentifierContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.IdentifierContext, 0)
 
         def MODE(self):
             return self.getToken(ANTLRv4Parser.MODE, 0)
@@ -3826,22 +3907,19 @@ class ANTLRv4Parser ( Parser ):
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_lexerCommandName
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterLexerCommandName" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterLexerCommandName"):
                 listener.enterLexerCommandName(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitLexerCommandName" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitLexerCommandName"):
                 listener.exitLexerCommandName(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitLexerCommandName" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitLexerCommandName"):
                 return visitor.visitLexerCommandName(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def lexerCommandName(self):
 
@@ -3872,17 +3950,17 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class LexerCommandExprContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def identifier(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.IdentifierContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.IdentifierContext, 0)
 
         def INT(self):
             return self.getToken(ANTLRv4Parser.INT, 0)
@@ -3890,22 +3968,19 @@ class ANTLRv4Parser ( Parser ):
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_lexerCommandExpr
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterLexerCommandExpr" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterLexerCommandExpr"):
                 listener.enterLexerCommandExpr(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitLexerCommandExpr" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitLexerCommandExpr"):
                 listener.exitLexerCommandExpr(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitLexerCommandExpr" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitLexerCommandExpr"):
                 return visitor.visitLexerCommandExpr(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def lexerCommandExpr(self):
 
@@ -3936,24 +4011,24 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class AltListContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
-            self._alternative = None # AlternativeContext
-            self.alts = list() # of AlternativeContexts
+            self._alternative = None  # AlternativeContext
+            self.alts = list()  # of AlternativeContexts
 
-        def alternative(self, i:int=None):
+        def alternative(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ANTLRv4Parser.AlternativeContext)
             else:
-                return self.getTypedRuleContext(ANTLRv4Parser.AlternativeContext,i)
+                return self.getTypedRuleContext(ANTLRv4Parser.AlternativeContext, i)
 
-
-        def OR(self, i:int=None):
+        def OR(self, i: int = None):
             if i is None:
                 return self.getTokens(ANTLRv4Parser.OR)
             else:
@@ -3962,28 +4037,25 @@ class ANTLRv4Parser ( Parser ):
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_altList
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterAltList" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterAltList"):
                 listener.enterAltList(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitAltList" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitAltList"):
                 listener.exitAltList(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitAltList" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitAltList"):
                 return visitor.visitAltList(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def altList(self):
 
         localctx = ANTLRv4Parser.AltListContext(self, self._ctx, self.state)
         self.enterRule(localctx, 88, self.RULE_altList)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 464
@@ -3992,7 +4064,7 @@ class ANTLRv4Parser ( Parser ):
             self.state = 469
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==ANTLRv4Parser.OR:
+            while _la == ANTLRv4Parser.OR:
                 self.state = 465
                 self.match(ANTLRv4Parser.OR)
                 self.state = 466
@@ -4010,81 +4082,109 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class AlternativeContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
-            self._element = None # ElementContext
-            self.elements = list() # of ElementContexts
+            self._element = None  # ElementContext
+            self.elements = list()  # of ElementContexts
 
         def elementOptions(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.ElementOptionsContext,0)
+            return self.getTypedRuleContext(ANTLRv4Parser.ElementOptionsContext, 0)
 
-
-        def element(self, i:int=None):
+        def element(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ANTLRv4Parser.ElementContext)
             else:
-                return self.getTypedRuleContext(ANTLRv4Parser.ElementContext,i)
-
+                return self.getTypedRuleContext(ANTLRv4Parser.ElementContext, i)
 
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_alternative
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterAlternative" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterAlternative"):
                 listener.enterAlternative(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitAlternative" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitAlternative"):
                 listener.exitAlternative(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitAlternative" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitAlternative"):
                 return visitor.visitAlternative(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def alternative(self):
 
         localctx = ANTLRv4Parser.AlternativeContext(self, self._ctx, self.state)
         self.enterRule(localctx, 90, self.RULE_alternative)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.state = 481
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [ANTLRv4Parser.TOKEN_REF, ANTLRv4Parser.RULE_REF, ANTLRv4Parser.DOC_COMMENT, ANTLRv4Parser.STRING_LITERAL, ANTLRv4Parser.BEGIN_ACTION, ANTLRv4Parser.LPAREN, ANTLRv4Parser.LT, ANTLRv4Parser.DOT, ANTLRv4Parser.NOT]:
+            if token in [
+                ANTLRv4Parser.TOKEN_REF,
+                ANTLRv4Parser.RULE_REF,
+                ANTLRv4Parser.DOC_COMMENT,
+                ANTLRv4Parser.STRING_LITERAL,
+                ANTLRv4Parser.BEGIN_ACTION,
+                ANTLRv4Parser.LPAREN,
+                ANTLRv4Parser.LT,
+                ANTLRv4Parser.DOT,
+                ANTLRv4Parser.NOT,
+            ]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 473
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if _la==ANTLRv4Parser.LT:
+                if _la == ANTLRv4Parser.LT:
                     self.state = 472
                     self.elementOptions()
 
-
-                self.state = 476 
+                self.state = 476
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 while True:
                     self.state = 475
                     localctx._element = self.element()
                     localctx.elements.append(localctx._element)
-                    self.state = 478 
+                    self.state = 478
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
-                    if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ANTLRv4Parser.TOKEN_REF) | (1 << ANTLRv4Parser.RULE_REF) | (1 << ANTLRv4Parser.DOC_COMMENT) | (1 << ANTLRv4Parser.STRING_LITERAL) | (1 << ANTLRv4Parser.BEGIN_ACTION) | (1 << ANTLRv4Parser.LPAREN) | (1 << ANTLRv4Parser.DOT) | (1 << ANTLRv4Parser.NOT))) != 0)):
+                    if not (
+                        (
+                            ((_la) & ~0x3F) == 0
+                            and (
+                                (1 << _la)
+                                & (
+                                    (1 << ANTLRv4Parser.TOKEN_REF)
+                                    | (1 << ANTLRv4Parser.RULE_REF)
+                                    | (1 << ANTLRv4Parser.DOC_COMMENT)
+                                    | (1 << ANTLRv4Parser.STRING_LITERAL)
+                                    | (1 << ANTLRv4Parser.BEGIN_ACTION)
+                                    | (1 << ANTLRv4Parser.LPAREN)
+                                    | (1 << ANTLRv4Parser.DOT)
+                                    | (1 << ANTLRv4Parser.NOT)
+                                )
+                            )
+                            != 0
+                        )
+                    ):
                         break
 
                 pass
-            elif token in [ANTLRv4Parser.SEMI, ANTLRv4Parser.RPAREN, ANTLRv4Parser.OR, ANTLRv4Parser.POUND]:
+            elif token in [
+                ANTLRv4Parser.SEMI,
+                ANTLRv4Parser.RPAREN,
+                ANTLRv4Parser.OR,
+                ANTLRv4Parser.POUND,
+            ]:
                 self.enterOuterAlt(localctx, 2)
 
                 pass
@@ -4099,176 +4199,174 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class ElementContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
-
 
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_element
 
-     
-        def copyFrom(self, ctx:ParserRuleContext):
+        def copyFrom(self, ctx: ParserRuleContext):
             super().copyFrom(ctx)
-
-
 
     class ParserElementLabeledContext(ElementContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ANTLRv4Parser.ElementContext
+        def __init__(
+            self, parser, ctx: ParserRuleContext
+        ):  # actually a ANTLRv4Parser.ElementContext
             super().__init__(parser)
-            self.value = None # LabeledElementContext
-            self.suffix = None # EbnfSuffixContext
+            self.value = None  # LabeledElementContext
+            self.suffix = None  # EbnfSuffixContext
             self.copyFrom(ctx)
 
         def labeledElement(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.LabeledElementContext,0)
+            return self.getTypedRuleContext(ANTLRv4Parser.LabeledElementContext, 0)
 
         def ebnfSuffix(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.EbnfSuffixContext,0)
+            return self.getTypedRuleContext(ANTLRv4Parser.EbnfSuffixContext, 0)
 
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterParserElementLabeled" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterParserElementLabeled"):
                 listener.enterParserElementLabeled(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitParserElementLabeled" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitParserElementLabeled"):
                 listener.exitParserElementLabeled(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitParserElementLabeled" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitParserElementLabeled"):
                 return visitor.visitParserElementLabeled(self)
             else:
                 return visitor.visitChildren(self)
 
-
     class ParserElementBlockContext(ElementContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ANTLRv4Parser.ElementContext
+        def __init__(
+            self, parser, ctx: ParserRuleContext
+        ):  # actually a ANTLRv4Parser.ElementContext
             super().__init__(parser)
-            self.value = None # BlockContext
-            self.suffix = None # EbnfSuffixContext
+            self.value = None  # BlockContext
+            self.suffix = None  # EbnfSuffixContext
             self.copyFrom(ctx)
 
         def block(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.BlockContext,0)
+            return self.getTypedRuleContext(ANTLRv4Parser.BlockContext, 0)
 
         def ebnfSuffix(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.EbnfSuffixContext,0)
+            return self.getTypedRuleContext(ANTLRv4Parser.EbnfSuffixContext, 0)
 
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterParserElementBlock" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterParserElementBlock"):
                 listener.enterParserElementBlock(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitParserElementBlock" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitParserElementBlock"):
                 listener.exitParserElementBlock(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitParserElementBlock" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitParserElementBlock"):
                 return visitor.visitParserElementBlock(self)
             else:
                 return visitor.visitChildren(self)
 
-
     class ParserElementAtomContext(ElementContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ANTLRv4Parser.ElementContext
+        def __init__(
+            self, parser, ctx: ParserRuleContext
+        ):  # actually a ANTLRv4Parser.ElementContext
             super().__init__(parser)
-            self.value = None # AtomContext
-            self.suffix = None # EbnfSuffixContext
+            self.value = None  # AtomContext
+            self.suffix = None  # EbnfSuffixContext
             self.copyFrom(ctx)
 
         def atom(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.AtomContext,0)
+            return self.getTypedRuleContext(ANTLRv4Parser.AtomContext, 0)
 
         def ebnfSuffix(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.EbnfSuffixContext,0)
+            return self.getTypedRuleContext(ANTLRv4Parser.EbnfSuffixContext, 0)
 
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterParserElementAtom" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterParserElementAtom"):
                 listener.enterParserElementAtom(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitParserElementAtom" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitParserElementAtom"):
                 listener.exitParserElementAtom(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitParserElementAtom" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitParserElementAtom"):
                 return visitor.visitParserElementAtom(self)
             else:
                 return visitor.visitChildren(self)
 
-
     class ParserInlineDocContext(ElementContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ANTLRv4Parser.ElementContext
+        def __init__(
+            self, parser, ctx: ParserRuleContext
+        ):  # actually a ANTLRv4Parser.ElementContext
             super().__init__(parser)
-            self.value = None # Token
+            self.value = None  # Token
             self.copyFrom(ctx)
 
         def DOC_COMMENT(self):
             return self.getToken(ANTLRv4Parser.DOC_COMMENT, 0)
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterParserInlineDoc" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterParserInlineDoc"):
                 listener.enterParserInlineDoc(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitParserInlineDoc" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitParserInlineDoc"):
                 listener.exitParserInlineDoc(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitParserInlineDoc" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitParserInlineDoc"):
                 return visitor.visitParserInlineDoc(self)
             else:
                 return visitor.visitChildren(self)
 
-
     class ParserElementActionContext(ElementContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ANTLRv4Parser.ElementContext
+        def __init__(
+            self, parser, ctx: ParserRuleContext
+        ):  # actually a ANTLRv4Parser.ElementContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def actionBlock(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.ActionBlockContext,0)
+            return self.getTypedRuleContext(ANTLRv4Parser.ActionBlockContext, 0)
 
         def QUESTION(self):
             return self.getToken(ANTLRv4Parser.QUESTION, 0)
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterParserElementAction" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterParserElementAction"):
                 listener.enterParserElementAction(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitParserElementAction" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitParserElementAction"):
                 listener.exitParserElementAction(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitParserElementAction" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitParserElementAction"):
                 return visitor.visitParserElementAction(self)
             else:
                 return visitor.visitChildren(self)
-
-
 
     def element(self):
 
         localctx = ANTLRv4Parser.ElementContext(self, self._ctx, self.state)
         self.enterRule(localctx, 92, self.RULE_element)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.state = 500
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,59,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 59, self._ctx)
             if la_ == 1:
                 localctx = ANTLRv4Parser.ParserElementLabeledContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
@@ -4277,10 +4375,16 @@ class ANTLRv4Parser ( Parser ):
                 self.state = 485
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ANTLRv4Parser.QUESTION) | (1 << ANTLRv4Parser.STAR) | (1 << ANTLRv4Parser.PLUS))) != 0):
+                if ((_la) & ~0x3F) == 0 and (
+                    (1 << _la)
+                    & (
+                        (1 << ANTLRv4Parser.QUESTION)
+                        | (1 << ANTLRv4Parser.STAR)
+                        | (1 << ANTLRv4Parser.PLUS)
+                    )
+                ) != 0:
                     self.state = 484
                     localctx.suffix = self.ebnfSuffix()
-
 
                 pass
 
@@ -4292,10 +4396,16 @@ class ANTLRv4Parser ( Parser ):
                 self.state = 489
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ANTLRv4Parser.QUESTION) | (1 << ANTLRv4Parser.STAR) | (1 << ANTLRv4Parser.PLUS))) != 0):
+                if ((_la) & ~0x3F) == 0 and (
+                    (1 << _la)
+                    & (
+                        (1 << ANTLRv4Parser.QUESTION)
+                        | (1 << ANTLRv4Parser.STAR)
+                        | (1 << ANTLRv4Parser.PLUS)
+                    )
+                ) != 0:
                     self.state = 488
                     localctx.suffix = self.ebnfSuffix()
-
 
                 pass
 
@@ -4307,10 +4417,16 @@ class ANTLRv4Parser ( Parser ):
                 self.state = 493
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ANTLRv4Parser.QUESTION) | (1 << ANTLRv4Parser.STAR) | (1 << ANTLRv4Parser.PLUS))) != 0):
+                if ((_la) & ~0x3F) == 0 and (
+                    (1 << _la)
+                    & (
+                        (1 << ANTLRv4Parser.QUESTION)
+                        | (1 << ANTLRv4Parser.STAR)
+                        | (1 << ANTLRv4Parser.PLUS)
+                    )
+                ) != 0:
                     self.state = 492
                     localctx.suffix = self.ebnfSuffix()
-
 
                 pass
 
@@ -4322,10 +4438,9 @@ class ANTLRv4Parser ( Parser ):
                 self.state = 497
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if _la==ANTLRv4Parser.QUESTION:
+                if _la == ANTLRv4Parser.QUESTION:
                     self.state = 496
                     self.match(ANTLRv4Parser.QUESTION)
-
 
                 pass
 
@@ -4336,7 +4451,6 @@ class ANTLRv4Parser ( Parser ):
                 localctx.value = self.match(ANTLRv4Parser.DOC_COMMENT)
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -4345,17 +4459,17 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class LabeledElementContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def identifier(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.IdentifierContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.IdentifierContext, 0)
 
         def ASSIGN(self):
             return self.getToken(ANTLRv4Parser.ASSIGN, 0)
@@ -4364,45 +4478,40 @@ class ANTLRv4Parser ( Parser ):
             return self.getToken(ANTLRv4Parser.PLUS_ASSIGN, 0)
 
         def atom(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.AtomContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.AtomContext, 0)
 
         def block(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.BlockContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.BlockContext, 0)
 
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_labeledElement
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterLabeledElement" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterLabeledElement"):
                 listener.enterLabeledElement(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitLabeledElement" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitLabeledElement"):
                 listener.exitLabeledElement(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitLabeledElement" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitLabeledElement"):
                 return visitor.visitLabeledElement(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def labeledElement(self):
 
         localctx = ANTLRv4Parser.LabeledElementContext(self, self._ctx, self.state)
         self.enterRule(localctx, 94, self.RULE_labeledElement)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 502
             self.identifier()
             self.state = 503
             _la = self._input.LA(1)
-            if not(_la==ANTLRv4Parser.ASSIGN or _la==ANTLRv4Parser.PLUS_ASSIGN):
+            if not (_la == ANTLRv4Parser.ASSIGN or _la == ANTLRv4Parser.PLUS_ASSIGN):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
@@ -4410,7 +4519,13 @@ class ANTLRv4Parser ( Parser ):
             self.state = 506
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [ANTLRv4Parser.TOKEN_REF, ANTLRv4Parser.RULE_REF, ANTLRv4Parser.STRING_LITERAL, ANTLRv4Parser.DOT, ANTLRv4Parser.NOT]:
+            if token in [
+                ANTLRv4Parser.TOKEN_REF,
+                ANTLRv4Parser.RULE_REF,
+                ANTLRv4Parser.STRING_LITERAL,
+                ANTLRv4Parser.DOT,
+                ANTLRv4Parser.NOT,
+            ]:
                 self.state = 504
                 self.atom()
                 pass
@@ -4429,15 +4544,16 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class EbnfSuffixContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def QUESTION(self, i:int=None):
+        def QUESTION(self, i: int = None):
             if i is None:
                 return self.getTokens(ANTLRv4Parser.QUESTION)
             else:
@@ -4452,28 +4568,25 @@ class ANTLRv4Parser ( Parser ):
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_ebnfSuffix
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterEbnfSuffix" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterEbnfSuffix"):
                 listener.enterEbnfSuffix(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitEbnfSuffix" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitEbnfSuffix"):
                 listener.exitEbnfSuffix(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitEbnfSuffix" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitEbnfSuffix"):
                 return visitor.visitEbnfSuffix(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def ebnfSuffix(self):
 
         localctx = ANTLRv4Parser.EbnfSuffixContext(self, self._ctx, self.state)
         self.enterRule(localctx, 96, self.RULE_ebnfSuffix)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.state = 520
             self._errHandler.sync(self)
@@ -4485,10 +4598,9 @@ class ANTLRv4Parser ( Parser ):
                 self.state = 510
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if _la==ANTLRv4Parser.QUESTION:
+                if _la == ANTLRv4Parser.QUESTION:
                     self.state = 509
                     self.match(ANTLRv4Parser.QUESTION)
-
 
                 pass
             elif token in [ANTLRv4Parser.STAR]:
@@ -4498,10 +4610,9 @@ class ANTLRv4Parser ( Parser ):
                 self.state = 514
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if _la==ANTLRv4Parser.QUESTION:
+                if _la == ANTLRv4Parser.QUESTION:
                     self.state = 513
                     self.match(ANTLRv4Parser.QUESTION)
-
 
                 pass
             elif token in [ANTLRv4Parser.PLUS]:
@@ -4511,10 +4622,9 @@ class ANTLRv4Parser ( Parser ):
                 self.state = 518
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if _la==ANTLRv4Parser.QUESTION:
+                if _la == ANTLRv4Parser.QUESTION:
                     self.state = 517
                     self.match(ANTLRv4Parser.QUESTION)
-
 
                 pass
             else:
@@ -4528,186 +4638,185 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class LexerAtomContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
-
 
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_lexerAtom
 
-     
-        def copyFrom(self, ctx:ParserRuleContext):
+        def copyFrom(self, ctx: ParserRuleContext):
             super().copyFrom(ctx)
-
-
 
     class LexerAtomNotContext(LexerAtomContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ANTLRv4Parser.LexerAtomContext
+        def __init__(
+            self, parser, ctx: ParserRuleContext
+        ):  # actually a ANTLRv4Parser.LexerAtomContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def notSet(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.NotSetContext,0)
+            return self.getTypedRuleContext(ANTLRv4Parser.NotSetContext, 0)
 
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterLexerAtomNot" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterLexerAtomNot"):
                 listener.enterLexerAtomNot(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitLexerAtomNot" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitLexerAtomNot"):
                 listener.exitLexerAtomNot(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitLexerAtomNot" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitLexerAtomNot"):
                 return visitor.visitLexerAtomNot(self)
             else:
                 return visitor.visitChildren(self)
 
-
     class LexerAtomRangeContext(LexerAtomContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ANTLRv4Parser.LexerAtomContext
+        def __init__(
+            self, parser, ctx: ParserRuleContext
+        ):  # actually a ANTLRv4Parser.LexerAtomContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def characterRange(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.CharacterRangeContext,0)
+            return self.getTypedRuleContext(ANTLRv4Parser.CharacterRangeContext, 0)
 
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterLexerAtomRange" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterLexerAtomRange"):
                 listener.enterLexerAtomRange(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitLexerAtomRange" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitLexerAtomRange"):
                 listener.exitLexerAtomRange(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitLexerAtomRange" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitLexerAtomRange"):
                 return visitor.visitLexerAtomRange(self)
             else:
                 return visitor.visitChildren(self)
 
-
     class LexerAtomCharSetContext(LexerAtomContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ANTLRv4Parser.LexerAtomContext
+        def __init__(
+            self, parser, ctx: ParserRuleContext
+        ):  # actually a ANTLRv4Parser.LexerAtomContext
             super().__init__(parser)
-            self.value = None # Token
+            self.value = None  # Token
             self.copyFrom(ctx)
 
         def LEXER_CHAR_SET(self):
             return self.getToken(ANTLRv4Parser.LEXER_CHAR_SET, 0)
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterLexerAtomCharSet" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterLexerAtomCharSet"):
                 listener.enterLexerAtomCharSet(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitLexerAtomCharSet" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitLexerAtomCharSet"):
                 listener.exitLexerAtomCharSet(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitLexerAtomCharSet" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitLexerAtomCharSet"):
                 return visitor.visitLexerAtomCharSet(self)
             else:
                 return visitor.visitChildren(self)
 
-
     class LexerAtomWildcardContext(LexerAtomContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ANTLRv4Parser.LexerAtomContext
+        def __init__(
+            self, parser, ctx: ParserRuleContext
+        ):  # actually a ANTLRv4Parser.LexerAtomContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def DOT(self):
             return self.getToken(ANTLRv4Parser.DOT, 0)
+
         def elementOptions(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.ElementOptionsContext,0)
+            return self.getTypedRuleContext(ANTLRv4Parser.ElementOptionsContext, 0)
 
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterLexerAtomWildcard" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterLexerAtomWildcard"):
                 listener.enterLexerAtomWildcard(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitLexerAtomWildcard" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitLexerAtomWildcard"):
                 listener.exitLexerAtomWildcard(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitLexerAtomWildcard" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitLexerAtomWildcard"):
                 return visitor.visitLexerAtomWildcard(self)
             else:
                 return visitor.visitChildren(self)
 
-
     class LexerAtomTerminalContext(LexerAtomContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ANTLRv4Parser.LexerAtomContext
+        def __init__(
+            self, parser, ctx: ParserRuleContext
+        ):  # actually a ANTLRv4Parser.LexerAtomContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def terminal(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.TerminalContext,0)
+            return self.getTypedRuleContext(ANTLRv4Parser.TerminalContext, 0)
 
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterLexerAtomTerminal" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterLexerAtomTerminal"):
                 listener.enterLexerAtomTerminal(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitLexerAtomTerminal" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitLexerAtomTerminal"):
                 listener.exitLexerAtomTerminal(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitLexerAtomTerminal" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitLexerAtomTerminal"):
                 return visitor.visitLexerAtomTerminal(self)
             else:
                 return visitor.visitChildren(self)
 
-
     class LexerAtomDocContext(LexerAtomContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ANTLRv4Parser.LexerAtomContext
+        def __init__(
+            self, parser, ctx: ParserRuleContext
+        ):  # actually a ANTLRv4Parser.LexerAtomContext
             super().__init__(parser)
-            self.value = None # Token
+            self.value = None  # Token
             self.copyFrom(ctx)
 
         def DOC_COMMENT(self):
             return self.getToken(ANTLRv4Parser.DOC_COMMENT, 0)
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterLexerAtomDoc" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterLexerAtomDoc"):
                 listener.enterLexerAtomDoc(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitLexerAtomDoc" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitLexerAtomDoc"):
                 listener.exitLexerAtomDoc(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitLexerAtomDoc" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitLexerAtomDoc"):
                 return visitor.visitLexerAtomDoc(self)
             else:
                 return visitor.visitChildren(self)
-
-
 
     def lexerAtom(self):
 
         localctx = ANTLRv4Parser.LexerAtomContext(self, self._ctx, self.state)
         self.enterRule(localctx, 98, self.RULE_lexerAtom)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.state = 531
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,66,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 66, self._ctx)
             if la_ == 1:
                 localctx = ANTLRv4Parser.LexerAtomRangeContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
@@ -4744,10 +4853,9 @@ class ANTLRv4Parser ( Parser ):
                 self.state = 528
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if _la==ANTLRv4Parser.LT:
+                if _la == ANTLRv4Parser.LT:
                     self.state = 527
                     self.elementOptions()
-
 
                 pass
 
@@ -4758,7 +4866,6 @@ class ANTLRv4Parser ( Parser ):
                 localctx.value = self.match(ANTLRv4Parser.DOC_COMMENT)
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -4767,132 +4874,129 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class AtomContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
-
 
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_atom
 
-     
-        def copyFrom(self, ctx:ParserRuleContext):
+        def copyFrom(self, ctx: ParserRuleContext):
             super().copyFrom(ctx)
-
-
 
     class AtomTerminalContext(AtomContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ANTLRv4Parser.AtomContext
+        def __init__(
+            self, parser, ctx: ParserRuleContext
+        ):  # actually a ANTLRv4Parser.AtomContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def terminal(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.TerminalContext,0)
+            return self.getTypedRuleContext(ANTLRv4Parser.TerminalContext, 0)
 
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterAtomTerminal" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterAtomTerminal"):
                 listener.enterAtomTerminal(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitAtomTerminal" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitAtomTerminal"):
                 listener.exitAtomTerminal(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitAtomTerminal" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitAtomTerminal"):
                 return visitor.visitAtomTerminal(self)
             else:
                 return visitor.visitChildren(self)
 
-
     class AtomWildcardContext(AtomContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ANTLRv4Parser.AtomContext
+        def __init__(
+            self, parser, ctx: ParserRuleContext
+        ):  # actually a ANTLRv4Parser.AtomContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def DOT(self):
             return self.getToken(ANTLRv4Parser.DOT, 0)
+
         def elementOptions(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.ElementOptionsContext,0)
+            return self.getTypedRuleContext(ANTLRv4Parser.ElementOptionsContext, 0)
 
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterAtomWildcard" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterAtomWildcard"):
                 listener.enterAtomWildcard(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitAtomWildcard" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitAtomWildcard"):
                 listener.exitAtomWildcard(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitAtomWildcard" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitAtomWildcard"):
                 return visitor.visitAtomWildcard(self)
             else:
                 return visitor.visitChildren(self)
 
-
     class AtomRuleRefContext(AtomContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ANTLRv4Parser.AtomContext
+        def __init__(
+            self, parser, ctx: ParserRuleContext
+        ):  # actually a ANTLRv4Parser.AtomContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def ruleref(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.RulerefContext,0)
+            return self.getTypedRuleContext(ANTLRv4Parser.RulerefContext, 0)
 
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterAtomRuleRef" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterAtomRuleRef"):
                 listener.enterAtomRuleRef(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitAtomRuleRef" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitAtomRuleRef"):
                 listener.exitAtomRuleRef(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitAtomRuleRef" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitAtomRuleRef"):
                 return visitor.visitAtomRuleRef(self)
             else:
                 return visitor.visitChildren(self)
 
-
     class AtomNotContext(AtomContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ANTLRv4Parser.AtomContext
+        def __init__(
+            self, parser, ctx: ParserRuleContext
+        ):  # actually a ANTLRv4Parser.AtomContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def notSet(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.NotSetContext,0)
+            return self.getTypedRuleContext(ANTLRv4Parser.NotSetContext, 0)
 
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterAtomNot" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterAtomNot"):
                 listener.enterAtomNot(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitAtomNot" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitAtomNot"):
                 listener.exitAtomNot(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitAtomNot" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitAtomNot"):
                 return visitor.visitAtomNot(self)
             else:
                 return visitor.visitChildren(self)
-
-
 
     def atom(self):
 
         localctx = ANTLRv4Parser.AtomContext(self, self._ctx, self.state)
         self.enterRule(localctx, 100, self.RULE_atom)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.state = 540
             self._errHandler.sync(self)
@@ -4923,10 +5027,9 @@ class ANTLRv4Parser ( Parser ):
                 self.state = 538
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if _la==ANTLRv4Parser.LT:
+                if _la == ANTLRv4Parser.LT:
                     self.state = 537
                     self.elementOptions()
-
 
                 pass
             else:
@@ -4940,80 +5043,78 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class NotSetContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
-
 
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_notSet
 
-     
-        def copyFrom(self, ctx:ParserRuleContext):
+        def copyFrom(self, ctx: ParserRuleContext):
             super().copyFrom(ctx)
-
-
 
     class NotBlockContext(NotSetContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ANTLRv4Parser.NotSetContext
+        def __init__(
+            self, parser, ctx: ParserRuleContext
+        ):  # actually a ANTLRv4Parser.NotSetContext
             super().__init__(parser)
-            self.value = None # BlockSetContext
+            self.value = None  # BlockSetContext
             self.copyFrom(ctx)
 
         def NOT(self):
             return self.getToken(ANTLRv4Parser.NOT, 0)
+
         def blockSet(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.BlockSetContext,0)
+            return self.getTypedRuleContext(ANTLRv4Parser.BlockSetContext, 0)
 
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterNotBlock" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterNotBlock"):
                 listener.enterNotBlock(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitNotBlock" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitNotBlock"):
                 listener.exitNotBlock(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitNotBlock" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitNotBlock"):
                 return visitor.visitNotBlock(self)
             else:
                 return visitor.visitChildren(self)
 
-
     class NotElementContext(NotSetContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ANTLRv4Parser.NotSetContext
+        def __init__(
+            self, parser, ctx: ParserRuleContext
+        ):  # actually a ANTLRv4Parser.NotSetContext
             super().__init__(parser)
-            self.value = None # SetElementContext
+            self.value = None  # SetElementContext
             self.copyFrom(ctx)
 
         def NOT(self):
             return self.getToken(ANTLRv4Parser.NOT, 0)
+
         def setElement(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.SetElementContext,0)
+            return self.getTypedRuleContext(ANTLRv4Parser.SetElementContext, 0)
 
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterNotElement" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterNotElement"):
                 listener.enterNotElement(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitNotElement" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitNotElement"):
                 listener.exitNotElement(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitNotElement" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitNotElement"):
                 return visitor.visitNotElement(self)
             else:
                 return visitor.visitChildren(self)
-
-
 
     def notSet(self):
 
@@ -5022,7 +5123,7 @@ class ANTLRv4Parser ( Parser ):
         try:
             self.state = 546
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,69,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 69, self._ctx)
             if la_ == 1:
                 localctx = ANTLRv4Parser.NotElementContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
@@ -5041,7 +5142,6 @@ class ANTLRv4Parser ( Parser ):
                 localctx.value = self.blockSet()
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -5050,15 +5150,16 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class BlockSetContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
-            self._setElement = None # SetElementContext
-            self.elements = list() # of SetElementContexts
+            self._setElement = None  # SetElementContext
+            self.elements = list()  # of SetElementContexts
 
         def LPAREN(self):
             return self.getToken(ANTLRv4Parser.LPAREN, 0)
@@ -5066,14 +5167,13 @@ class ANTLRv4Parser ( Parser ):
         def RPAREN(self):
             return self.getToken(ANTLRv4Parser.RPAREN, 0)
 
-        def setElement(self, i:int=None):
+        def setElement(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ANTLRv4Parser.SetElementContext)
             else:
-                return self.getTypedRuleContext(ANTLRv4Parser.SetElementContext,i)
+                return self.getTypedRuleContext(ANTLRv4Parser.SetElementContext, i)
 
-
-        def OR(self, i:int=None):
+        def OR(self, i: int = None):
             if i is None:
                 return self.getTokens(ANTLRv4Parser.OR)
             else:
@@ -5082,28 +5182,25 @@ class ANTLRv4Parser ( Parser ):
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_blockSet
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterBlockSet" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterBlockSet"):
                 listener.enterBlockSet(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitBlockSet" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitBlockSet"):
                 listener.exitBlockSet(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitBlockSet" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitBlockSet"):
                 return visitor.visitBlockSet(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def blockSet(self):
 
         localctx = ANTLRv4Parser.BlockSetContext(self, self._ctx, self.state)
         self.enterRule(localctx, 104, self.RULE_blockSet)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 548
@@ -5114,7 +5211,7 @@ class ANTLRv4Parser ( Parser ):
             self.state = 554
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==ANTLRv4Parser.OR:
+            while _la == ANTLRv4Parser.OR:
                 self.state = 550
                 self.match(ANTLRv4Parser.OR)
                 self.state = 551
@@ -5134,140 +5231,139 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class SetElementContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
-
 
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_setElement
 
-     
-        def copyFrom(self, ctx:ParserRuleContext):
+        def copyFrom(self, ctx: ParserRuleContext):
             super().copyFrom(ctx)
-
-
 
     class SetElementRefContext(SetElementContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ANTLRv4Parser.SetElementContext
+        def __init__(
+            self, parser, ctx: ParserRuleContext
+        ):  # actually a ANTLRv4Parser.SetElementContext
             super().__init__(parser)
-            self.value = None # Token
+            self.value = None  # Token
             self.copyFrom(ctx)
 
         def TOKEN_REF(self):
             return self.getToken(ANTLRv4Parser.TOKEN_REF, 0)
+
         def elementOptions(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.ElementOptionsContext,0)
+            return self.getTypedRuleContext(ANTLRv4Parser.ElementOptionsContext, 0)
 
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterSetElementRef" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterSetElementRef"):
                 listener.enterSetElementRef(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitSetElementRef" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitSetElementRef"):
                 listener.exitSetElementRef(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitSetElementRef" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitSetElementRef"):
                 return visitor.visitSetElementRef(self)
             else:
                 return visitor.visitChildren(self)
 
-
     class SetElementRangeContext(SetElementContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ANTLRv4Parser.SetElementContext
+        def __init__(
+            self, parser, ctx: ParserRuleContext
+        ):  # actually a ANTLRv4Parser.SetElementContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def characterRange(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.CharacterRangeContext,0)
+            return self.getTypedRuleContext(ANTLRv4Parser.CharacterRangeContext, 0)
 
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterSetElementRange" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterSetElementRange"):
                 listener.enterSetElementRange(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitSetElementRange" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitSetElementRange"):
                 listener.exitSetElementRange(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitSetElementRange" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitSetElementRange"):
                 return visitor.visitSetElementRange(self)
             else:
                 return visitor.visitChildren(self)
 
-
     class SetElementLitContext(SetElementContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ANTLRv4Parser.SetElementContext
+        def __init__(
+            self, parser, ctx: ParserRuleContext
+        ):  # actually a ANTLRv4Parser.SetElementContext
             super().__init__(parser)
-            self.value = None # Token
+            self.value = None  # Token
             self.copyFrom(ctx)
 
         def STRING_LITERAL(self):
             return self.getToken(ANTLRv4Parser.STRING_LITERAL, 0)
+
         def elementOptions(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.ElementOptionsContext,0)
+            return self.getTypedRuleContext(ANTLRv4Parser.ElementOptionsContext, 0)
 
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterSetElementLit" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterSetElementLit"):
                 listener.enterSetElementLit(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitSetElementLit" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitSetElementLit"):
                 listener.exitSetElementLit(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitSetElementLit" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitSetElementLit"):
                 return visitor.visitSetElementLit(self)
             else:
                 return visitor.visitChildren(self)
 
-
     class SetElementCharSetContext(SetElementContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ANTLRv4Parser.SetElementContext
+        def __init__(
+            self, parser, ctx: ParserRuleContext
+        ):  # actually a ANTLRv4Parser.SetElementContext
             super().__init__(parser)
-            self.value = None # Token
+            self.value = None  # Token
             self.copyFrom(ctx)
 
         def LEXER_CHAR_SET(self):
             return self.getToken(ANTLRv4Parser.LEXER_CHAR_SET, 0)
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterSetElementCharSet" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterSetElementCharSet"):
                 listener.enterSetElementCharSet(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitSetElementCharSet" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitSetElementCharSet"):
                 listener.exitSetElementCharSet(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitSetElementCharSet" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitSetElementCharSet"):
                 return visitor.visitSetElementCharSet(self)
             else:
                 return visitor.visitChildren(self)
-
-
 
     def setElement(self):
 
         localctx = ANTLRv4Parser.SetElementContext(self, self._ctx, self.state)
         self.enterRule(localctx, 106, self.RULE_setElement)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.state = 569
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,73,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 73, self._ctx)
             if la_ == 1:
                 localctx = ANTLRv4Parser.SetElementRefContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
@@ -5276,10 +5372,9 @@ class ANTLRv4Parser ( Parser ):
                 self.state = 561
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if _la==ANTLRv4Parser.LT:
+                if _la == ANTLRv4Parser.LT:
                     self.state = 560
                     self.elementOptions()
-
 
                 pass
 
@@ -5291,10 +5386,9 @@ class ANTLRv4Parser ( Parser ):
                 self.state = 565
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if _la==ANTLRv4Parser.LT:
+                if _la == ANTLRv4Parser.LT:
                     self.state = 564
                     self.elementOptions()
-
 
                 pass
 
@@ -5312,7 +5406,6 @@ class ANTLRv4Parser ( Parser ):
                 localctx.value = self.match(ANTLRv4Parser.LEXER_CHAR_SET)
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -5321,11 +5414,12 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class BlockContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -5333,8 +5427,7 @@ class ANTLRv4Parser ( Parser ):
             return self.getToken(ANTLRv4Parser.LPAREN, 0)
 
         def altList(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.AltListContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.AltListContext, 0)
 
         def RPAREN(self):
             return self.getToken(ANTLRv4Parser.RPAREN, 0)
@@ -5343,41 +5436,36 @@ class ANTLRv4Parser ( Parser ):
             return self.getToken(ANTLRv4Parser.COLON, 0)
 
         def optionsSpec(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.OptionsSpecContext,0)
+            return self.getTypedRuleContext(ANTLRv4Parser.OptionsSpecContext, 0)
 
-
-        def ruleAction(self, i:int=None):
+        def ruleAction(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ANTLRv4Parser.RuleActionContext)
             else:
-                return self.getTypedRuleContext(ANTLRv4Parser.RuleActionContext,i)
-
+                return self.getTypedRuleContext(ANTLRv4Parser.RuleActionContext, i)
 
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_block
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterBlock" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterBlock"):
                 listener.enterBlock(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitBlock" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitBlock"):
                 listener.exitBlock(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitBlock" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitBlock"):
                 return visitor.visitBlock(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def block(self):
 
         localctx = ANTLRv4Parser.BlockContext(self, self._ctx, self.state)
         self.enterRule(localctx, 108, self.RULE_block)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 571
@@ -5385,19 +5473,25 @@ class ANTLRv4Parser ( Parser ):
             self.state = 582
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ANTLRv4Parser.OPTIONS) | (1 << ANTLRv4Parser.COLON) | (1 << ANTLRv4Parser.AT))) != 0):
+            if ((_la) & ~0x3F) == 0 and (
+                (1 << _la)
+                & (
+                    (1 << ANTLRv4Parser.OPTIONS)
+                    | (1 << ANTLRv4Parser.COLON)
+                    | (1 << ANTLRv4Parser.AT)
+                )
+            ) != 0:
                 self.state = 573
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if _la==ANTLRv4Parser.OPTIONS:
+                if _la == ANTLRv4Parser.OPTIONS:
                     self.state = 572
                     self.optionsSpec()
-
 
                 self.state = 578
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                while _la==ANTLRv4Parser.AT:
+                while _la == ANTLRv4Parser.AT:
                     self.state = 575
                     self.ruleAction()
                     self.state = 580
@@ -5406,7 +5500,6 @@ class ANTLRv4Parser ( Parser ):
 
                 self.state = 581
                 self.match(ANTLRv4Parser.COLON)
-
 
             self.state = 584
             self.altList()
@@ -5420,51 +5513,47 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class RulerefContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
-            self.value = None # Token
+            self.value = None  # Token
 
         def RULE_REF(self):
             return self.getToken(ANTLRv4Parser.RULE_REF, 0)
 
         def argActionBlock(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.ArgActionBlockContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.ArgActionBlockContext, 0)
 
         def elementOptions(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.ElementOptionsContext,0)
-
+            return self.getTypedRuleContext(ANTLRv4Parser.ElementOptionsContext, 0)
 
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_ruleref
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterRuleref" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterRuleref"):
                 listener.enterRuleref(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitRuleref" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitRuleref"):
                 listener.exitRuleref(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitRuleref" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitRuleref"):
                 return visitor.visitRuleref(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def ruleref(self):
 
         localctx = ANTLRv4Parser.RulerefContext(self, self._ctx, self.state)
         self.enterRule(localctx, 110, self.RULE_ruleref)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 587
@@ -5472,18 +5561,16 @@ class ANTLRv4Parser ( Parser ):
             self.state = 589
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==ANTLRv4Parser.BEGIN_ARGUMENT:
+            if _la == ANTLRv4Parser.BEGIN_ARGUMENT:
                 self.state = 588
                 self.argActionBlock()
-
 
             self.state = 592
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==ANTLRv4Parser.LT:
+            if _la == ANTLRv4Parser.LT:
                 self.state = 591
                 self.elementOptions()
-
 
         except RecognitionException as re:
             localctx.exception = re
@@ -5493,20 +5580,21 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class CharacterRangeContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
-            self.start = None # Token
-            self.end = None # Token
+            self.start = None  # Token
+            self.end = None  # Token
 
         def RANGE(self):
             return self.getToken(ANTLRv4Parser.RANGE, 0)
 
-        def STRING_LITERAL(self, i:int=None):
+        def STRING_LITERAL(self, i: int = None):
             if i is None:
                 return self.getTokens(ANTLRv4Parser.STRING_LITERAL)
             else:
@@ -5515,22 +5603,19 @@ class ANTLRv4Parser ( Parser ):
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_characterRange
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterCharacterRange" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterCharacterRange"):
                 listener.enterCharacterRange(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitCharacterRange" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitCharacterRange"):
                 listener.exitCharacterRange(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitCharacterRange" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitCharacterRange"):
                 return visitor.visitCharacterRange(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def characterRange(self):
 
@@ -5552,86 +5637,84 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class TerminalContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
-
 
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_terminal
 
-     
-        def copyFrom(self, ctx:ParserRuleContext):
+        def copyFrom(self, ctx: ParserRuleContext):
             super().copyFrom(ctx)
-
-
 
     class TerminalRefContext(TerminalContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ANTLRv4Parser.TerminalContext
+        def __init__(
+            self, parser, ctx: ParserRuleContext
+        ):  # actually a ANTLRv4Parser.TerminalContext
             super().__init__(parser)
-            self.value = None # Token
+            self.value = None  # Token
             self.copyFrom(ctx)
 
         def TOKEN_REF(self):
             return self.getToken(ANTLRv4Parser.TOKEN_REF, 0)
+
         def elementOptions(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.ElementOptionsContext,0)
+            return self.getTypedRuleContext(ANTLRv4Parser.ElementOptionsContext, 0)
 
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTerminalRef" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTerminalRef"):
                 listener.enterTerminalRef(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTerminalRef" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTerminalRef"):
                 listener.exitTerminalRef(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTerminalRef" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTerminalRef"):
                 return visitor.visitTerminalRef(self)
             else:
                 return visitor.visitChildren(self)
 
-
     class TerminalLitContext(TerminalContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ANTLRv4Parser.TerminalContext
+        def __init__(
+            self, parser, ctx: ParserRuleContext
+        ):  # actually a ANTLRv4Parser.TerminalContext
             super().__init__(parser)
-            self.value = None # Token
+            self.value = None  # Token
             self.copyFrom(ctx)
 
         def STRING_LITERAL(self):
             return self.getToken(ANTLRv4Parser.STRING_LITERAL, 0)
+
         def elementOptions(self):
-            return self.getTypedRuleContext(ANTLRv4Parser.ElementOptionsContext,0)
+            return self.getTypedRuleContext(ANTLRv4Parser.ElementOptionsContext, 0)
 
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTerminalLit" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTerminalLit"):
                 listener.enterTerminalLit(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTerminalLit" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTerminalLit"):
                 listener.exitTerminalLit(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTerminalLit" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTerminalLit"):
                 return visitor.visitTerminalLit(self)
             else:
                 return visitor.visitChildren(self)
-
-
 
     def terminal(self):
 
         localctx = ANTLRv4Parser.TerminalContext(self, self._ctx, self.state)
         self.enterRule(localctx, 114, self.RULE_terminal)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.state = 606
             self._errHandler.sync(self)
@@ -5644,10 +5727,9 @@ class ANTLRv4Parser ( Parser ):
                 self.state = 600
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if _la==ANTLRv4Parser.LT:
+                if _la == ANTLRv4Parser.LT:
                     self.state = 599
                     self.elementOptions()
-
 
                 pass
             elif token in [ANTLRv4Parser.STRING_LITERAL]:
@@ -5658,10 +5740,9 @@ class ANTLRv4Parser ( Parser ):
                 self.state = 604
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if _la==ANTLRv4Parser.LT:
+                if _la == ANTLRv4Parser.LT:
                     self.state = 603
                     self.elementOptions()
-
 
                 pass
             else:
@@ -5675,28 +5756,28 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class ElementOptionsContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def LT(self):
             return self.getToken(ANTLRv4Parser.LT, 0)
 
-        def elementOption(self, i:int=None):
+        def elementOption(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ANTLRv4Parser.ElementOptionContext)
             else:
-                return self.getTypedRuleContext(ANTLRv4Parser.ElementOptionContext,i)
-
+                return self.getTypedRuleContext(ANTLRv4Parser.ElementOptionContext, i)
 
         def GT(self):
             return self.getToken(ANTLRv4Parser.GT, 0)
 
-        def COMMA(self, i:int=None):
+        def COMMA(self, i: int = None):
             if i is None:
                 return self.getTokens(ANTLRv4Parser.COMMA)
             else:
@@ -5705,28 +5786,25 @@ class ANTLRv4Parser ( Parser ):
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_elementOptions
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterElementOptions" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterElementOptions"):
                 listener.enterElementOptions(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitElementOptions" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitElementOptions"):
                 listener.exitElementOptions(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitElementOptions" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitElementOptions"):
                 return visitor.visitElementOptions(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def elementOptions(self):
 
         localctx = ANTLRv4Parser.ElementOptionsContext(self, self._ctx, self.state)
         self.enterRule(localctx, 116, self.RULE_elementOptions)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 608
@@ -5736,7 +5814,7 @@ class ANTLRv4Parser ( Parser ):
             self.state = 614
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==ANTLRv4Parser.COMMA:
+            while _la == ANTLRv4Parser.COMMA:
                 self.state = 610
                 self.match(ANTLRv4Parser.COMMA)
                 self.state = 611
@@ -5755,20 +5833,20 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class ElementOptionContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def identifier(self, i:int=None):
+        def identifier(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(ANTLRv4Parser.IdentifierContext)
             else:
-                return self.getTypedRuleContext(ANTLRv4Parser.IdentifierContext,i)
-
+                return self.getTypedRuleContext(ANTLRv4Parser.IdentifierContext, i)
 
         def ASSIGN(self):
             return self.getToken(ANTLRv4Parser.ASSIGN, 0)
@@ -5779,22 +5857,19 @@ class ANTLRv4Parser ( Parser ):
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_elementOption
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterElementOption" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterElementOption"):
                 listener.enterElementOption(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitElementOption" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitElementOption"):
                 listener.exitElementOption(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitElementOption" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitElementOption"):
                 return visitor.visitElementOption(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def elementOption(self):
 
@@ -5803,7 +5878,7 @@ class ANTLRv4Parser ( Parser ):
         try:
             self.state = 626
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,84,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 84, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 619
@@ -5832,7 +5907,6 @@ class ANTLRv4Parser ( Parser ):
 
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -5841,74 +5915,72 @@ class ANTLRv4Parser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class IdentifierContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
-
 
         def getRuleIndex(self):
             return ANTLRv4Parser.RULE_identifier
 
-     
-        def copyFrom(self, ctx:ParserRuleContext):
+        def copyFrom(self, ctx: ParserRuleContext):
             super().copyFrom(ctx)
-
-
 
     class RuleRefIdentifierContext(IdentifierContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ANTLRv4Parser.IdentifierContext
+        def __init__(
+            self, parser, ctx: ParserRuleContext
+        ):  # actually a ANTLRv4Parser.IdentifierContext
             super().__init__(parser)
-            self.value = None # Token
+            self.value = None  # Token
             self.copyFrom(ctx)
 
         def RULE_REF(self):
             return self.getToken(ANTLRv4Parser.RULE_REF, 0)
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterRuleRefIdentifier" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterRuleRefIdentifier"):
                 listener.enterRuleRefIdentifier(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitRuleRefIdentifier" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitRuleRefIdentifier"):
                 listener.exitRuleRefIdentifier(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitRuleRefIdentifier" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitRuleRefIdentifier"):
                 return visitor.visitRuleRefIdentifier(self)
             else:
                 return visitor.visitChildren(self)
 
-
     class TokenRefIdentifierContext(IdentifierContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ANTLRv4Parser.IdentifierContext
+        def __init__(
+            self, parser, ctx: ParserRuleContext
+        ):  # actually a ANTLRv4Parser.IdentifierContext
             super().__init__(parser)
-            self.value = None # Token
+            self.value = None  # Token
             self.copyFrom(ctx)
 
         def TOKEN_REF(self):
             return self.getToken(ANTLRv4Parser.TOKEN_REF, 0)
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTokenRefIdentifier" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTokenRefIdentifier"):
                 listener.enterTokenRefIdentifier(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTokenRefIdentifier" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTokenRefIdentifier"):
                 listener.exitTokenRefIdentifier(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTokenRefIdentifier" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTokenRefIdentifier"):
                 return visitor.visitTokenRefIdentifier(self)
             else:
                 return visitor.visitChildren(self)
-
-
 
     def identifier(self):
 
@@ -5940,8 +6012,3 @@ class ANTLRv4Parser ( Parser ):
         finally:
             self.exitRule()
         return localctx
-
-
-
-
-

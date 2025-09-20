@@ -1,7 +1,8 @@
-from dataclasses import dataclass
 import pathlib
 import threading
 import typing as _t
+from dataclasses import dataclass
+
 
 @dataclass
 class Object:
@@ -160,6 +161,7 @@ class AutodocProvider:
 
 _KNOWN_PROVIDERS = []
 _KNOWN_PROVIDERS_LOCK = threading.Lock()
+
 
 def register_provider(provider: AutodocProvider):
     with _KNOWN_PROVIDERS_LOCK:
