@@ -7,10 +7,7 @@ updates:
     groups:
       dev:
         patterns:
-        - "black"
         - "furo"
-        - "isort"
-        - "pre-commit"
         - "pyright"
         - "pytest-cov"
         - "pytest-image-diff"
@@ -19,3 +16,11 @@ updates:
         - "sphinx_design"
         - "svglib"
         - "sybil"
+        - "pytest-regressions"
+        - "beautifulsoup4"
+        - "sphinxcontrib-svg2pdfconverter"
+      style:
+        patterns:
+        - "black"
+        - "isort"
+        - "pre-commit"
