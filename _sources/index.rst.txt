@@ -1,80 +1,41 @@
 Sphinx Syntax
 =============
 
-.. syntax:diagram::
+A comprehensive Sphinx extension for documenting language grammars.
 
-    - optional:
-      - "WITH"
-      - optional: "RECURSIVE"
-      - one_or_more:
-        - non_terminal: "common-table-expression"
-        repeat: ","
-    - one_or_more:
-      - choice:
-        -
-          - "SELECT"
-          - choice:
-            -
-            - "DISTINCT"
-            - "ALL"
-          - one_or_more:
-            - non_terminal: "result-column"
-            repeat: ","
-          - optional:
-            - "FROM"
-            - choice:
-              - one_or_more:
-                - non_terminal: "table-or-subquery"
-                repeat: ","
-              - non_terminal: "join-clause"
-          - optional:
-            - "WHERE"
-            - non_terminal: "expr"
-          - optional:
-            - "GROUP"
-            - "BY"
-            - one_or_more:
-              - non_terminal: "expr"
-              repeat: ","
-          - optional:
-            - "HAVING"
-            - non_terminal: "expr"
-          - optional:
-            - "WINDOW"
-            - one_or_more:
-              - non_terminal: "window-name"
-              - "AS"
-              - non_terminal: "window-defn"
-              repeat: ","
-        -
-          - "VALUES"
-          - one_or_more:
-            - "("
-            - one_or_more:
-                non_terminal: "expr"
-              repeat: ","
-            - ")"
-            repeat: ","
-      repeat:
-        non_terminal: "compound-operator"
-    - optional:
-      - "ORDER"
-      - "BY"
-      - one_or_more:
-        - non_terminal: "ordering-term"
-        repeat: ","
-    - optional:
-      - "LIMIT"
-      - non_terminal: "expr"
-      - choice:
-        -
-        -
-          - "OFFSET"
-          - non_terminal: "expr"
-        -
-          - ","
-          - non_terminal: "expr"
+Features:
+
+- A new domain with ``grammar`` and ``rule`` directives called ``syntax``.
+
+- Directives for rendering syntax diagrams, such as this one:
+
+  .. syntax:diagram::
+     - choice:
+       - terminal: 'parser'
+       -
+       - terminal: 'lexer '
+       default: 1
+     - terminal: 'grammar'
+     - non_terminal: 'identifier'
+     - terminal: ';'
+
+- Directive for extracting documentation comments and rendering docs and
+  diagrams from ANTLR4 and Bison/YACC source files.
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+    :maxdepth: 1
+
+    quickstart
+    directives
+    roles
+    autodoc
+    settings
+    example
+    sphinx-a4doc
+    api
+
+.. toctree::
+    :hidden:
+    :caption: Links
+
+    GitHub <https://github.com/taminomara/sphinx-syntax/>
