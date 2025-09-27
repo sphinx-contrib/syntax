@@ -38,7 +38,7 @@ test = [
     "pyright==1.1.404",
     "pytest==8.4.2",
     "sybil==9.2.0",
-    "pytest-regressions==2.8.1",
+    "pytest-regressions==2.8.3",
     "beautifulsoup4==4.13.4"
 ]
 lint = [
