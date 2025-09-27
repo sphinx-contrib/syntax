@@ -572,3 +572,9 @@ def setup(app: sphinx.application.Sphinx):
     import sphinx_syntax
 
     sphinx_syntax.register_provider(PROVIDER)
+
+    return {
+        "version": sphinx_syntax.__version__,
+        "parallel_read_safe": True,
+        "parallel_write_safe": True,
+    }

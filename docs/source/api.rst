@@ -53,6 +53,12 @@ If you wish to support a new parser generator, you'll need to implement
 
             sphinx_syntax.register_provider(MyProvider())
 
+            return {
+                "version": "1.0.0",
+                "parallel_read_safe": True,
+                "parallel_write_safe": True,
+            }
+
 
 Basic interfaces
 ----------------
