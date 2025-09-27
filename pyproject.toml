@@ -21,7 +21,7 @@ classifiers = [
     "Typing :: Typed",
 ]
 dependencies = [
-    "syntax-diagrams>=1.0.0.b0,<2.0",
+    "syntax-diagrams>=1.0.0,<2.0",
     "sphinx>=8.0,<9.0",
     "PyYAML>=6.0,<7.0",
     "antlr4-python3-runtime>=4.9,<5",
