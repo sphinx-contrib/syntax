@@ -32,3 +32,13 @@ Diagrams
 
       - Foo
       - Bar
+
+   .. syntax:diagram::
+
+      - terminal: NodeWithLink
+        href: "#anchor"
+        title: "Go to anchor"
+
+   .. syntax:lexer-diagram:: FOO_BAR 'FooBar'
+
+   .. syntax:parser-diagram:: FooBar 'FooBar'

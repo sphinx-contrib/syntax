@@ -1,7 +1,11 @@
+from __future__ import annotations
+
 import dataclasses
 import hashlib
 import json
+import pathlib
 import typing as _t
+from enum import Enum
 
 import docutils.nodes
 import docutils.parsers.rst.directives.images
@@ -15,7 +19,8 @@ from docutils.parsers.rst import directives
 from sphinx.transforms import SphinxTransform
 
 import sphinx_syntax.domain
-from sphinx_syntax._version import __version__, __version_tuple__
+from sphinx_syntax.model import HrefResolverData
+from sphinx_syntax.model_renderer import render
 
 _logger = sphinx.util.logging.getLogger("sphinx_syntax")
 
@@ -32,48 +37,67 @@ class DiagramNode(
     """
 
 
+class _JSONEncoder(json.JSONEncoder):
+    def default(self, o):
+        if dataclasses.is_dataclass(o) and not isinstance(o, type):
+            d = dataclasses.asdict(o)
+            return d
+        elif isinstance(o, Enum):
+            return o.value
+        return super().default(o)
+
+
 class DiagramDirective(sphinx_syntax.domain.ContextManagerMixin):
     option_spec = {
         "force-text": directives.flag,
         **sphinx_syntax.domain.OPTION_SPEC_DIAGRAMS,
         **(docutils.parsers.rst.directives.images.Image.option_spec or {}),
     }
+    disabled_options = {"height", "width", "scale", "target", "name"}
     has_content = True
 
     def run(self) -> list[docutils.nodes.Node]:
-        for option in ["height", "width", "scale", "target"]:
+        for option in self.disabled_options:
             if option in self.options:
                 _logger.warning(
-                    "%s doesn't support option %s, ignored",
-                    self.name,
-                    option,
+                    f"'{self.name}' directive doesn't support option :{option}:",
                     location=self.get_location(),
                     type="sphinx_syntax",
+                    subtype="deprecation_warning",
+                    once=True,
                 )
                 del self.options[option]
 
         data = self.get_data()
 
         hash = hashlib.sha1(
-            json.dumps(data, sort_keys=True).encode(), usedforsecurity=False
+            json.dumps(data, sort_keys=True, cls=_JSONEncoder).encode(),
+            usedforsecurity=False,
         ).hexdigest()
         uri = f"data:syntax-diagram;{hash}.svg"
 
         options = self.get_diagram_options(prefix="")
+        if options.get("end-class") is None:
+            if end_class := self.env.config["syntax_end_class"]:
+                options["end-class"] = rr.EndClass(end_class)
 
         return [
-            DiagramNode(
+            docutils.nodes.paragraph(
                 self.block_text,
-                *self.make_image(uri),
-                data=data,
-                refdomain=self.domain,
-                grammar=self.get_context_grammar(),
-                force_text="force-text" in self.options,
-                **options,
+                "",
+                DiagramNode(
+                    self.block_text,
+                    *self.make_image(uri),
+                    data=data,
+                    refdomain=self.domain,
+                    grammar=self.get_context_grammar(),
+                    force_text="force-text" in self.options,
+                    **options,
+                ),
             )
         ]
 
-    def get_data(self) -> _t.Any:
+    def get_data(self) -> rr.Element[HrefResolverData]:
         """
         Load and return yaml data for rendering a diagram.
 
@@ -122,11 +146,6 @@ class DiagramDirective(sphinx_syntax.domain.ContextManagerMixin):
         mark.line = line or self.content_offset
 
 
-@dataclasses.dataclass
-class HrefResolverData:
-    text_is_weak: bool = True
-
-
 class HrefResolver(rr.HrefResolver[HrefResolverData]):
     """
     Resolves links against the syntax domain.
@@ -153,27 +172,33 @@ class HrefResolver(rr.HrefResolver[HrefResolverData]):
         title: str | None,
         resolver_data: HrefResolverData | None,
     ):
-        if href:
-            return text, href, text
-        text_is_weak = True
-        if resolver_data:
-            text_is_weak = resolver_data.text_is_weak
+        if href is not None and (
+            href.startswith("http://")
+            or href.startswith("https://")
+            or href.startswith("/")
+            or href.startswith("./")
+            or href.startswith("../")
+            or href.startswith("#")
+            or href in [".", ".."]
+        ):
+            return text, href, title
 
-        text, target = text, text
-        text = text.lstrip(".")
-        target = target.lstrip("~")
-        if text[0:1] == "~":
-            text = text[1:]
-            dot = text.rfind(".")
-            if dot != -1:
-                text = text[dot + 1 :]
+        resolver_data = resolver_data or HrefResolverData()
+
+        title = text
+        if href is None:
+            target = text
+            explicit_title = False
+        else:
+            target = href
+            explicit_title = not resolver_data.text_is_weak
 
         xref = sphinx.addnodes.pending_xref(
             "",
             refdoc=self._env.docname,
             refdomain=self._domain.name,
             reftype="_auto",
-            refexplicit=not text_is_weak,
+            refexplicit=explicit_title,
             refwarn=False,
         )
 
@@ -208,6 +233,15 @@ class HrefResolver(rr.HrefResolver[HrefResolverData]):
                 return refnode.astext(), None, refnode.get("reftitle", title)
 
 
+_LATEX_TEXT_MEASSURE = rr.SimpleTextMeasure(
+    character_advance=7.23,
+    wide_character_advance=16.48,
+    font_size=12,
+    line_height=12 * 1.1,
+    ascent=10,
+)
+
+
 class ProcessDiagrams(SphinxTransform):
     """
     Processes all `DiagramNode`s in a tree, render diagrams and updates images.
@@ -229,10 +263,26 @@ class ProcessDiagrams(SphinxTransform):
         image: docutils.nodes.image
         for image in node.findall(docutils.nodes.image):
             diagram = node["data"]
-            if self.app.builder.supported_image_types and not node["force_text"]:
-                self.render_svg(image, node, diagram)
-            else:
-                self.render_text(image, node, diagram)
+            try:
+                if self.app.builder.supported_image_types and not node["force_text"]:
+                    if (
+                        isinstance(
+                            self.app.builder, sphinx.builders.html.StandaloneHTMLBuilder
+                        )
+                        and image.get("loading", "embed") == "embed"
+                    ):
+                        self.render_svg(image, node, diagram)
+                    else:
+                        self.render_svg_latex(image, node, diagram)
+                else:
+                    self.render_text(image, node, diagram)
+            except rr.LoadingError as e:
+                _logger.error(
+                    f"can't parse syntax diagram description: {e}",
+                    location=image,
+                    type="sphinx_syntax",
+                )
+            break
         node.replace_self(node.children)
 
     def render_svg(
@@ -241,7 +291,7 @@ class ProcessDiagrams(SphinxTransform):
         node: DiagramNode,
         diagram: rr.Element[HrefResolverData],
     ):
-        settings: rr.SvgRenderSettings = self.config["syntax_diagrams_svg_settings"]
+        settings = self.svg_settings
 
         classes = list(
             filter(None, ["syntax-diagram", image.get("class"), settings.css_class])
@@ -251,9 +301,14 @@ class ProcessDiagrams(SphinxTransform):
 
         settings = dataclasses.replace(
             settings,
+            title=image.get("alt", settings.title),
             css_class=" ".join(classes),
+            css_style=None,
             end_class=node.get("end-class", settings.end_class),
             reverse=node.get("reverse", settings.reverse),
+        )
+        settings = dataclasses.replace(
+            settings,
             **{
                 (name_attr := name.removeprefix("svg-").replace("-", "_")): node.get(
                     name, getattr(settings, name_attr)
@@ -263,27 +318,58 @@ class ProcessDiagrams(SphinxTransform):
             },
         )
 
-        if (
-            isinstance(self.app.builder, sphinx.builders.html.StandaloneHTMLBuilder)
-            and image.get("loading", "embed") == "embed"
-        ):
-            settings = dataclasses.replace(
-                settings,
-                css_style=None,
-                title=image.get("alt"),
+        content = rr.render_svg(
+            diagram,
+            settings=settings,
+            href_resolver=HrefResolver(
+                self.env, node["refdomain"] or "syntax", node["grammar"]
+            ),
+        )
+        raw = docutils.nodes.raw(image.rawsource, content, format="html")
+        if "name" in image:
+            raw["name"] = image["name"]
+        image.replace_self(raw)
+
+    def render_svg_latex(
+        self,
+        image: docutils.nodes.image,
+        node: DiagramNode,
+        diagram: rr.Element[HrefResolverData],
+    ):
+        settings = self.svg_latex_settings
+
+        classes = list(
+            filter(None, ["syntax-diagram", image.get("class"), settings.css_class])
+        )
+        if "align" in image:
+            classes.append(f"align-{image["align"]}")
+
+        settings = dataclasses.replace(
+            settings,
+            title=image.get("alt", settings.title),
+            css_class=" ".join(classes),
+            css_style=None,
+            end_class=node.get("end-class", settings.end_class),
+            reverse=node.get("reverse", settings.reverse),
+        )
+        settings = dataclasses.replace(
+            settings,
+            **{
+                (name_attr := name.removeprefix("svg-").replace("-", "_")): node.get(
+                    name, getattr(settings, name_attr)
+                )
+                for name in sphinx_syntax.domain.OPTION_SPEC_DIAGRAMS
+                if name.startswith("svg-")
+            },
+        )
+
+        for basedir in self.config.html_static_path:
+            path = pathlib.Path(
+                self.app.builder.confdir, basedir, "syntax-diagrams-latex.css"
             )
-            content = rr.render_svg(
-                diagram,
-                settings=settings,
-                href_resolver=HrefResolver(
-                    self.env, node["refdomain"] or "syntax", node["grammar"]
-                ),
-            )
-            raw = docutils.nodes.raw(image.rawsource, content, format="html")
-            if "name" in image:
-                raw["name"] = image["name"]
-            image.replace_self(raw)
-            return
+            if path.exists() and path.is_file():
+                settings = dataclasses.replace(settings, css_style=path.read_text())
+                break
 
         content = rr.render_svg(diagram, settings=settings)
 
@@ -307,7 +393,7 @@ class ProcessDiagrams(SphinxTransform):
         node: DiagramNode,
         diagram: rr.Element[HrefResolverData],
     ):
-        settings: rr.TextRenderSettings = self.config["syntax_diagrams_text_settings"]
+        settings = self.text_settings
 
         settings = dataclasses.replace(
             settings,
@@ -328,5 +414,126 @@ class ProcessDiagrams(SphinxTransform):
         image.replace_self(docutils.nodes.literal_block(image.rawsource, content))
 
     @property
+    def svg_settings(self):
+        settings: rr.SvgRenderSettings | dict[str, _t.Any] = self.config[
+            "syntax_diagrams_svg_settings"
+        ]
+        if isinstance(settings, dict):
+            settings = dataclasses.replace(
+                rr.SvgRenderSettings(max_width=700), **settings
+            )
+        return settings
+
+    @property
+    def svg_latex_settings(self):
+        settings: rr.SvgRenderSettings | dict[str, _t.Any] = self.config[
+            "syntax_diagrams_svg_settings"
+        ]
+        if isinstance(settings, dict):
+            settings = dataclasses.replace(
+                rr.SvgRenderSettings(
+                    max_width=600,
+                    terminal_text_measure=_LATEX_TEXT_MEASSURE,
+                    non_terminal_text_measure=_LATEX_TEXT_MEASSURE,
+                    comment_text_measure=_LATEX_TEXT_MEASSURE,
+                    group_text_measure=_LATEX_TEXT_MEASSURE,
+                ),
+                **settings,
+            )
+        return settings
+
+    @property
+    def text_settings(self):
+        settings: rr.TextRenderSettings | dict[str, _t.Any] = self.config[
+            "syntax_diagrams_text_settings"
+        ]
+        if isinstance(settings, dict):
+            settings = dataclasses.replace(rr.TextRenderSettings(), **settings)
+        return settings
+
+    @property
     def imagedir(self):
         return self.env.app.doctreedir / "images"
+
+
+class AntlrDiagramDirective(DiagramDirective):
+    option_spec = {
+        "imports": sphinx_syntax.domain.parse_list,
+        "cc-to-dash": directives.flag,
+        "no-cc-to-dash": directives.flag,
+        "literal-rendering": lambda x: directives.choice(
+            x, ("name", "contents", "contents-unquoted")
+        ),
+        **DiagramDirective.option_spec,
+    }
+
+    def run(self) -> list[docutils.nodes.Node]:
+        for flag in [
+            "cc-to-dash",
+        ]:
+            if f"no-{flag}" in self.options:
+                if flag in self.options:
+                    _logger.error(
+                        f":{flag}: can't be given together with :no-{flag}:",
+                        location=self.get_location(),
+                        type="sphinx_syntax",
+                    )
+                self.options[flag] = False
+                del self.options[f"no-{flag}"]
+            elif flag in self.options:
+                self.options[flag] = True
+
+        for option in [
+            "cc-to-dash",
+            "literal-rendering",
+        ]:
+            if option not in self.options:
+                self.options[option] = self.env.config[
+                    f"syntax_{option.replace("-", "_")}"
+                ]
+
+        if "imports" not in self.options:
+            if grammar := self.get_context_grammar():
+                data = self.syntax_domain.grammars.get(grammar)
+                if data:
+                    self.options["imports"] = data.imports
+
+        return super().run()
+
+
+class LexerRuleDiagramDirective(AntlrDiagramDirective):
+    def get_data(self):
+        from sphinx_syntax.ext.antlr4 import PROVIDER
+
+        raw = "\n".join(self.content)
+        content = f"grammar X; ROOT : {raw} ;"
+        model = PROVIDER.from_text(
+            content,
+            pathlib.Path(self.state_machine.reporter.source),
+            offset=self.content_offset,
+        )
+        tree = model.lookup("ROOT")
+        if tree is None or tree.content is None:
+            raise self.error("cannot parse the rule")
+        return render(
+            tree, self.options["literal-rendering"], self.options["cc-to-dash"]
+        )
+
+
+class ParserRuleDiagramDirective(AntlrDiagramDirective):
+    def get_data(self):
+        from sphinx_syntax.ext.antlr4 import PROVIDER
+
+        raw = "\n".join(self.content)
+        content = f"grammar X; root : {raw} ;"
+        model = PROVIDER.from_text(
+            content,
+            pathlib.Path(self.state_machine.reporter.source),
+            offset=self.content_offset,
+        )
+        tree = model.lookup("root")
+        if tree is None or tree.content is None:
+            raise self.error("cannot parse the rule")
+        return render(
+            tree, self.options["literal-rendering"], self.options["cc-to-dash"]
+        )

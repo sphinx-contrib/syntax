@@ -8,6 +8,7 @@ import docutils.nodes
 import sphinx.addnodes
 import sphinx.builders
 import sphinx.directives
+import sphinx.util.logging
 import syntax_diagrams as rr
 from docutils.parsers.rst import directives
 from docutils.parsers.rst.states import RSTStateMachine
@@ -18,14 +19,13 @@ from sphinx.domains import Domain, ObjType
 from sphinx.environment import BuildEnvironment
 from sphinx.locale import _
 from sphinx.roles import XRefRole
-from sphinx.util import logging
 from sphinx.util.docutils import SphinxDirective
 from sphinx.util.nodes import make_id, make_refnode
 
-logger = logging.getLogger("sphinx_syntax")
+_logger = sphinx.util.logging.getLogger("sphinx_syntax")
 
 
-def _list(value: str | None):
+def parse_list(value: str | None):
     if value is None:
         return []
     if "," in value:
@@ -34,7 +34,7 @@ def _list(value: str | None):
         return value.split()
 
 
-def _end_class(value: str | None):
+def parse_end_class(value: str | None):
     if value:
         value = directives.choice(value.lower(), ["simple", "complex"])
         return rr.EndClass(value.upper())
@@ -42,31 +42,31 @@ def _end_class(value: str | None):
         return None
 
 
-def _arrow_style(value: str | None):
+def parse_arrow_style(value: str | None):
     if value:
         value = directives.choice(
             value.lower(),
-            ["none", "triangle", "stealth", "barb", "harpoon", "harpoon_up"],
+            ["none", "triangle", "stealth", "barb", "harpoon", "harpoon-up"],
         )
-        return rr.ArrowStyle(value.upper())
+        return rr.ArrowStyle(value.upper().replace("-", "_"))
     else:
         return None
 
 
-def _int(value: str | None):
+def parse_int(value: str | None):
     if value is None:
         raise ValueError("value is required")
     return int(value)
 
 
-def _non_negative_int(value: str | None):
-    result = _int(value)
+def parse_non_negative_int(value: str | None):
+    result = parse_int(value)
     if result < 0:
         raise ValueError("negative value; must be positive")
     return result
 
 
-def _padding(value: str | None):
+def parse_padding(value: str | None):
     if not value:
         raise ValueError("must be a list of 4 values")
     result = directives.positive_int_list(value)
@@ -78,50 +78,50 @@ def _padding(value: str | None):
 OPTION_SPEC_DIAGRAMS = {
     "reverse": directives.flag,
     "no-reverse": directives.flag,
-    "end-class": _end_class,
-    "svg-padding": _padding,
-    "svg-title": _non_negative_int,
-    "svg-description": _non_negative_int,
-    "svg-vertical-choice-separation-outer": _non_negative_int,
-    "svg-vertical-choice-separation": _non_negative_int,
-    "svg-vertical-seq-separation-outer": _non_negative_int,
-    "svg-vertical-seq-separation": _non_negative_int,
-    "svg-horizontal-seq-separation": _non_negative_int,
-    "svg-arrow-style": _arrow_style,
-    "svg-arrow-length": _non_negative_int,
-    "svg-arrow-cross-length": _non_negative_int,
-    "svg-max-width": _non_negative_int,
-    "svg-arc-radius": _non_negative_int,
-    "svg-arc-margin": _non_negative_int,
-    "svg-terminal-horizontal-padding": _non_negative_int,
-    "svg-terminal-vertical-padding": _non_negative_int,
-    "svg-terminal-radius": _non_negative_int,
-    "svg-non-terminal-horizontal-padding": _non_negative_int,
-    "svg-non-terminal-vertical-padding": _non_negative_int,
-    "svg-non-terminal-radius": _non_negative_int,
-    "svg-comment-horizontal-padding": _non_negative_int,
-    "svg-comment-vertical-padding": _non_negative_int,
-    "svg-comment-radius": _non_negative_int,
-    "svg-group-vertical-padding": _non_negative_int,
-    "svg-group-horizontal-padding": _non_negative_int,
-    "svg-group-vertical-margin": _non_negative_int,
-    "svg-group-horizontal-margin": _non_negative_int,
-    "svg-group-radius": _non_negative_int,
-    "svg-group-text-vertical-offset": _non_negative_int,
-    "svg-group-text-horizontal-offset": _non_negative_int,
-    "text-padding": _padding,
-    "text-vertical-choice-separation-outer": _non_negative_int,
-    "text-vertical-choice-separation": _non_negative_int,
-    "text-vertical-seq-separation-outer": _non_negative_int,
-    "text-vertical-seq-separation": _non_negative_int,
-    "text-horizontal-seq-separation": _non_negative_int,
-    "text-group-vertical-padding": _non_negative_int,
-    "text-group-horizontal-padding": _non_negative_int,
-    "text-group-vertical-margin": _non_negative_int,
-    "text-group-horizontal-margin": _non_negative_int,
-    "text-group-text-vertical-offset": _int,
-    "text-group-text-horizontal-offset": _non_negative_int,
-    "text-max-width": _non_negative_int,
+    "end-class": parse_end_class,
+    "svg-padding": parse_padding,
+    "svg-title": parse_non_negative_int,
+    "svg-description": parse_non_negative_int,
+    "svg-vertical-choice-separation-outer": parse_non_negative_int,
+    "svg-vertical-choice-separation": parse_non_negative_int,
+    "svg-vertical-seq-separation-outer": parse_non_negative_int,
+    "svg-vertical-seq-separation": parse_non_negative_int,
+    "svg-horizontal-seq-separation": parse_non_negative_int,
+    "svg-arrow-style": parse_arrow_style,
+    "svg-arrow-length": parse_non_negative_int,
+    "svg-arrow-cross-length": parse_non_negative_int,
+    "svg-max-width": parse_non_negative_int,
+    "svg-arc-radius": parse_non_negative_int,
+    "svg-arc-margin": parse_non_negative_int,
+    "svg-terminal-horizontal-padding": parse_non_negative_int,
+    "svg-terminal-vertical-padding": parse_non_negative_int,
+    "svg-terminal-radius": parse_non_negative_int,
+    "svg-non-terminal-horizontal-padding": parse_non_negative_int,
+    "svg-non-terminal-vertical-padding": parse_non_negative_int,
+    "svg-non-terminal-radius": parse_non_negative_int,
+    "svg-comment-horizontal-padding": parse_non_negative_int,
+    "svg-comment-vertical-padding": parse_non_negative_int,
+    "svg-comment-radius": parse_non_negative_int,
+    "svg-group-vertical-padding": parse_non_negative_int,
+    "svg-group-horizontal-padding": parse_non_negative_int,
+    "svg-group-vertical-margin": parse_non_negative_int,
+    "svg-group-horizontal-margin": parse_non_negative_int,
+    "svg-group-radius": parse_non_negative_int,
+    "svg-group-text-vertical-offset": parse_non_negative_int,
+    "svg-group-text-horizontal-offset": parse_non_negative_int,
+    "text-padding": parse_padding,
+    "text-vertical-choice-separation-outer": parse_non_negative_int,
+    "text-vertical-choice-separation": parse_non_negative_int,
+    "text-vertical-seq-separation-outer": parse_non_negative_int,
+    "text-vertical-seq-separation": parse_non_negative_int,
+    "text-horizontal-seq-separation": parse_non_negative_int,
+    "text-group-vertical-padding": parse_non_negative_int,
+    "text-group-horizontal-padding": parse_non_negative_int,
+    "text-group-vertical-margin": parse_non_negative_int,
+    "text-group-horizontal-margin": parse_non_negative_int,
+    "text-group-text-vertical-offset": parse_int,
+    "text-group-text-horizontal-offset": parse_non_negative_int,
+    "text-max-width": parse_non_negative_int,
 }
 
 
@@ -147,16 +147,18 @@ class ContextManagerMixin(SphinxDirective):
         return domain
 
     def get_diagram_options(self, prefix="diagram-") -> _t.Dict[str, _t.Any]:
-        if f"{prefix}no-reverse" in self.options:
-            if f"{prefix}reverse" in self.options:
-                self.state_machine.reporter.warning(
-                    f":{prefix}reverse: can't be given together with :{prefix}no-reverse:",
-                    line=self.lineno,
-                )
-            self.options[f"{prefix}reverse"] = False
-            del self.options[f"{prefix}no-reverse"]
-        elif f"{prefix}reverse" in self.options:
-            self.options[f"{prefix}reverse"] = True
+        for flag in ["reverse"]:
+            if f"{prefix}no-{flag}" in self.options:
+                if f"{prefix}{flag}" in self.options:
+                    _logger.error(
+                        f":{prefix}{flag}: can't be given together with :{prefix}no-{flag}:",
+                        location=self.get_location(),
+                        type="sphinx_syntax",
+                    )
+                self.options[f"{prefix}{flag}"] = False
+                del self.options[f"{prefix}no-{flag}"]
+            elif f"{prefix}{flag}" in self.options:
+                self.options[f"{prefix}{flag}"] = True
 
         return {
             **(self.env.ref_context.get(f"{self.syntax_domain.name}:diagram") or {}),
@@ -231,13 +233,6 @@ class SyntaxObjectDescription(
 
         return fullname, prefix, sig
 
-    def _object_hierarchy_parts(
-        self, sig_node: sphinx.addnodes.desc_signature
-    ) -> tuple[str, ...]:
-        if "fullname" not in sig_node:
-            return ()
-        return tuple(sig_node["fullname"].split("."))
-
     def add_target_and_index(
         self,
         name: tuple[str, str, str],
@@ -254,6 +249,10 @@ class SyntaxObjectDescription(
             signode["names"].append(id)
             signode["ids"].append(id)
             signode["first"] = not self.names
+            if self.env.config["syntax_a4doc_compat_links"]:
+                a4doc_anchor = "a4." + fullname
+                signode["names"].append(a4doc_anchor)
+                signode["ids"].append(a4doc_anchor)
             self.state.document.note_explicit_target(signode)
 
             self.syntax_domain.note_object(
@@ -297,14 +296,22 @@ class SyntaxObjectDescription(
     def after_content(self) -> None:
         self.pop_context(self.objtype)
 
+    def _object_hierarchy_parts(
+        self, sig_node: sphinx.addnodes.desc_signature
+    ) -> tuple[str, ...]:
+        if "fullname" not in sig_node:
+            return ()
+        return tuple(sig_node["fullname"].split("."))
+
     def _toc_entry_name(self, sig_node: sphinx.addnodes.desc_signature) -> str:
         if not sig_node.get("_toc_parts"):
             return ""
 
         config = self.config
         *parents, name = sig_node["_toc_parts"]
+        name = self.options.get("name") or name
         if config.toc_object_entries_show_parents == "domain":
-            return sig_node.get("fullname", name)
+            return ".".join([*parents, name])
         if config.toc_object_entries_show_parents == "hide":
             return name
         if config.toc_object_entries_show_parents == "all":
@@ -314,7 +321,7 @@ class SyntaxObjectDescription(
 
 class GrammarDescription(SyntaxObjectDescription):
     option_spec = {
-        "imports": _list,
+        "imports": parse_list,
         **SyntaxObjectDescription.option_spec,
     }
 
@@ -528,7 +535,7 @@ class SyntaxDomain(Domain):
     ):
         for fullname, data in l.items():
             if fullname in r:
-                logger.warning(
+                _logger.warning(
                     "duplicate description for object %s found in files %s and %s",
                     fullname,
                     env.doc2path(data.docname),
@@ -562,13 +569,13 @@ class SyntaxDomain(Domain):
                 f"from {self.env.doc2path(result["syntax:docname"])}"
                 for result in results
             )
-            logger.warning(
+            _logger.warning(
                 "reference :%s:%s:`%s` resolved to multiple objects: can be %s",
                 self.name,
                 typ,
                 target,
                 candidates,
-                type="lua-ls",
+                type="sphinx_syntax",
                 location=(node.source, node.line),
             )
         if results:

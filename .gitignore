@@ -134,3 +134,6 @@ _version.py
 # IDEs
 .idea/
 .vscode/
+
+# VSCode ANTLR extension
+.antlr/

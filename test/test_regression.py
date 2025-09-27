@@ -13,8 +13,11 @@ from bs4 import BeautifulSoup
         "src/diagram-settings.html",
         "src/diagram-refs.html",
         "src/diagram-override.html",
+        "src/diagram-opt.html",
         "src/objects.html",
         "src/refs.html",
+        "src/audodoc-lexer.html",
+        "src/audodoc-bison.html",
     ],
 )
 def test_regression(app, src, file_regression):

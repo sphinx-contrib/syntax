@@ -54,3 +54,19 @@ Diagram settings
 
       - Foo
       - Bar
+
+   .. syntax:lexer-diagram:: FOO_BAR 'Foo\nBar'
+      :force-text:
+      :cc-to-dash:
+
+   .. syntax:lexer-diagram:: FOO_BAR 'Foo\nBar'
+      :force-text:
+      :literal-rendering: name
+
+   .. syntax:lexer-diagram:: FOO_BAR 'Foo\nBar'
+      :force-text:
+      :literal-rendering: contents
+
+   .. syntax:lexer-diagram:: FOO_BAR 'Foo\nBar'
+      :force-text:
+      :literal-rendering: contents-unquoted

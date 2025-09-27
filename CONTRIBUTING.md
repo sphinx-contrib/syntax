@@ -13,7 +13,7 @@
 3. Install Sphinx Syntax in development mode, and install dev dependencies:
 
    ```shell
-   pip install -e .[dev]
+   pip install -e . --group dev
    ```
 
 4. Install pre-commit hooks:
@@ -36,7 +36,6 @@ To fix code style, you can manually run pre-commit hooks:
 ```shell
 pre-commit run -a  # Fix code style.
 ```
-
 
 ## Build docs
 
