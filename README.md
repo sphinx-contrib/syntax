@@ -1,6 +1,4 @@
-# Sphinx plugin for Lua and Lua Language Server
-
-A comprehensive Sphinx extension for documenting language grammars.
+# Sphinx plugin for documenting language grammars
 
 Features:
 
