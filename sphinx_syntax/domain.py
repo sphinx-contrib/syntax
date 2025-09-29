@@ -534,7 +534,7 @@ class SyntaxDomain(Domain):
         env: BuildEnvironment, l: dict[str, IndexEntry], r: dict[str, IndexEntry]
     ):
         for fullname, data in l.items():
-            if fullname in r:
+            if fullname in r and data.docname != r[fullname].docname:
                 _logger.warning(
                     "duplicate description for object %s found in files %s and %s",
                     fullname,
