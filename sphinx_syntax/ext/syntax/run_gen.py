@@ -24,6 +24,7 @@ def main():
     DIR.joinpath("gen").mkdir(parents=True, exist_ok=True)
     DIR.joinpath("gen/__init__.py").touch()
     shutil.copyfile(DIR / "ANTLRv4LexerBase.py.in", DIR / "gen/ANTLRv4LexerBase.py")
+    shutil.copyfile(DIR / "BisonLexerBase.py.in", DIR / "gen/BisonLexerBase.py")
     subprocess.check_call(
         [
             "antlr4",

@@ -1,5 +1,9 @@
 lexer grammar BisonLexer;
 
+options {
+    superClass = BisonLexerBase ;
+}
+
 import LexBasic;
 
 // ======================================================

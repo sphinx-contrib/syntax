@@ -16,7 +16,8 @@
 
 /** Grammar input. */
 input
-    : input line
+    : input line { 'a: {} } // Rust-like lifetime annotation,
+                            // should be parsed correctly.
     | %empty
     ;
 

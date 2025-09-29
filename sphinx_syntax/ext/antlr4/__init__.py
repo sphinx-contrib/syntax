@@ -15,6 +15,7 @@ from sphinx_syntax import (
     Doc,
     LexerRule,
     Literal,
+    LoadingOptions,
     Model,
     ModelImpl,
     ModelProvider,
@@ -51,7 +52,7 @@ class Antlr4Provider(ModelProvider):
     def __init__(self):
         self._loaded: dict[pathlib.Path, Model] = {}
 
-    def from_file(self, path: pathlib.Path) -> Model:
+    def from_file(self, path: pathlib.Path, options: LoadingOptions) -> Model:
         path = path.expanduser().resolve()
 
         if path in self._loaded:
@@ -176,7 +177,7 @@ class MetaLoader(ParserVisitor):
             )
         else:
             assert self._basedir
-            model = self._cache.from_file(self._basedir / (name + ".g4"))
+            model = self._cache.from_file(self._basedir / (name + ".g4"), LoadingOptions())
             self._model.add_import(model)
 
     def visitGrammarSpec(self, ctx):

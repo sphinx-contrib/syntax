@@ -13,7 +13,13 @@ from docutils.parsers.rst import directives
 
 from sphinx_syntax.diagram import DiagramDirective
 from sphinx_syntax.domain import GrammarDescription, RuleDescription
-from sphinx_syntax.model import HrefResolverData, Model, RuleBase, find_provider
+from sphinx_syntax.model import (
+    HrefResolverData,
+    LoadingOptions,
+    Model,
+    RuleBase,
+    find_provider,
+)
 from sphinx_syntax.model_renderer import render, to_dash_case
 from sphinx_syntax.reachable_finder import find_reachable_rules
 
@@ -38,8 +44,10 @@ class AutoGrammarDescription(GrammarDescription):
         "no-fragments": directives.flag,
         "undocumented": directives.flag,
         "no-undocumented": directives.flag,
-        "honor-sections": directives.flag,  # TODO
-        "no-honor-sections": directives.flag,  # TODO
+        "honor-sections": directives.flag,
+        "no-honor-sections": directives.flag,
+        "bison-c-char-literals": directives.flag,
+        "no-bison-c-char-literals": directives.flag,
         "grouping": lambda x: directives.choice(
             x, ("mixed", "lexer-first", "parser-first")
         ),
@@ -52,9 +60,6 @@ class AutoGrammarDescription(GrammarDescription):
 
     def run(self) -> list[Node]:
         self.name = self.name.replace("auto", "")
-        self.model = self.load_model()
-        self.note_deps()
-        self.arguments = [self.model.get_name()]
         self.options = self.options.copy()
 
         if "only-reachable-from" in self.options:
@@ -84,6 +89,7 @@ class AutoGrammarDescription(GrammarDescription):
             "fragments",
             "undocumented",
             "honor-sections",
+            "bison-c-char-literals",
         ]:
             if f"no-{flag}" in self.options:
                 if flag in self.options:
@@ -109,11 +115,16 @@ class AutoGrammarDescription(GrammarDescription):
             "ordering",
             "literal-rendering",
             "honor-sections",
+            "bison-c-char-literals",
         ]:
             if option not in self.options:
                 self.options[option] = self.env.config[
                     f"syntax_{option.replace("-", "_")}"
                 ]
+
+        self.model = self.load_model()
+        self.arguments = [self.model.get_name()]
+        self.note_deps()
 
         if "imports" not in self.options:
             self.options["imports"] = [
@@ -131,7 +142,10 @@ class AutoGrammarDescription(GrammarDescription):
                 f"can't determine file format for {path}; "
                 f"make sure that extension for this file type is loaded"
             )
-        return provider.from_file(path)
+        return provider.from_file(
+            path,
+            LoadingOptions(use_c_char_literals=self.options["bison-c-char-literals"]),
+        )
 
     def transform_content(self, content_node: sphinx.addnodes.desc_content) -> None:
         content_node += self.render_docs(
@@ -237,11 +251,22 @@ class AutoGrammarDescription(GrammarDescription):
                     )
                     rule_model = None
                 else:
-                    rule_model = provider.from_file(path)
+                    rule_model = provider.from_file(
+                        path,
+                        LoadingOptions(
+                            use_c_char_literals=self.options["bison-c-char-literals"]
+                        ),
+                    )
             elif "." in rule_name:
                 model_name, rule_name = rule_name.rsplit(".", 1)
                 base_path = pathlib.Path(rule_model.get_path()).parent
-                rule_model = rule_model.get_provider().from_name(base_path, model_name)
+                rule_model = rule_model.get_provider().from_name(
+                    base_path,
+                    model_name,
+                    LoadingOptions(
+                        use_c_char_literals=self.options["bison-c-char-literals"]
+                    ),
+                )
             if rule_model:
                 root_rule = rule_model.lookup(rule_name)
                 if root_rule:

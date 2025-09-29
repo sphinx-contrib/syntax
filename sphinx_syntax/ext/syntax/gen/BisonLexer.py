@@ -8,6 +8,11 @@ else:
     from typing.io import TextIO
 
 
+if "." in __name__:
+    from .BisonLexerBase import BisonLexerBase
+else:
+    from BisonLexerBase import BisonLexerBase
+
 def serializedATN():
     return [
         4,0,73,851,6,-1,6,-1,6,-1,6,-1,6,-1,6,-1,2,0,7,0,2,1,7,1,2,2,7,2,
@@ -320,7 +325,7 @@ def serializedATN():
         16,0,7,25,0
     ]
 
-class BisonLexer(Lexer):
+class BisonLexer(BisonLexerBase):
 
     atn = ATNDeserializer().deserialize(serializedATN())
 

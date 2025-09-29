@@ -13,6 +13,7 @@ from sphinx_syntax import (
     Doc,
     LexerRule,
     Literal,
+    LoadingOptions,
     Model,
     ModelImpl,
     ModelProvider,
@@ -45,7 +46,7 @@ class BisonProvider(ModelProvider):
     def __init__(self):
         self._loaded: dict[pathlib.Path, Model] = {}
 
-    def from_file(self, path: pathlib.Path) -> Model:
+    def from_file(self, path: pathlib.Path, options: LoadingOptions) -> Model:
         path = path.expanduser().resolve()
 
         if path in self._loaded:
@@ -60,7 +61,7 @@ class BisonProvider(ModelProvider):
             return model
 
         with open(path, "r", encoding="utf-8", errors="strict") as f:
-            self._loaded[path] = self._do_load(f.read(), path, [])
+            self._loaded[path] = self._do_load(f.read(), path, [], options)
 
         return self._loaded[path]
 
@@ -69,10 +70,12 @@ class BisonProvider(ModelProvider):
         text: str,
         path: pathlib.Path,
         imports: list["Model"] | None,
+        options: LoadingOptions,
     ) -> "Model":
         content = InputStream(text)
 
         lexer = Lexer(content)
+        lexer.is_like_c = options.use_c_char_literals
         lexer.removeErrorListeners()
         lexer.addErrorListener(LoggingErrorListener(path, 0))
 

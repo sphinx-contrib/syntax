@@ -2,6 +2,8 @@
 
 ## [unreleased]
 
+- Fix parsing of inline code in Bison grammars.
+
 - Fix spurious "duplicate description" warning in multithreaded builds.
 
 ## [1.0.0-post1]

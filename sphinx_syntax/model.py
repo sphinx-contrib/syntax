@@ -14,6 +14,7 @@ import syntax_diagrams
 
 __all__ = [
     "HrefResolverData",
+    "LoadingOptions",
     "ModelProvider",
     "Model",
     "ModelImpl",
@@ -63,6 +64,23 @@ class HrefResolverData:
     """
 
 
+@dataclass
+class LoadingOptions:
+    """
+    Additional options for loading a grammar file.
+
+    """
+
+    use_c_char_literals: bool = True
+    """
+    Bison-specific setting that indicates whether the target language uses
+    C-lite char literals or single quoted strings.
+
+    This option affects parsing of inline code blocks within Bison file.
+
+    """
+
+
 class ModelProvider(metaclass=ABCMeta):
     """
     Base interface for extracting data from a grammar source files.
@@ -87,7 +105,7 @@ class ModelProvider(metaclass=ABCMeta):
         return path.suffix in self.supported_extensions
 
     @abstractmethod
-    def from_file(self, path: pathlib.Path) -> Model:
+    def from_file(self, path: pathlib.Path, options: LoadingOptions) -> Model:
         """
         Load model from file.
 
@@ -97,7 +115,9 @@ class ModelProvider(metaclass=ABCMeta):
 
         """
 
-    def from_name(self, base_path: pathlib.Path, name: str) -> Model | None:
+    def from_name(
+        self, base_path: pathlib.Path, name: str, options: LoadingOptions
+    ) -> Model | None:
         """
         Load model by name.
 
@@ -111,7 +131,7 @@ class ModelProvider(metaclass=ABCMeta):
 
         for extension in self.supported_extensions:
             path = pathlib.Path(base_path, name + extension)
-            if model := self.from_file(path):
+            if model := self.from_file(path, options):
                 return model
 
         _logger.error(

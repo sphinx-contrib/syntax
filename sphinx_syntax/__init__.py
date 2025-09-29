@@ -14,6 +14,7 @@ __all__ = [
     "SvgRenderSettings",
     "TextRenderSettings",
     "HrefResolverData",
+    "LoadingOptions",
     "ModelProvider",
     "Model",
     "ModelImpl",
@@ -164,6 +165,14 @@ def setup(app: sphinx.application.Sphinx):
         "env",
         bool,
         "whether to include section comments in automatically generated documentation",
+    )
+    app.add_config_value(
+        "syntax_bison_c_char_literals",
+        True,
+        "env",
+        bool,
+        "whether to use c-like char literals or single quoting strings when parsing "
+        "inline code in Bison grammars",
     )
     app.add_config_value(
         "syntax_grouping",

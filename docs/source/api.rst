@@ -73,6 +73,9 @@ Basic interfaces
 
 .. autoclass:: ModelImpl
 
+.. autoclass:: LoadingOptions
+    :members:
+
 
 Production rule descriptions
 ----------------------------
