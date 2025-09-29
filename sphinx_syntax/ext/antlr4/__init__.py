@@ -177,7 +177,9 @@ class MetaLoader(ParserVisitor):
             )
         else:
             assert self._basedir
-            model = self._cache.from_file(self._basedir / (name + ".g4"), LoadingOptions())
+            model = self._cache.from_file(
+                self._basedir / (name + ".g4"), LoadingOptions()
+            )
             self._model.add_import(model)
 
     def visitGrammarSpec(self, ctx):
