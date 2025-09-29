@@ -16,6 +16,7 @@ classifiers = [
     "Framework :: Sphinx",
     "Framework :: Sphinx :: Extension",
     "Topic :: Software Development :: Documentation",
+    "Topic :: Software Development :: Libraries :: Python Modules",
     "Topic :: Documentation",
     "Topic :: Documentation :: Sphinx",
     "Typing :: Typed",
@@ -78,7 +79,6 @@ typeCheckingMode = "strict"
 pythonVersion = "3.12"
 pythonPlatform = "All"
 
-# deprecateTypingAliases = true
 reportMissingParameterType = "none"
 reportUnknownParameterType = "none"
 reportUnknownVariableType = "none"
@@ -86,7 +86,6 @@ reportUnknownMemberType = "none"
 reportUnknownArgumentType = "none"
 reportUnknownLambdaType = "none"
 reportUnnecessaryIsInstance = "none"
-
 reportUnnecessaryTypeIgnoreComment = "warning"
 
 [tool.black]
