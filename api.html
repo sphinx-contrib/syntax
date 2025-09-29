@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html"><link rel="prev" title="Migrating from Sphinx-A4Doc" href="sphinx-a4doc.html">
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2025.09.25 -->
-        <title>Plugins API - Sphinx Syntax 1.0.0.post1 documentation</title>
+        <title>Plugins API - Sphinx Syntax 1.0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d111a655" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=580074bf" />
     <link rel="stylesheet" type="text/css" href="_static/syntax-diagrams.css?v=207cc276" />
@@ -164,7 +164,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">Sphinx Syntax 1.0.0.post1 documentation</div></a>
+      <a href="index.html"><div class="brand">Sphinx Syntax 1.0.1 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -185,7 +185,7 @@
       
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
-  <span class="sidebar-brand-text">Sphinx Syntax 1.0.0.post1 documentation</span>
+  <span class="sidebar-brand-text">Sphinx Syntax 1.0.1 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -335,7 +335,7 @@ including leading periods.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sphinx_syntax.ModelProvider.from_file">
-<em class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.13)"><span class="pre">Path</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#sphinx_syntax.Model" title="sphinx_syntax.model.Model"><span class="pre">Model</span></a></span></span><a class="headerlink" href="#sphinx_syntax.ModelProvider.from_file" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.13)"><span class="pre">Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#sphinx_syntax.LoadingOptions" title="sphinx_syntax.model.LoadingOptions"><span class="pre">LoadingOptions</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#sphinx_syntax.Model" title="sphinx_syntax.model.Model"><span class="pre">Model</span></a></span></span><a class="headerlink" href="#sphinx_syntax.ModelProvider.from_file" title="Link to this definition">¶</a></dt>
 <dd><p>Load model from file.</p>
 <p>If model wasn’t found, or there were errors while loading
 the model, this method should print errors to a log and return an empty
@@ -344,7 +344,7 @@ the model, this method should print errors to a log and return an empty
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sphinx_syntax.ModelProvider.from_name">
-<span class="sig-name descname"><span class="pre">from_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.13)"><span class="pre">Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#sphinx_syntax.Model" title="sphinx_syntax.model.Model"><span class="pre">Model</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#sphinx_syntax.ModelProvider.from_name" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">from_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.13)"><span class="pre">Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#sphinx_syntax.LoadingOptions" title="sphinx_syntax.model.LoadingOptions"><span class="pre">LoadingOptions</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#sphinx_syntax.Model" title="sphinx_syntax.model.Model"><span class="pre">Model</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#sphinx_syntax.ModelProvider.from_name" title="Link to this definition">¶</a></dt>
 <dd><p>Load model by name.</p>
 <p>Used to load root rule if it’s located in a separate grammar. For example,
 when documenting a lexer, but limiting lexemes to only those used in a parser.</p>
@@ -447,6 +447,20 @@ e.g. <code class="docutils literal notranslate"><span class="pre">model.lookup(&
 <dt class="sig sig-object py" id="sphinx_syntax.ModelImpl">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sphinx_syntax.</span></span><span class="sig-name descname"><span class="pre">ModelImpl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">provider</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#sphinx_syntax.ModelProvider" title="sphinx_syntax.model.ModelProvider"><span class="pre">ModelProvider</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.13)"><span class="pre">Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">docs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">imports</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Iterable" title="(in Python v3.13)"><span class="pre">Iterable</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sphinx_syntax.Model" title="sphinx_syntax.model.Model"><span class="pre">Model</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">terminals</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Iterable" title="(in Python v3.13)"><span class="pre">Iterable</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sphinx_syntax.LexerRule" title="sphinx_syntax.model.LexerRule"><span class="pre">LexerRule</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">non_terminals</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Iterable" title="(in Python v3.13)"><span class="pre">Iterable</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#sphinx_syntax.ParserRule" title="sphinx_syntax.model.ParserRule"><span class="pre">ParserRule</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sphinx_syntax.ModelImpl" title="Link to this definition">¶</a></dt>
 <dd><p>Default model implementation, simply stores model data.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sphinx_syntax.LoadingOptions">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sphinx_syntax.</span></span><span class="sig-name descname"><span class="pre">LoadingOptions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">use_c_char_literals</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sphinx_syntax.LoadingOptions" title="Link to this definition">¶</a></dt>
+<dd><p>Additional options for loading a grammar file.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sphinx_syntax.LoadingOptions.use_c_char_literals">
+<span class="sig-name descname"><span class="pre">use_c_char_literals</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#sphinx_syntax.LoadingOptions.use_c_char_literals" title="Link to this definition">¶</a></dt>
+<dd><p>Bison-specific setting that indicates whether the target language uses
+C-lite char literals or single quoted strings.</p>
+<p>This option affects parsing of inline code blocks within Bison file.</p>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -940,6 +954,10 @@ instead of <code class="docutils literal notranslate"><span class="pre">==</span
 </ul>
 </li>
 <li><a class="reference internal" href="#sphinx_syntax.ModelImpl"><code class="docutils literal notranslate"><span class="pre">ModelImpl</span></code></a></li>
+<li><a class="reference internal" href="#sphinx_syntax.LoadingOptions"><code class="docutils literal notranslate"><span class="pre">LoadingOptions</span></code></a><ul>
+<li><a class="reference internal" href="#sphinx_syntax.LoadingOptions.use_c_char_literals"><code class="docutils literal notranslate"><span class="pre">LoadingOptions.use_c_char_literals</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a class="reference internal" href="#production-rule-descriptions">Production rule descriptions</a><ul>
@@ -1062,7 +1080,7 @@ instead of <code class="docutils literal notranslate"><span class="pre">==</span
       
     </aside>
   </div>
-</div><script src="_static/documentation_options.js?v=f5399c8a"></script>
+</div><script src="_static/documentation_options.js?v=292eb321"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/scripts/furo.js?v=46bd48cc"></script>

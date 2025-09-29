@@ -75,6 +75,11 @@ Settings
 
     Default value for :rst:dir:`honor-sections <syntax:autogrammar:honor-sections>` option.
 
+.. py:data:: syntax_bison_c_char_literals
+    :type: bool
+
+    Default value for :rst:dir:`honor-sections <syntax:autogrammar:bison-c-char-literals>` option.
+
 .. py:data:: syntax_grouping
     :type: "mixed" | "lexer-first" | "parser-first"
 

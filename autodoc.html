@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html"><link rel="next" title="Settings" href="settings.html"><link rel="prev" title="Cross-referencing objects" href="roles.html">
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2025.09.25 -->
-        <title>Generating documentation for grammars - Sphinx Syntax 1.0.0.post1 documentation</title>
+        <title>Generating documentation for grammars - Sphinx Syntax 1.0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d111a655" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=580074bf" />
     <link rel="stylesheet" type="text/css" href="_static/syntax-diagrams.css?v=207cc276" />
@@ -164,7 +164,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">Sphinx Syntax 1.0.0.post1 documentation</div></a>
+      <a href="index.html"><div class="brand">Sphinx Syntax 1.0.1 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -185,7 +185,7 @@
       
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
-  <span class="sidebar-brand-text">Sphinx Syntax 1.0.0.post1 documentation</span>
+  <span class="sidebar-brand-text">Sphinx Syntax 1.0.1 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -354,6 +354,16 @@ Disabled by default.</p>
 placed between rules.</p>
 <p>This setting has no effect unless
 <a class="reference internal" href="#directive-option-syntax-autogrammar-ordering" title="syntax:autogrammar:ordering directive:option"><code class="xref rst rst-dir docutils literal notranslate"><span class="pre">ordering</span></code></a> is <code class="docutils literal notranslate"><span class="pre">by-source</span></code>.</p>
+</dd></dl>
+
+<dl class="rst directive:option">
+<dt class="sig sig-object rst" id="directive-option-syntax-autogrammar-bison-c-char-literals">
+<span class="sig-name descname"><span class="pre">:bison-c-char-literals:</span></span><a class="headerlink" href="#directive-option-syntax-autogrammar-bison-c-char-literals" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object rst" id="directive-option-syntax-autogrammar-no-bison-c-char-literals">
+<span class="sig-name descname"><span class="pre">:no-bison-c-char-literals:</span></span><a class="headerlink" href="#directive-option-syntax-autogrammar-no-bison-c-char-literals" title="Link to this definition">¶</a></dt>
+<dd><p>If true, Bison parser will expect C-like char literals or Rust-like lifetimes
+when parsing inline code in grammar files. Otherwise, it will expect
+single-quoted strings.</p>
 </dd></dl>
 
 <dl class="rst directive:option">
@@ -820,6 +830,8 @@ and document both of them separately.</p>
 <li><a class="reference internal" href="#directive-option-syntax-autogrammar-no-undocumented"><code class="docutils literal notranslate"><span class="pre">:no-undocumented:</span></code></a></li>
 <li><a class="reference internal" href="#directive-option-syntax-autogrammar-honor-sections"><code class="docutils literal notranslate"><span class="pre">:honor-sections:</span></code></a></li>
 <li><a class="reference internal" href="#directive-option-syntax-autogrammar-no-honor-sections"><code class="docutils literal notranslate"><span class="pre">:no-honor-sections:</span></code></a></li>
+<li><a class="reference internal" href="#directive-option-syntax-autogrammar-bison-c-char-literals"><code class="docutils literal notranslate"><span class="pre">:bison-c-char-literals:</span></code></a></li>
+<li><a class="reference internal" href="#directive-option-syntax-autogrammar-no-bison-c-char-literals"><code class="docutils literal notranslate"><span class="pre">:no-bison-c-char-literals:</span></code></a></li>
 <li><a class="reference internal" href="#directive-option-syntax-autogrammar-grouping"><code class="docutils literal notranslate"><span class="pre">:grouping:</span></code></a></li>
 <li><a class="reference internal" href="#directive-option-syntax-autogrammar-ordering"><code class="docutils literal notranslate"><span class="pre">:ordering:</span></code></a></li>
 <li><a class="reference internal" href="#directive-option-syntax-autogrammar-literal-rendering"><code class="docutils literal notranslate"><span class="pre">:literal-rendering:</span></code></a></li>
@@ -840,7 +852,7 @@ and document both of them separately.</p>
       
     </aside>
   </div>
-</div><script src="_static/documentation_options.js?v=f5399c8a"></script>
+</div><script src="_static/documentation_options.js?v=292eb321"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/scripts/furo.js?v=46bd48cc"></script>

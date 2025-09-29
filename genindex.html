@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="#"><link rel="search" title="Search" href="search.html">
 
-    <!-- Generated with Sphinx 8.2.3 and Furo 2025.09.25 --><title>Index - Sphinx Syntax 1.0.0.post1 documentation</title>
+    <!-- Generated with Sphinx 8.2.3 and Furo 2025.09.25 --><title>Index - Sphinx Syntax 1.0.1 documentation</title>
 <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d111a655" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=580074bf" />
     <link rel="stylesheet" type="text/css" href="_static/syntax-diagrams.css?v=207cc276" />
@@ -162,7 +162,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">Sphinx Syntax 1.0.0.post1 documentation</div></a>
+      <a href="index.html"><div class="brand">Sphinx Syntax 1.0.1 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -183,7 +183,7 @@
       
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
-  <span class="sidebar-brand-text">Sphinx Syntax 1.0.0.post1 documentation</span>
+  <span class="sidebar-brand-text">Sphinx Syntax 1.0.1 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -273,10 +273,17 @@
   <h2>B</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="directives.html#syntax-BaseGrammar">BaseGrammar (grammar)</a>
+        <li>
+    :bison-c-char-literals: (directive option)
+
+        <ul>
+          <li><a href="autodoc.html#directive-option-syntax-autogrammar-bison-c-char-literals">syntax:autogrammar (directive)</a>
 </li>
+        </ul></li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="directives.html#syntax-BaseGrammar">BaseGrammar (grammar)</a>
+</li>
         <li><a href="directives.html#syntax-rule-BaseGrammar.BaseRule">BaseRule (BaseGrammar production rule)</a>
 </li>
     </ul></td>
@@ -540,6 +547,8 @@
 </li>
         <li><a href="api.html#sphinx_syntax.Literal">Literal (class in sphinx_syntax)</a>
 </li>
+        <li><a href="api.html#sphinx_syntax.LoadingOptions">LoadingOptions (class in sphinx_syntax)</a>
+</li>
         <li><a href="api.html#sphinx_syntax.Model.lookup">lookup() (sphinx_syntax.Model method)</a>
 </li>
         <li><a href="api.html#sphinx_syntax.Model.lookup_local">lookup_local() (sphinx_syntax.Model method)</a>
@@ -585,6 +594,13 @@
     <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="directives.html#directive-option-name">:name: (directive option)</a>
 </li>
+        <li>
+    :no-bison-c-char-literals: (directive option)
+
+        <ul>
+          <li><a href="autodoc.html#directive-option-syntax-autogrammar-no-bison-c-char-literals">syntax:autogrammar (directive)</a>
+</li>
+        </ul></li>
         <li>
     :no-cc-to-dash: (directive option)
 
@@ -790,6 +806,8 @@
         <li><a href="autodoc.html#directive-syntax-autogrammar">syntax:autogrammar (directive)</a>
 
         <ul>
+          <li><a href="autodoc.html#directive-option-syntax-autogrammar-bison-c-char-literals">:bison-c-char-literals: (directive option)</a>
+</li>
           <li><a href="autodoc.html#directive-option-syntax-autogrammar-cc-to-dash">:cc-to-dash: (directive option)</a>
 </li>
           <li><a href="autodoc.html#directive-option-syntax-autogrammar-diagrams">:diagrams: (directive option)</a>
@@ -805,6 +823,8 @@
           <li><a href="autodoc.html#directive-option-syntax-autogrammar-literal-rendering">:literal-rendering: (directive option)</a>
 </li>
           <li><a href="autodoc.html#directive-option-syntax-autogrammar-mark-root-rule">:mark-root-rule: (directive option)</a>
+</li>
+          <li><a href="autodoc.html#directive-option-syntax-autogrammar-no-bison-c-char-literals">:no-bison-c-char-literals: (directive option)</a>
 </li>
           <li><a href="autodoc.html#directive-option-syntax-autogrammar-no-cc-to-dash">:no-cc-to-dash: (directive option)</a>
 </li>
@@ -879,6 +899,8 @@
 </li>
         <li><a href="settings.html#syntax_base_path">syntax_base_path (built-in variable)</a>
 </li>
+        <li><a href="settings.html#syntax_bison_c_char_literals">syntax_bison_c_char_literals (built-in variable)</a>
+</li>
         <li><a href="settings.html#syntax_cc_to_dash">syntax_cc_to_dash (built-in variable)</a>
 </li>
         <li><a href="settings.html#syntax_diagrams">syntax_diagrams (built-in variable)</a>
@@ -945,6 +967,10 @@
           <li><a href="autodoc.html#directive-option-syntax-autogrammar-undocumented">syntax:autogrammar (directive)</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api.html#sphinx_syntax.LoadingOptions.use_c_char_literals">use_c_char_literals (sphinx_syntax.LoadingOptions attribute)</a>
+</li>
     </ul></td>
   </tr></table>
 </section>
@@ -1051,7 +1077,7 @@
       
     </aside>
   </div>
-</div><script src="_static/documentation_options.js?v=f5399c8a"></script>
+</div><script src="_static/documentation_options.js?v=292eb321"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/scripts/furo.js?v=46bd48cc"></script>

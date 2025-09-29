@@ -89,6 +89,13 @@ Autodoc directive
         This setting has no effect unless
         :rst:dir:`ordering <syntax:autogrammar:ordering>` is ``by-source``.
 
+    .. rst:directive:option:: bison-c-char-literals
+                              no-bison-c-char-literals
+
+        If true, Bison parser will expect C-like char literals or Rust-like lifetimes
+        when parsing inline code in grammar files. Otherwise, it will expect
+        single-quoted strings.
+
     .. rst:directive:option:: grouping: mixed | lexer-first | parser-first
 
         Controls how ``autogrammar`` groups rules that are extracted from sources.
