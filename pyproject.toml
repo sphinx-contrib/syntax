@@ -56,9 +56,9 @@ doc = [
 
 [project.urls]
 Documentation = "https://sphinx-syntax.readthedocs.io/en/stable/"
-Issues = "https://github.com/sphinx-contrib/sphinx-syntax/issues"
-Source = "https://github.com/sphinx-contrib/sphinx-syntax/"
-Changelog = "https://github.com/sphinx-contrib/sphinx-syntax/blob/main/CHANGELOG.md"
+Issues = "https://github.com/sphinx-contrib/syntax/issues"
+Source = "https://github.com/sphinx-contrib/syntax/"
+Changelog = "https://github.com/sphinx-contrib/syntax/blob/main/CHANGELOG.md"
 
 
 [build-system]
