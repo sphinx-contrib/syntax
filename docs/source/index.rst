@@ -38,4 +38,4 @@ Features:
     :hidden:
     :caption: Links
 
-    GitHub <https://github.com/taminomara/sphinx-syntax/>
+    GitHub <https://github.com/sphinx-contrib/sphinx-syntax/>

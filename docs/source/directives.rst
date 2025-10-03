@@ -186,9 +186,9 @@ Diagrams
     for the `syntax-diagrams`__ library. You can also use
     `an online diagram editor`__.
 
-    __ https://taminomara.github.io/syntax-diagrams/describe.html
+    __ https://syntax-diagrams.readthedocs.io/en/stable/describe.html
 
-    __ https://taminomara.github.io/syntax-diagrams/try
+    __ https://syntax-diagrams.readthedocs.io/en/stable/try
 
     **Example:**
 

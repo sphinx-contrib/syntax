@@ -103,9 +103,9 @@ using YAML__ format, its structure is detailed in documentation for the
 
 __ https://en.wikipedia.org/wiki/YAML
 
-__ https://taminomara.github.io/syntax-diagrams/describe.html
+__ https://syntax-diagrams.readthedocs.io/en/stable/describe.html
 
-__ https://taminomara.github.io/syntax-diagrams/try
+__ https://syntax-diagrams.readthedocs.io/en/stable/try
 
 .. code-block:: rst
 

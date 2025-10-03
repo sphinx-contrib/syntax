@@ -26,7 +26,7 @@ primary_domain = "py"
 default_role = "py:obj"
 intersphinx_mapping = {
     "python": ("https://docs.python.org/3", None),
-    "syntax_diagrams": ("https://taminomara.github.io/syntax-diagrams", None),
+    "syntax_diagrams": ("https://syntax-diagrams.readthedocs.io/en/stable/", None),
 }
 autodoc_member_order = "bysource"
 nitpick_ignore_regex = [(r"py:class", r".*\.T")]
@@ -38,7 +38,7 @@ html_theme = "furo"
 html_static_path = ["_static"]
 html_extra_path = ["_extra/robots.txt"]
 html_theme_options = {
-    "source_repository": "https://github.com/taminomara/sphinx-syntax",
+    "source_repository": "https://github.com/sphinx-contribs/sphinx-syntax",
     "source_branch": "main",
     "source_directory": "docs/source",
 }

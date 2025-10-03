@@ -11,9 +11,9 @@ Features:
 
 ## Resources
 
-- [Documentation](https://taminomara.github.io/sphinx-syntax/)
-- [Quickstart](https://taminomara.github.io/sphinx-syntax/quickstart)
-- [Example output](https://taminomara.github.io/sphinx-syntax/example-output)
+- [Documentation](https://sphinx-syntax.readthedocs.io/en/stable/)
+- [Quickstart](https://sphinx-syntax.readthedocs.io/en/stable/quickstart.html)
+- [Example output](https://sphinx-syntax.readthedocs.io/en/stable/example-output.html)
 
 ## Requirements
 
