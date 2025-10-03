@@ -2,6 +2,8 @@
 
 ## [unreleased]
 
+## [1.0.1-post2]
+
 - Fix links after move.
 
 ## [1.0.1-post1]
@@ -24,7 +26,8 @@
 
 - Initial release.
 
-[unreleased]: https://github.com/sphinx-contrib/syntax/compare/v1.0.1-post1...HEAD
+[unreleased]: https://github.com/sphinx-contrib/syntax/compare/v1.0.1-post2...HEAD
+[1.0.1-post2]: https://github.com/sphinx-contrib/syntax/compare/v1.0.1-post1...v1.0.1-post1
 [1.0.1-post1]: https://github.com/sphinx-contrib/syntax/compare/v1.0.1...v1.0.1-post1
 [1.0.1]: https://github.com/sphinx-contrib/syntax/compare/v1.0.0-post1...v1.0.1
 [1.0.0-post1]: https://github.com/sphinx-contrib/syntax/compare/v1.0.0...v1.0.0-post1
