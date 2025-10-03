@@ -3,16 +3,21 @@ from __future__ import annotations
 import pathlib
 import typing as _t
 
+import docutils.nodes
 import docutils.statemachine
 import sphinx.addnodes
+import sphinx.directives
 import sphinx.util.logging
 import sphinx.util.parsing
 import syntax_diagrams
-from docutils.nodes import Node
 from docutils.parsers.rst import directives
 
 from sphinx_syntax.diagram import DiagramDirective
-from sphinx_syntax.domain import GrammarDescription, RuleDescription
+from sphinx_syntax.domain import (
+    GrammarDescription,
+    RuleDescription,
+    SyntaxObjectDescription,
+)
 from sphinx_syntax.model import (
     HrefResolverData,
     LoadingOptions,
@@ -26,116 +31,13 @@ from sphinx_syntax.reachable_finder import find_reachable_rules
 _logger = sphinx.util.logging.getLogger("sphinx_syntax")
 
 
-class AutoGrammarDescription(GrammarDescription):
-    option_spec = {
-        "root-rule": directives.unchanged,
-        "only-reachable-from": directives.unchanged,
-        "mark-root-rule": directives.flag,
-        "no-mark-root-rule": directives.flag,
-        "diagrams": directives.flag,
-        "no-diagrams": directives.flag,
-        "cc-to-dash": directives.flag,
-        "no-cc-to-dash": directives.flag,
-        "lexer-rules": directives.flag,
-        "no-lexer-rules": directives.flag,
-        "parser-rules": directives.flag,
-        "no-parser-rules": directives.flag,
-        "fragments": directives.flag,
-        "no-fragments": directives.flag,
-        "undocumented": directives.flag,
-        "no-undocumented": directives.flag,
-        "honor-sections": directives.flag,
-        "no-honor-sections": directives.flag,
-        "bison-c-char-literals": directives.flag,
-        "no-bison-c-char-literals": directives.flag,
-        "grouping": lambda x: directives.choice(
-            x, ("mixed", "lexer-first", "parser-first")
-        ),
-        "ordering": lambda x: directives.choice(x, ("by-source", "by-name")),
-        "literal-rendering": lambda x: directives.choice(
-            x, ("name", "contents", "contents-unquoted")
-        ),
-        **GrammarDescription.option_spec,
-    }
-
-    def run(self) -> list[Node]:
-        self.name = self.name.replace("auto", "")
-        self.options = self.options.copy()
-
-        if "only-reachable-from" in self.options:
-            if "root-rule" in self.options:
-                _logger.error(
-                    "option :only-reachable-from: can't be given together with :root-rule:",
-                    location=self.get_location(),
-                    type="sphinx_syntax",
-                )
-            else:
-                _logger.warning(
-                    "option :only-reachable-from: was renamed to :root-rule:",
-                    location=self.get_location(),
-                    type="sphinx_syntax",
-                    subtype="deprecation_warning",
-                    once=True,
-                )
-
-                self.options["root"] = self.options["only-reachable-from"]
-
-        for flag in [
-            "mark-root-rule",
-            "diagrams",
-            "cc-to-dash",
-            "lexer-rules",
-            "parser-rules",
-            "fragments",
-            "undocumented",
-            "honor-sections",
-            "bison-c-char-literals",
-        ]:
-            if f"no-{flag}" in self.options:
-                if flag in self.options:
-                    _logger.error(
-                        f":{flag}: can't be given together with :no-{flag}:",
-                        location=self.get_location(),
-                        type="sphinx_syntax",
-                    )
-                self.options[flag] = False
-                del self.options[f"no-{flag}"]
-            elif flag in self.options:
-                self.options[flag] = True
-
-        for option in [
-            "mark-root-rule",
-            "diagrams",
-            "cc-to-dash",
-            "lexer-rules",
-            "parser-rules",
-            "fragments",
-            "undocumented",
-            "grouping",
-            "ordering",
-            "literal-rendering",
-            "honor-sections",
-            "bison-c-char-literals",
-        ]:
-            if option not in self.options:
-                self.options[option] = self.env.config[
-                    f"syntax_{option.replace("-", "_")}"
-                ]
-
-        self.model = self.load_model()
-        self.arguments = [self.model.get_name()]
-        self.note_deps()
-
-        if "imports" not in self.options:
-            self.options["imports"] = [
-                i.get_name() for i in self.model.get_imports() if i.get_name()
-            ]
-
-        return super().run()
-
-    def load_model(self) -> Model:
+class AutoObjectMixin(SyntaxObjectDescription):
+    def load_model(self, name: str) -> Model:
         base_path = self.env.config["syntax_base_path"] or "."
-        path = pathlib.Path(self.env.app.confdir, base_path, self.arguments[0])
+        path = pathlib.Path(self.env.app.confdir, base_path, name)
+        # We need to add dependency on this path even if file doesn't exist.
+        # This way, Sphinx will pick it up when this file appears.
+        self.env.note_dependency(path)
         provider = find_provider(path)
         if provider is None:
             raise self.error(
@@ -147,6 +49,62 @@ class AutoGrammarDescription(GrammarDescription):
             LoadingOptions(use_c_char_literals=self.options["bison-c-char-literals"]),
         )
 
+
+class AutoGrammarDescription(AutoObjectMixin, GrammarDescription):
+    required_arguments = 1
+    optional_arguments = 0
+    final_argument_whitespace = False
+
+    option_spec = {
+        "lexer-rules": directives.flag,
+        "no-lexer-rules": directives.flag,
+        "parser-rules": directives.flag,
+        "no-parser-rules": directives.flag,
+        "fragments": directives.flag,
+        "no-fragments": directives.flag,
+        "undocumented": directives.flag,
+        "no-undocumented": directives.flag,
+        "honor-sections": directives.flag,
+        "no-honor-sections": directives.flag,
+        "grouping": lambda x: directives.choice(
+            x, ("mixed", "lexer-first", "parser-first")
+        ),
+        "ordering": lambda x: directives.choice(x, ("by-source", "by-name")),
+        **GrammarDescription.option_spec,
+    }
+
+    def run(self) -> list[docutils.nodes.Node]:
+        self.name = self.name.replace("auto", "")
+
+        self.process_flags()
+        # self.options.update(self.get_autodoc_options())
+
+        # Load options from config.
+        for option in [
+            "lexer-rules",
+            "parser-rules",
+            "fragments",
+            "undocumented",
+            "honor-sections",
+            "grouping",
+            "ordering",
+        ]:
+            if option not in self.options:
+                self.options[option] = self.env.config[
+                    f"syntax_{option.replace("-", "_")}"
+                ]
+
+        self.model = self.load_model(self.arguments[0])
+        self.note_deps(self.model)
+        self.arguments = [self.model.get_name()]
+
+        if "imports" not in self.options:
+            self.options["imports"] = [
+                i.get_name() for i in self.model.get_imports() if i.get_name()
+            ]
+
+        return super().run()
+
     def transform_content(self, content_node: sphinx.addnodes.desc_content) -> None:
         content_node += self.render_docs(
             self.model.get_model_docs(), self.model.get_path()
@@ -156,8 +114,7 @@ class AutoGrammarDescription(GrammarDescription):
         honor_sections = (
             self.options["honor-sections"] and self.options["ordering"] == "by-source"
         )
-        all_rules, root_rule = self.make_order(self.model)
-        for rule in all_rules:
+        for rule in self.make_order(self.model):
             if honor_sections and rule.section is not last_section:
                 last_section = rule.section
                 if last_section:
@@ -166,17 +123,19 @@ class AutoGrammarDescription(GrammarDescription):
                     )
 
             content_node += AutoRuleDescription(
-                name=f"{self.domain}:rule",
-                arguments=[],
-                options=self.options,
+                name=f"syntax:rule",
+                arguments=[str(self.model.get_path()), rule.name],
+                options={
+                    k: self.options[k]
+                    for k in sphinx.directives.ObjectDescription.option_spec
+                    if k in self.options
+                },
                 content=docutils.statemachine.StringList(),
                 lineno=self.lineno,
                 content_offset=self.content_offset,
                 block_text=self.block_text,
                 state=self.state,
                 state_machine=self.state_machine,
-                rule=rule,
-                is_root=root_rule is not None and rule is root_rule,
             ).run()
 
     def render_docs(
@@ -196,7 +155,7 @@ class AutoGrammarDescription(GrammarDescription):
             content,
         )
 
-    def make_order(self, model: Model) -> tuple[_t.Iterable[RuleBase], RuleBase | None]:
+    def make_order(self, model: Model) -> _t.Iterable[RuleBase]:
         lexer_rules = []
         if self.options["lexer-rules"]:
             lexer_rules = model.get_terminals()
@@ -234,41 +193,24 @@ class AutoGrammarDescription(GrammarDescription):
             seen.add(rule)
             unique_rules.append(rule)
 
-        root_rule = None
-        if rule_name := self.options.get("root-rule"):
-            rule_model = model
-            if " " in rule_name:
-                model_path, rule_name = rule_name.rsplit(1)
-                base_path = self.env.config["syntax_base_path"] or "."
-                path = pathlib.Path(self.env.app.confdir, base_path, model_path)
-                provider = find_provider(path)
-                if not provider:
-                    _logger.error(
-                        f"can't determine file format for {path}; "
-                        f"make sure that extension for this file type is loaded",
-                        location=self.get_location(),
-                        type="sphinx_syntax",
-                    )
-                    rule_model = None
-                else:
-                    rule_model = provider.from_file(
-                        path,
-                        LoadingOptions(
-                            use_c_char_literals=self.options["bison-c-char-literals"]
-                        ),
-                    )
-            elif "." in rule_name:
-                model_name, rule_name = rule_name.rsplit(".", 1)
-                base_path = pathlib.Path(rule_model.get_path()).parent
-                rule_model = rule_model.get_provider().from_name(
+        if root_rule_info := self.get_root_rule():
+            root_grammar, root_name = root_rule_info
+            if root_grammar is None:
+                root_model = model
+            elif isinstance(root_grammar, Model):
+                root_model = root_grammar
+            else:
+                base_path = pathlib.Path(model.get_path()).parent
+                root_model = model.get_provider().from_name(
                     base_path,
-                    model_name,
+                    root_grammar,
                     LoadingOptions(
                         use_c_char_literals=self.options["bison-c-char-literals"]
                     ),
                 )
-            if rule_model:
-                root_rule = rule_model.lookup(rule_name)
+            if root_model:
+                self.note_deps(root_model)
+                root_rule = root_model.lookup(root_name)
                 if root_rule:
                     reachable = find_reachable_rules(root_rule)
                     unique_rules = [r for r in unique_rules if r in reachable]
@@ -276,10 +218,10 @@ class AutoGrammarDescription(GrammarDescription):
         if not self.options["undocumented"]:
             unique_rules = [r for r in unique_rules if r.documentation]
 
-        return unique_rules, root_rule
+        return unique_rules
 
-    def note_deps(self):
-        for model in self.model.iter_import_tree():
+    def note_deps(self, top_level_model: Model):
+        for model in top_level_model.iter_import_tree():
             self.env.note_dependency(model.get_path())
             for rule in model.get_all_rules():
                 self.env.note_dependency(rule.position.file)
@@ -287,34 +229,52 @@ class AutoGrammarDescription(GrammarDescription):
                     self.env.note_dependency(rule.section.position.file)
 
 
-class AutoRuleDescription(RuleDescription):
-    def __init__(
-        self,
-        *args,
-        rule: RuleBase,
-        is_root: bool,
-        **kwargs,
-    ) -> None:
-        super().__init__(*args, **kwargs)
+class AutoRuleDescription(AutoObjectMixin, RuleDescription):
+    required_arguments = 2
+    optional_arguments = 0
+    final_argument_whitespace = True
+    option_spec = {
+        **RuleDescription.option_spec,
+    }
 
-        self.rule = rule
-        self.is_root = is_root
-
-    def run(self) -> list[Node]:
+    def run(self) -> list[docutils.nodes.Node]:
         self.name = self.name.replace("auto", "")
-        self.arguments = [self.rule.name]
-        self.options = self.options.copy()
-        if self.rule.display_name:
-            self.options["name"] = self.rule.display_name
-        elif self.options["cc-to-dash"]:
-            self.options["name"] = to_dash_case(self.rule.name)
-        self.options.pop("imports", None)
-        if self.options["mark-root-rule"]:
-            self.options["diagram-end-class"] = self.options["end-class"] = (
-                syntax_diagrams.EndClass.COMPLEX
-                if self.is_root
-                else syntax_diagrams.EndClass.SIMPLE
+
+        self.process_flags()
+        # self.options.update(self.get_autodoc_options())
+
+        self.model = self.load_model(self.arguments[0])
+        self.env.note_dependency(self.model.get_path())
+        rule = self.model.lookup_local(self.arguments[1])
+        if rule is None:
+            if non_local_rule := self.model.lookup(self.arguments[1]):
+                raise self.error(
+                    f"can't find rule {self.arguments[1]} "
+                    f"in grammar {self.model.get_path()}. "
+                    f"Note: this rule is available in grammar "
+                    f"{non_local_rule.model.get_path()}"
+                )
+            else:
+                raise self.error(
+                    f"can't find rule {self.arguments[1]} "
+                    f"in grammar {self.model.get_path()}"
+                )
+        parent_grammar = self.env.ref_context.get(f"syntax:grammar")
+        if not parent_grammar:
+            raise self.error(f"{self.name} can't be used outside of a diagram")
+        elif parent_grammar != self.model.get_name():
+            raise self.error(
+                f"trying to document rule {self.arguments[1]} "
+                f"as part of grammar {parent_grammar}, but the rule is defined "
+                f"in grammar {self.model.get_name()}"
             )
+        self.rule = rule
+        self.arguments = [self.rule.name]
+        if "name" not in self.options:
+            if self.rule.display_name:
+                self.options["name"] = self.rule.display_name
+            elif self.options["cc-to-dash"]:
+                self.options["name"] = to_dash_case(self.rule.name)
 
         return super().run()
 
@@ -343,14 +303,9 @@ class AutoRuleDescription(RuleDescription):
             )
 
             content_node += AutoDiagramDirective(
-                name=f"{self.domain}:diagram",
+                name=f"syntax:diagram",
                 arguments=[],
-                options={
-                    k: v
-                    for k, v in self.options.items()
-                    if k in AutoDiagramDirective.option_spec
-                    and k not in AutoDiagramDirective.disabled_options
-                },
+                options={},
                 content=docutils.statemachine.StringList(),
                 lineno=self.lineno,
                 content_offset=self.content_offset,
@@ -368,9 +323,8 @@ class AutoDiagramDirective(DiagramDirective):
         diagram: syntax_diagrams.Element[HrefResolverData],
         **kwargs,
     ) -> None:
-        super().__init__(*args, **kwargs)
-
         self.diagram = diagram
+        super().__init__(*args, **kwargs)
 
     def get_data(self) -> _t.Any:
         return self.diagram

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import itertools
+import pathlib
 import typing as _t
 from dataclasses import dataclass
 
@@ -21,6 +22,8 @@ from sphinx.locale import _
 from sphinx.roles import XRefRole
 from sphinx.util.docutils import SphinxDirective
 from sphinx.util.nodes import make_id, make_refnode
+
+from sphinx_syntax.model import LoadingOptions, Model, find_provider
 
 _logger = sphinx.util.logging.getLogger("sphinx_syntax")
 
@@ -124,14 +127,36 @@ OPTION_SPEC_DIAGRAMS = {
     "text-max-width": parse_non_negative_int,
 }
 
+OPTION_SPEC_AUTORULE = {
+    "root-rule": directives.unchanged,
+    "mark-root-rule": directives.flag,
+    "no-mark-root-rule": directives.flag,
+    "diagrams": directives.flag,
+    "no-diagrams": directives.flag,
+    "cc-to-dash": directives.flag,
+    "no-cc-to-dash": directives.flag,
+    "bison-c-char-literals": directives.flag,
+    "no-bison-c-char-literals": directives.flag,
+    "literal-rendering": lambda x: directives.choice(
+        x, ("name", "contents", "contents-unquoted")
+    ),
+}
+
 
 class ContextManagerMixin(SphinxDirective):
+    __processed_flags = False
+
     option_spec: _t.ClassVar[dict[str, _t.Callable[[str], _t.Any]]] = {  # type: ignore
         **{
             f"diagram-{name}": validator
             for name, validator in OPTION_SPEC_DIAGRAMS.items()
         },
+        **OPTION_SPEC_AUTORULE,
     }
+
+    def run(self) -> list[docutils.nodes.Node]:
+        self.process_flags()
+        return list(super().run())
 
     @property
     def syntax_domain(self) -> SyntaxDomain:
@@ -146,60 +171,123 @@ class ContextManagerMixin(SphinxDirective):
 
         return domain
 
-    def get_diagram_options(self, prefix="diagram-") -> _t.Dict[str, _t.Any]:
-        for flag in ["reverse"]:
-            if f"{prefix}no-{flag}" in self.options:
-                if f"{prefix}{flag}" in self.options:
+    def process_flags(self):
+        if self.__processed_flags:
+            return
+        self.__processed_flags = True
+
+        if "no-diagram-reverse" in self.options:
+            del self.options["no-diagram-reverse"]
+            self.options["diagram-no-reverse"] = True
+        flags = [
+            (flag[3:], flag)
+            for flag in self.option_spec
+            if flag.startswith("no-")
+            and flag not in sphinx.directives.ObjectDescription.option_spec
+        ]
+        flags += [("diagram-reverse", "diagram-no-reverse")]
+        for flag_pos, flag_neg in flags:
+            if flag_neg in self.options:
+                if flag_pos in self.options:
                     _logger.error(
-                        f":{prefix}{flag}: can't be given together with :{prefix}no-{flag}:",
+                        f":{flag_pos}: can't be given together with :{flag_neg}:",
                         location=self.get_location(),
                         type="sphinx_syntax",
                     )
-                self.options[f"{prefix}{flag}"] = False
-                del self.options[f"{prefix}no-{flag}"]
-            elif f"{prefix}{flag}" in self.options:
-                self.options[f"{prefix}{flag}"] = True
+                self.options[flag_pos] = False
+                del self.options[flag_neg]
+            elif flag_pos in self.options:
+                self.options[flag_pos] = True
 
-        return {
-            **(self.env.ref_context.get(f"{self.syntax_domain.name}:diagram") or {}),
-            **{
-                name: self.options[prefix + name]
-                for name in OPTION_SPEC_DIAGRAMS
-                if prefix + name in self.options
-            },
+        self.options = {
+            **(
+                self.env.ref_context.get(f"syntax:autodoc_ctx")
+                or {
+                    option: self.env.config[config_name]
+                    for option in OPTION_SPEC_AUTORULE
+                    if (config_name := f"syntax_{option.replace("-", "_")}")
+                    in self.env.config
+                }
+            ),
+            **self.options,
         }
 
-    def push_context(self, objtype: str, fullname: str | None) -> None:
-        objects = self.env.ref_context.setdefault(
-            f"{self.syntax_domain.name}:{objtype}s", []
-        )
-        objects.append(self.env.ref_context.get(f"{self.syntax_domain.name}:{objtype}"))
-        if fullname:
-            self.env.ref_context[f"{self.syntax_domain.name}:{objtype}"] = fullname
+    def get_root_rule(self) -> tuple[str | Model | None, str] | None:
+        """
+        If root rule is given by path and name, return loaded model and rule name.
 
-        diagrams = self.env.ref_context.setdefault(
-            f"{self.syntax_domain.name}:diagrams", []
-        )
-        diagrams.append(self.env.ref_context.get(f"{self.syntax_domain.name}:diagram"))
-        self.env.ref_context[f"{self.syntax_domain.name}:diagram"] = (
-            self.get_diagram_options()
-        )
+        If root rule is given by grammar and rule names, return names.
+
+        If root rule is given by name, return None and name. In this case,
+        grammar name should be inferred from context.
+
+        """
+
+        name: str | None
+        if name := self.options.get("root-rule"):
+            if " " in name:
+                grammar_path, name = name.rsplit(maxsplit=1)
+                base_path = self.env.config["syntax_base_path"] or "."
+                path = pathlib.Path(self.env.app.confdir, base_path, grammar_path)
+                self.env.note_dependency(path)
+                provider = find_provider(path)
+                if not provider:
+                    _logger.error(
+                        f"can't determine file format for {path}; "
+                        f"make sure that extension for this file type is loaded",
+                        location=self.get_location(),
+                        type="sphinx_syntax",
+                        once=True,
+                    )
+                    return None
+                else:
+                    grammar = provider.from_file(
+                        path,
+                        LoadingOptions(
+                            use_c_char_literals=self.options["bison-c-char-literals"]
+                        ),
+                    )
+            elif "." in name:
+                grammar, name = name.rsplit(".", 1)
+            else:
+                grammar = None
+            return grammar, name
+        else:
+            return None
+
+    def push_context(self, objtype: str, fullname: str | None) -> None:
+        objects = self.env.ref_context.setdefault(f"syntax:{objtype}s", [])
+        objects.append(self.env.ref_context.get(f"syntax:{objtype}"))
+        if fullname:
+            self.env.ref_context[f"syntax:{objtype}"] = fullname
+
+        autodoc_ctxs = self.env.ref_context.setdefault(f"syntax:autodoc_ctxs", [])
+        autodoc_ctxs.append(self.env.ref_context.get(f"syntax:autodoc_ctx"))
+        self.env.ref_context[f"syntax:autodoc_ctx"] = {
+            name: self.options[name]
+            for name in ContextManagerMixin.option_spec
+            if name in self.options
+        }
 
     def pop_context(self, objtype: str) -> None:
-        objects = self.env.ref_context.setdefault(
-            f"{self.syntax_domain.name}:{objtype}s", []
-        )
+        objects = self.env.ref_context.setdefault(f"syntax:{objtype}s", [])
         if objects:
-            self.env.ref_context[f"{self.syntax_domain.name}:{objtype}"] = objects.pop()
+            self.env.ref_context[f"syntax:{objtype}"] = objects.pop()
         else:
-            self.env.ref_context.pop(f"{self.syntax_domain.name}:{objtype}", None)
+            self.env.ref_context.pop(f"syntax:{objtype}", None)
+
+        autodoc_ctxs = self.env.ref_context.setdefault(f"syntax:autodoc_ctxs", [])
+        if autodoc_ctxs:
+            self.env.ref_context[f"syntax:autodoc_ctx"] = autodoc_ctxs.pop()
+        else:
+            self.env.ref_context.pop(f"syntax:autodoc_ctx", None)
 
     def get_context_grammar(self) -> str | None:
-        return self.env.ref_context.get(f"{self.syntax_domain.name}:grammar")
+        return self.env.ref_context.get(f"syntax:grammar")
 
 
 class SyntaxObjectDescription(
-    ObjectDescription[tuple[str, str, str]], ContextManagerMixin
+    ContextManagerMixin, ObjectDescription[tuple[str, str, str]]
 ):
     option_spec: _t.ClassVar[dict[str, _t.Callable[[str], _t.Any]]] = {
         "name": directives.unchanged,
@@ -213,7 +301,7 @@ class SyntaxObjectDescription(
     def handle_signature(
         self, sig: str, signode: sphinx.addnodes.desc_signature
     ) -> tuple[str, str, str]:
-        prefix = self.env.ref_context.get(f"{self.domain}:grammar", "")
+        prefix = self.env.ref_context.get(f"syntax:grammar", "")
 
         if prefix:
             fullname = f"{prefix}.{sig}"
@@ -325,12 +413,13 @@ class GrammarDescription(SyntaxObjectDescription):
         **SyntaxObjectDescription.option_spec,
     }
 
-    def get_signatures(self) -> list[str]:
-        if self.env.ref_context.get(f"{self.domain}:grammar"):
+    def run(self) -> list[docutils.nodes.Node]:
+        if self.env.ref_context.get(f"syntax:grammar"):
             raise self.error(f"grammars can't be nested within other grammars")
-        if self.env.ref_context.get(f"{self.domain}:rule"):
+        if self.env.ref_context.get(f"syntax:rule"):
             raise self.error(f"grammars can't be nested within production rules")
-        return super().get_signatures()
+
+        return super().run()
 
     def handle_signature(
         self, sig: str, signode: sphinx.addnodes.desc_signature
@@ -347,10 +436,11 @@ class GrammarDescription(SyntaxObjectDescription):
 
 
 class RuleDescription(SyntaxObjectDescription):
-    def get_signatures(self) -> list[str]:
-        if self.env.ref_context.get(f"{self.domain}:rule"):
+    def run(self) -> list[docutils.nodes.Node]:
+        if self.env.ref_context.get(f"syntax:rule"):
             raise self.error(f"rules can't be nested within other production rules")
-        return super().get_signatures()
+
+        return super().run()
 
 
 class SyntaxXRefRole(XRefRole):
@@ -362,8 +452,7 @@ class SyntaxXRefRole(XRefRole):
         title: str,
         target: str,
     ) -> tuple[str, str]:
-        domain = self.refdomain or "syntax"
-        refnode[f"{domain}:grammar"] = env.ref_context.get(f"{domain}:grammar")
+        refnode[f"syntax:grammar"] = env.ref_context.get(f"syntax:grammar")
         if not has_explicit_title:
             title = title.lstrip(".")
             target = target.lstrip("~")
@@ -597,10 +686,10 @@ class SyntaxDomain(Domain):
         grammars = self._resolve_grammar(
             env, fromdocname, builder, target, node, contnode
         )
-        results.extend([(f"{self.name}:grammar", grammar) for grammar in grammars])
+        results.extend([(f"syntax:grammar", grammar) for grammar in grammars])
 
         rules = self._resolve_rule(env, fromdocname, builder, target, node, contnode)
-        results.extend([(f"{self.name}:rule", grammar) for grammar in rules])
+        results.extend([(f"syntax:rule", grammar) for grammar in rules])
 
         return results
 
@@ -633,10 +722,10 @@ class SyntaxDomain(Domain):
             add_default_grammar = False
             grammar_name, rule_name = target.split(".", 1)
             roots = [grammar_name]
-        elif f"{self.name}:grammar" in node:
+        elif f"syntax:grammar" in node:
             # Got rule reference made by SyntaxXRefRole.
             add_default_grammar = True
-            grammar_name, rule_name = node[f"{self.name}:grammar"], target
+            grammar_name, rule_name = node[f"syntax:grammar"], target
             roots = [grammar_name] if grammar_name else []
         else:
             # Got rule reference made by AnyXRefRole.
@@ -697,7 +786,7 @@ class SyntaxDomain(Domain):
                 )
 
     def get_full_qualified_name(self, node: docutils.nodes.Element) -> str | None:
-        grammar = node.get(f"{self.name}:grammar")
+        grammar = node.get(f"syntax:grammar")
         target = node.get("reftarget")
         if target is None:
             return None

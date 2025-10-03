@@ -19,7 +19,7 @@ from docutils.parsers.rst import directives
 from sphinx.transforms import SphinxTransform
 
 import sphinx_syntax.domain
-from sphinx_syntax.model import HrefResolverData
+from sphinx_syntax.model import HrefResolverData, Model
 from sphinx_syntax.model_renderer import render
 
 _logger = sphinx.util.logging.getLogger("sphinx_syntax")
@@ -57,6 +57,11 @@ class DiagramDirective(sphinx_syntax.domain.ContextManagerMixin):
     has_content = True
 
     def run(self) -> list[docutils.nodes.Node]:
+        self.process_flags()
+
+        if self.options.get("mark-root-rule") and "end-class" not in self.options:
+            self.set_end_class()
+
         for option in self.disabled_options:
             if option in self.options:
                 _logger.warning(
@@ -76,10 +81,24 @@ class DiagramDirective(sphinx_syntax.domain.ContextManagerMixin):
         ).hexdigest()
         uri = f"data:syntax-diagram;{hash}.svg"
 
-        options = self.get_diagram_options(prefix="")
-        if options.get("end-class") is None:
+        diagram_options = {}
+        diagram_options.update(
+            {
+                name: self.options[key]
+                for name in sphinx_syntax.domain.OPTION_SPEC_DIAGRAMS
+                if (key := "diagram-" + name) in self.options
+            }
+        )
+        diagram_options.update(
+            {
+                name: self.options[name]
+                for name in sphinx_syntax.domain.OPTION_SPEC_DIAGRAMS
+                if name in self.options
+            }
+        )
+        if diagram_options.get("end-class") is None:
             if end_class := self.env.config["syntax_end_class"]:
-                options["end-class"] = rr.EndClass(end_class)
+                diagram_options["end-class"] = rr.EndClass(end_class)
 
         return [
             docutils.nodes.paragraph(
@@ -89,13 +108,30 @@ class DiagramDirective(sphinx_syntax.domain.ContextManagerMixin):
                     self.block_text,
                     *self.make_image(uri),
                     data=data,
-                    refdomain=self.domain,
                     grammar=self.get_context_grammar(),
                     force_text="force-text" in self.options,
-                    **options,
+                    **diagram_options,
                 ),
             )
         ]
+
+    def set_end_class(self):
+        current_grammar = self.env.ref_context.get("syntax:grammar", "")
+        current_rule = self.env.ref_context.get("syntax:rule")
+        if not current_grammar or not current_rule:
+            return
+        root_rule_data = self.get_root_rule()
+        if root_rule_data is None:
+            return
+        grammar, rule = root_rule_data
+        if grammar is None:
+            grammar = current_grammar
+        elif isinstance(grammar, Model):
+            grammar = grammar.get_name()
+        if current_grammar == grammar and current_rule == f"{grammar}.{rule}":
+            self.options["end-class"] = rr.EndClass.COMPLEX
+        else:
+            self.options["end-class"] = rr.EndClass.SIMPLE
 
     def get_data(self) -> rr.Element[HrefResolverData]:
         """
@@ -155,13 +191,12 @@ class HrefResolver(rr.HrefResolver[HrefResolverData]):
     def __init__(
         self,
         env: sphinx.environment.BuildEnvironment,
-        domain_name: str,
         grammar: str | None,
     ):
         self._env = env
         self._grammar = grammar
 
-        domain = env.get_domain(domain_name)
+        domain = env.get_domain("syntax")
         assert isinstance(domain, sphinx_syntax.domain.SyntaxDomain)
         self._domain = domain
 
@@ -196,13 +231,13 @@ class HrefResolver(rr.HrefResolver[HrefResolverData]):
         xref = sphinx.addnodes.pending_xref(
             "",
             refdoc=self._env.docname,
-            refdomain=self._domain.name,
+            refdomain="syntax",
             reftype="_auto",
             refexplicit=explicit_title,
             refwarn=False,
         )
 
-        xref[f"{self._domain.name}:grammar"] = self._grammar
+        xref[f"syntax:grammar"] = self._grammar
 
         refnodes = self._domain.resolve_any_xref(
             self._env,
@@ -321,9 +356,8 @@ class ProcessDiagrams(SphinxTransform):
         content = rr.render_svg(
             diagram,
             settings=settings,
-            href_resolver=HrefResolver(
-                self.env, node["refdomain"] or "syntax", node["grammar"]
-            ),
+            href_resolver=HrefResolver(self.env, node["grammar"]),
+            convert_resolver_data=self.make_resolver_data_converter(image),
         )
         raw = docutils.nodes.raw(image.rawsource, content, format="html")
         if "name" in image:
@@ -371,7 +405,11 @@ class ProcessDiagrams(SphinxTransform):
                 settings = dataclasses.replace(settings, css_style=path.read_text())
                 break
 
-        content = rr.render_svg(diagram, settings=settings)
+        content = rr.render_svg(
+            diagram,
+            settings=settings,
+            convert_resolver_data=self.make_resolver_data_converter(image),
+        )
 
         uri = image["uri"]
         if uri.startswith("data:syntax-diagram;"):
@@ -410,8 +448,26 @@ class ProcessDiagrams(SphinxTransform):
             },
         )
 
-        content = rr.render_text(diagram, settings=settings)
+        content = rr.render_text(
+            diagram,
+            settings=settings,
+            convert_resolver_data=self.make_resolver_data_converter(image),
+        )
         image.replace_self(docutils.nodes.literal_block(image.rawsource, content))
+
+    @staticmethod
+    def make_resolver_data_converter(node: docutils.nodes.Node):
+        def converter(data: _t.Any):
+            if data is not None:
+                _logger.warning(
+                    "diagram descriptions can't have custom resolver_data",
+                    location=node,
+                    type="sphinx_syntax",
+                    once=True,
+                )
+            return None
+
+        return converter
 
     @property
     def svg_settings(self):
@@ -458,47 +514,9 @@ class ProcessDiagrams(SphinxTransform):
 
 class AntlrDiagramDirective(DiagramDirective):
     option_spec = {
-        "imports": sphinx_syntax.domain.parse_list,
-        "cc-to-dash": directives.flag,
-        "no-cc-to-dash": directives.flag,
-        "literal-rendering": lambda x: directives.choice(
-            x, ("name", "contents", "contents-unquoted")
-        ),
+        **sphinx_syntax.domain.OPTION_SPEC_AUTORULE,
         **DiagramDirective.option_spec,
     }
-
-    def run(self) -> list[docutils.nodes.Node]:
-        for flag in [
-            "cc-to-dash",
-        ]:
-            if f"no-{flag}" in self.options:
-                if flag in self.options:
-                    _logger.error(
-                        f":{flag}: can't be given together with :no-{flag}:",
-                        location=self.get_location(),
-                        type="sphinx_syntax",
-                    )
-                self.options[flag] = False
-                del self.options[f"no-{flag}"]
-            elif flag in self.options:
-                self.options[flag] = True
-
-        for option in [
-            "cc-to-dash",
-            "literal-rendering",
-        ]:
-            if option not in self.options:
-                self.options[option] = self.env.config[
-                    f"syntax_{option.replace("-", "_")}"
-                ]
-
-        if "imports" not in self.options:
-            if grammar := self.get_context_grammar():
-                data = self.syntax_domain.grammars.get(grammar)
-                if data:
-                    self.options["imports"] = data.imports
-
-        return super().run()
 
 
 class LexerRuleDiagramDirective(AntlrDiagramDirective):

@@ -41,8 +41,8 @@ Autodoc directive
     .. rst:directive:option:: mark-root-rule
                               no-mark-root-rule
 
-        If enabled, automatic diagram for the :rst:dir:`root-rule <syntax:autogrammar:root-rule>`
-        will use complex line endings, while other diagrams will use simple ones
+        If enabled, diagrams in the :rst:dir:`root-rule <syntax:autogrammar:root-rule>`
+        will use complex line endings, while diagrams in other rules will use simple ones
         (see :rst:dir:`end-class <syntax:diagram:end-class>`).
 
     .. rst:directive:option:: diagrams
@@ -135,6 +135,17 @@ Autodoc directive
             .. syntax:lexer-diagram:: 'hello\nworld'
                 :literal-rendering: contents-unquoted
                 :svg-padding: 10 1 1 1
+
+.. rst:directive:: .. syntax:autorule:: <path> <name>
+
+    Documents a single rule from the given grammar.
+
+    This directive should be used inside :rst:dir:`syntax:grammar`; name of the
+    current grammar should match name of the autorule's grammar.
+
+    This directive supports all options from :rst:dir:`syntax:rule`,
+    including overrides for :rst:dir:`syntax:lexer-diagram`,
+    :rst:dir:`syntax:parser-diagram`, and automatically generated diagrams.
 
 
 .. _comments-syntax:

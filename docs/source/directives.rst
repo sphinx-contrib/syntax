@@ -23,6 +23,182 @@ Objects
 
     Grammars can't be nested, they also can't appear inside production rules.
 
+    **Options:**
+
+    .. rst:directive:option:: no-index
+                              no-index-entry
+                              no-contents-entry
+                              no-typesetting
+
+        The `standard Sphinx options`__ available to all object descriptions.
+
+        __ https://www.sphinx-doc.org/en/master/usage/domains/index.html#basic-markup
+
+    .. rst:directive:option:: name: <text>
+
+        Sets a human readable name for a rule or a grammar.
+
+        The primary name is used to refer to an object in documentation; it's used
+        in HTML paths, anchors, and serves as a unique object identifier.
+
+        The human readable name is used to display object to a user; it's used
+        when rendering documentation and cross-references.
+
+        **Example:**
+
+        .. code-block:: rst
+
+            .. syntax:grammar:: PrimaryName
+                :name: Human readable name
+
+                Notice that anchor for this grammar uses its primary name.
+
+            When referring to an object, we use primary name: :syntax:g:`PrimaryName`.
+            When this cross-reference is rendered, though,
+            it will use a human readable name.
+
+        .. dropdown:: Example output
+
+            .. syntax:grammar:: PrimaryName
+                :name: Human readable name
+                :no-index-entry:
+                :no-contents-entry:
+
+                Notice that anchor for this grammar uses its primary name.
+
+            When referring to an object, we use primary name: :syntax:g:`PrimaryName`.
+            When this cross-reference is rendered, though,
+            it will use a human readable name.
+
+    .. rst:directive:option:: imports: <list of diagram names>
+
+        If your parser generators allows importing grammars, you can use ``imports``
+        option to specify which diagrams are imported from the documented one.
+
+        This will affect object resolution for cross-references and diagrams.
+
+        **Example:**
+
+        .. code-block:: rst
+
+            .. syntax:grammar:: BaseGrammar
+
+                .. syntax:rule:: BaseRule
+
+            .. syntax:grammar:: DownstreamGrammar
+                :imports: BaseGrammar
+
+                This grammar imports :syntax:g:`BaseGrammar`, so it can reference
+                its rules without prefixing them with grammar name:
+                :syntax:r:`BaseRule`.
+
+                This also works in diagrams:
+
+                .. syntax:diagram:: BaseRule
+
+        .. dropdown:: Example output
+
+            .. syntax:grammar:: BaseGrammar
+                :no-index-entry:
+                :no-contents-entry:
+
+                .. syntax:rule:: BaseRule
+                    :no-index-entry:
+                    :no-contents-entry:
+
+            .. syntax:grammar:: DownstreamGrammar
+                :imports: BaseGrammar
+                :no-index-entry:
+                :no-contents-entry:
+
+                This grammar imports :syntax:g:`BaseGrammar`, so it can reference
+                its rules without prefixing them with grammar name:
+                :syntax:r:`BaseRule`.
+
+                This also works in diagrams:
+
+                .. syntax:diagram:: BaseRule
+
+    .. rst:directive:option:: root-rule: <rule> | <grammar>.<rule> | <path> <rule>
+
+        Specifies root rule of the diagram.
+
+        Setting a root rule has two effects:
+
+        1.  If :rst:dir:`mark-root-rule <syntax:grammar:mark-root-rule>` is enabled,
+            syntax diagrams for the root rule will use use complex line endings,
+            while syntax diagrams for all other rules will use simple ones.
+
+        2.  :rst:dir:`syntax:autogrammar` will not display rules that aren't reachable
+            from the root rule.
+
+            See :rst:dir:`example in syntax:autogrammar <syntax:autogrammar:root-rule>`.
+
+        The value should be either name of a rule from the grammar that’s
+        being documented, a grammar name and a rule name separated by a dot,
+        or a grammar file and a rule name separated by a space.
+
+    .. rst:directive:option:: mark-root-rule
+                              no-mark-root-rule
+
+        If enabled, diagrams in the :rst:dir:`root-rule <syntax:autogrammar:root-rule>`
+        will use complex line endings, while diagrams in other rules will use simple ones
+        (see :rst:dir:`end-class <syntax:diagram:end-class>`).
+
+        With this option turned off, :rst:dir:`root-rule <syntax:grammar:root-rule>`
+        only affects how :rst:dir:`syntax:autogrammar` filters displayed rules.
+
+    .. rst:directive:option:: diagrams
+                              no-diagrams
+                              cc-to-dash
+                              no-cc-to-dash
+                              bison-c-char-literals
+                              no-bison-c-char-literals
+                              literal-rendering
+
+        Same as corresponding options from :rst:dir:`syntax:autogrammar`.
+
+        When used on :rst:dir:`syntax:grammar`, these options override defaults
+        for any nested :rst:dir:`syntax:autorule`, :rst:dir:`syntax:lexer-diagram`
+        or :rst:dir:`syntax:parser-diagram`.
+
+    .. rst:directive:option:: diagram-*
+
+        These options override defaults for any :rst:dir:`syntax:diagram`
+        used within this grammar.
+
+        **Example:**
+
+        .. code-block:: rst
+
+            .. syntax:grammar:: MyGrammar
+                :diagram-end-class: simple
+
+                All diagrams in this grammar will use simple end class:
+
+                .. syntax:diagram:: Simple end class
+
+                Unless they override it manually:
+
+                .. syntax:diagram:: Complex end class
+                    :end-class: complex
+
+        .. dropdown:: Example output
+
+            .. syntax:grammar:: MyGrammar
+                :no-index:
+                :diagram-end-class: simple
+
+                All diagrams in this grammar will use simple end class:
+
+                .. syntax:diagram:: Simple end class
+
+                Unless they override it manually:
+
+                .. syntax:diagram:: Complex end class
+                    :end-class: complex
+
+
 .. rst:directive:: .. syntax:rule:: name
 
     Directive for documenting production rules:
@@ -42,134 +218,34 @@ Objects
 
     Rules can't be nested.
 
+    **Options:**
 
-Parameters
-----------
+    .. rst:directive:option:: no-index
+                              no-index-entry
+                              no-contents-entry
+                              no-typesetting
 
-All of the above directives accept the standard parameters:
+        The `standard Sphinx options`__ available to all object descriptions.
 
-.. rst:directive:option:: no-index
-                          no-index-entry
-                          no-contents-entry
-                          no-typesetting
+        __ https://www.sphinx-doc.org/en/master/usage/domains/index.html#basic-markup
 
-    The `standard Sphinx options`__ available to all object descriptions.
+    .. rst:directive:option:: name: <text>
 
-    __ https://www.sphinx-doc.org/en/master/usage/domains/index.html#basic-markup
+        Sets a human readable name for a rule or a grammar.
 
-.. rst:directive:option:: name: <text>
+        See :rst:dir:`syntax:grammar:name` for more info.
 
-    Sets a human readable name for a rule or a grammar.
+    .. rst:directive:option:: diagram-*
+                              diagrams
+                              no-diagrams
+                              cc-to-dash
+                              no-cc-to-dash
+                              bison-c-char-literals
+                              no-bison-c-char-literals
+                              literal-rendering
 
-    The primary name is used to refer to an object in documentation; it's used
-    in HTML paths, anchors, and serves as a unique object identifier.
-
-    The human readable name is used to display object to a user; it's used
-    when rendering documentation and cross-references.
-
-    **Example:**
-
-    .. code-block:: rst
-
-        .. syntax:grammar:: PrimaryName
-            :name: Human readable name
-
-            Notice that anchor for this grammar uses its primary name.
-
-        When referring to an object, we use primary name: :syntax:g:`PrimaryName`.
-        When this cross-reference is rendered, though,
-        it will use a human readable name.
-
-    .. dropdown:: Example output
-
-        .. syntax:grammar:: PrimaryName
-            :name: Human readable name
-
-            Notice that anchor for this grammar uses its primary name.
-
-        When referring to an object, we use primary name: :syntax:g:`PrimaryName`.
-        When this cross-reference is rendered, though,
-        it will use a human readable name.
-
-.. rst:directive:option:: imports: <list of diagram names>
-
-    If your parser generators allows importing grammars, you can use ``imports``
-    option to specify which diagrams are imported from the documented one.
-
-    This will affect object resolution for cross-references and diagrams.
-
-    **Example:**
-
-    .. code-block:: rst
-
-        .. syntax:grammar:: BaseGrammar
-
-            .. syntax:rule:: BaseRule
-
-        .. syntax:grammar:: DownstreamGrammar
-            :imports: BaseGrammar
-
-            This grammar imports :syntax:g:`BaseGrammar`, so it can reference
-            its rules without prefixing them with grammar name:
-            :syntax:r:`BaseRule`.
-
-            This also works in diagrams:
-
-            .. syntax:diagram:: BaseRule
-
-    .. dropdown:: Example output
-
-        .. syntax:grammar:: BaseGrammar
-
-            .. syntax:rule:: BaseRule
-
-        .. syntax:grammar:: DownstreamGrammar
-            :imports: BaseGrammar
-
-            This grammar imports :syntax:g:`BaseGrammar`, so it can reference
-            its rules without prefixing them with grammar name:
-            :syntax:r:`BaseRule`.
-
-            This also works in diagrams:
-
-            .. syntax:diagram:: BaseRule
-
-.. rst:directive:option:: diagram-*
-
-    You can add any option from :rst:dir:`syntax:diagram` to an object description
-    by prefixing it with ``diagram-``. This option will be used in all diagrams
-    that appear within object's description.
-
-    **Example:**
-
-    .. code-block:: rst
-
-        .. syntax:grammar:: MyGrammar
-            :diagram-end-class: simple
-
-            All diagrams in this grammar will use simple end class:
-
-            .. syntax:diagram:: Simple end class
-
-            Unless they override it manually:
-
-            .. syntax:diagram:: Complex end class
-                :end-class: complex
-
-    .. dropdown:: Example output
-
-        .. syntax:grammar:: MyGrammar
-            :no-index:
-            :diagram-end-class: simple
-
-            All diagrams in this grammar will use simple end class:
-
-            .. syntax:diagram:: Simple end class
-
-            Unless they override it manually:
-
-            .. syntax:diagram:: Complex end class
-                :end-class: complex
+        Same as corresponding options from :rst:dir:`syntax:grammar`
+        and :rst:dir:`syntax:autogrammar`.
 
 
 Diagrams
@@ -317,7 +393,7 @@ but allows less customization.
 
         .. syntax:lexer-diagram:: ('+' | '-')? ([1-9][0-9]* | '0')
 
-    **Options**
+    **Options:**
 
     All options from the :rst:dir:`syntax:diagram` directive ara available,
     as well as :rst:dir:`syntax:autogrammar:cc-to-dash`
@@ -345,7 +421,7 @@ but allows less customization.
                 '*' | expression (AS row_name)? (',' expression (AS row_name)?)*
             )
 
-    **Options**
+    **Options:**
 
     All options from the :rst:dir:`syntax:diagram` directive ara available,
     as well as :rst:dir:`syntax:autogrammar:cc-to-dash`

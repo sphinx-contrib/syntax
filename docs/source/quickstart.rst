@@ -70,10 +70,14 @@ to create production rules:
 .. dropdown:: Example output
 
     .. syntax:grammar:: MyGrammar
+        :no-index-entry:
+        :no-contents-entry:
 
         A grammar for my DSL.
 
         .. syntax:rule:: root
+            :no-index-entry:
+            :no-contents-entry:
 
             The root grammar rule.
 

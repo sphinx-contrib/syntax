@@ -36,10 +36,14 @@ Cross-referencing objects
         Reference to :syntax:r:`TargetGrammar.TargetRule`.
 
         .. syntax:grammar:: TargetGrammar
+            :no-index-entry:
+            :no-contents-entry:
 
             Reference to :syntax:r:`TargetRule`.
 
             .. syntax:rule:: TargetRule
+                :no-index-entry:
+                :no-contents-entry:
 
     If you specify a fully qualified object name, and would like to hide its prefix,
     you can add a tilde (``~``) to the object's path:

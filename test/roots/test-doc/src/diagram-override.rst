@@ -28,3 +28,9 @@ Diagram override
 
             - A
             - B
+
+   .. syntax:diagram::
+      :force-text:
+
+      - A
+      - B

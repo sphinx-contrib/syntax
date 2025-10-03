@@ -65,6 +65,11 @@ def setup(app: sphinx.application.Sphinx):
         "autogrammar",
         sphinx_syntax.autodoc.AutoGrammarDescription,
     )
+    app.add_directive_to_domain(
+        "syntax",
+        "autorule",
+        sphinx_syntax.autodoc.AutoRuleDescription,
+    )
 
     app.add_post_transform(sphinx_syntax.diagram.ProcessDiagrams)
 
