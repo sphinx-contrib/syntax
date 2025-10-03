@@ -89,7 +89,13 @@ def main():
                 flags=re.MULTILINE,
             )
             text = re.sub(
-                r"^([ ]*)\.\.[ ]+a4:(autogrammar|grammar|rule)::",
+                r"^([ ]*)\.\.[ ]+a4:autorule::[ ]*(\S*?)(\.g4)?[ ]",
+                r"\1.. syntax:autorule:: \2.g4 ",
+                text,
+                flags=re.MULTILINE,
+            )
+            text = re.sub(
+                r"^([ ]*)\.\.[ ]+a4:(autogrammar|grammar|autorule|rule)::",
                 r"\1.. syntax:\2::",
                 text,
                 flags=re.MULTILINE,
@@ -177,7 +183,7 @@ def main():
         )
         fulldiff += diff
 
-        for directive in ["a4:autorule", "docstring-marker", "members-marker"]:
+        for directive in ["docstring-marker", "members-marker"]:
             if f".. {directive}::" in text:
                 print(
                     colorize(
