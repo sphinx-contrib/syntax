@@ -36,7 +36,7 @@ dev = [
     {include-group = "doc"},
 ]
 test = [
-    "pyright==1.1.406",
+    "pyright==1.1.407",
     "pytest==8.4.2",
     "sybil==9.2.0",
     "pytest-regressions==2.8.3",
