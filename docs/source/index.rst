@@ -39,3 +39,5 @@ Features:
     :caption: Links
 
     GitHub <https://github.com/sphinx-contrib/syntax/>
+    Issues <https://github.com/sphinx-contrib/syntax/issues>
+    Changelog <https://github.com/sphinx-contrib/syntax/blob/main/CHANGELOG.md>
