@@ -30,16 +30,16 @@ dependencies = [
 
 [dependency-groups]
 dev = [
-    "pytest-cov==7.0.0",
+    "pytest-cov==7.1.0",
     {include-group = "test"},
     {include-group = "lint"},
     {include-group = "doc"},
 ]
 test = [
-    "pyright==1.1.407",
+    "pyright==1.1.408",
     "pytest==9.0.2",
-    "sybil==9.3.0",
-    "pytest-regressions==2.9.1",
+    "sybil==10.0.1",
+    "pytest-regressions==2.10.0",
     "beautifulsoup4==4.14.3"
 ]
 lint = [
@@ -48,10 +48,10 @@ lint = [
     "pre-commit==4.5.1",
 ]
 doc = [
-    "sybil==9.3.0",
+    "sybil==10.0.1",
     "furo==2025.12.19",
     "sphinx_design==0.7.0",
-    "sphinxcontrib-svg2pdfconverter[CairoSVG]==2.0.0",
+    "sphinxcontrib-svg2pdfconverter[CairoSVG]==2.1.0",
 ]
 
 [project.urls]
