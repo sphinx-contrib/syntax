@@ -16,12 +16,11 @@
 
 - Fixed bugs related to propagating options to nested objects.
 
-- Autodoc-related options can be used with the `diagram` directive, they'll be
-  picked up by nested `autorule`, `lexer-diagram`, and `parser-diagram`.
+- Autodoc-related options can be used with the `diagram` directive, they'll be picked up
+  by nested `autorule`, `lexer-diagram`, and `parser-diagram`.
 
-- Clarified documentation around the `:import:` option. It only has effect on
-  grammar declarations, despite documentation mentioning that it can be used on
-  diagrams.
+- Clarified documentation around the `:import:` option. It only has effect on grammar
+  declarations, despite documentation mentioning that it can be used on diagrams.
 
 - Fixed links after move.
 
@@ -31,8 +30,7 @@
 
 - Migrated documentation to Read the Docs.
 
-- Moved repository to [sphinx-contrib](https://github.com/sphinx-contrib)
-  organization.
+- Moved repository to [sphinx-contrib](https://github.com/sphinx-contrib) organization.
 
 ## [1.0.1] - 2025-09-29
 
