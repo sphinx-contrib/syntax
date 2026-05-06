@@ -38,7 +38,7 @@ dev = [
 ]
 test = [
     "beautifulsoup4==4.14.3",
-    "pyright==1.1.408",
+    "pyright==1.1.407",
     "pytest-cov==7.0.0",
     "pytest-regressions==2.9.1",
     "pytest==9.0.2",
@@ -131,8 +131,10 @@ extend-safe-fixes = [
 future-annotations = true
 
 [tool.ruff.lint.per-file-ignores]
-"test/**/*" = ["T20", "I002", "SIM102", "SIM117"]
+"test/**/*" = ["T20", "I002", "SIM102", "SIM117", "INP001"]
 "docs/**/*" = ["T20", "I002", "INP001"]
+"sphinx_syntax/__init__.py" = ["F405"]
+"sphinx_syntax/ext/antlr4/sphinx_a4doc_convert.py" = ["T20"]
 
 [tool.ruff.lint.isort]
 required-imports = ["from __future__ import annotations"]
