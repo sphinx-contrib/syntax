@@ -1,0 +1,23 @@
+[run]
+relative_files = true
+
+[report]
+include = ["sphinx_syntax/**/*.py"]
+omit = [
+    "sphinx_syntax/_version.py",
+    "sphinx_syntax/ext/syntax/gen/**/*.py",
+    "test/**/*.py",
+]
+exclude_also = [
+    "def __repr__",
+    "def __rich_repr__",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+    "if (|_t\\.|typing\\.)TYPE_CHECKING:",
+    "@(abc\\.)?abstractmethod",
+    "except ImportError:",
+    "assert False",
+]
+
+[html]
+title = "Sphinx Syntax Coverage Report"
