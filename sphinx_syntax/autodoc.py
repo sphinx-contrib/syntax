@@ -91,7 +91,7 @@ class AutoGrammarDescription(AutoObjectMixin, GrammarDescription):
         ]:
             if option not in self.options:
                 self.options[option] = self.env.config[
-                    f"syntax_{option.replace("-", "_")}"
+                    f"syntax_{option.replace('-', '_')}"
                 ]
 
         self.model = self.load_model(self.arguments[0])
@@ -123,7 +123,7 @@ class AutoGrammarDescription(AutoObjectMixin, GrammarDescription):
                     )
 
             content_node += AutoRuleDescription(
-                name=f"syntax:rule",
+                name="syntax:rule",
                 arguments=[str(self.model.get_path()), rule.name],
                 options={
                     k: self.options[k]
@@ -259,7 +259,7 @@ class AutoRuleDescription(AutoObjectMixin, RuleDescription):
                     f"can't find rule {self.arguments[1]} "
                     f"in grammar {self.model.get_path()}"
                 )
-        parent_grammar = self.env.ref_context.get(f"syntax:grammar")
+        parent_grammar = self.env.ref_context.get("syntax:grammar")
         if not parent_grammar:
             raise self.error(f"{self.name} can't be used outside of a diagram")
         elif parent_grammar != self.model.get_name():
@@ -303,7 +303,7 @@ class AutoRuleDescription(AutoObjectMixin, RuleDescription):
             )
 
             content_node += AutoDiagramDirective(
-                name=f"syntax:diagram",
+                name="syntax:diagram",
                 arguments=[],
                 options={},
                 content=docutils.statemachine.StringList(),

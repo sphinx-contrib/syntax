@@ -40,8 +40,7 @@ class DiagramNode(
 class _JSONEncoder(json.JSONEncoder):
     def default(self, o):
         if dataclasses.is_dataclass(o) and not isinstance(o, type):
-            d = dataclasses.asdict(o)
-            return d
+            return dataclasses.asdict(o)
         elif isinstance(o, Enum):
             return o.value
         return super().default(o)
@@ -96,9 +95,10 @@ class DiagramDirective(sphinx_syntax.domain.ContextManagerMixin):
                 if name in self.options
             }
         )
-        if diagram_options.get("end-class") is None:
-            if end_class := self.env.config["syntax_end_class"]:
-                diagram_options["end-class"] = rr.EndClass(end_class)
+        if diagram_options.get("end-class") is None and (
+            end_class := self.env.config["syntax_end_class"]
+        ):
+            diagram_options["end-class"] = rr.EndClass(end_class)
 
         return [
             docutils.nodes.paragraph(
@@ -237,7 +237,7 @@ class HrefResolver(rr.HrefResolver[HrefResolverData]):
             refwarn=False,
         )
 
-        xref[f"syntax:grammar"] = self._grammar
+        xref["syntax:grammar"] = self._grammar
 
         refnodes = self._domain.resolve_any_xref(
             self._env,
@@ -255,13 +255,13 @@ class HrefResolver(rr.HrefResolver[HrefResolverData]):
             if "refid" in refnode:
                 return (
                     refnode.astext(),
-                    f"#{refnode["refid"]}",
+                    f"#{refnode['refid']}",
                     refnode.get("reftitle", title),
                 )
             elif "refuri" in refnode:
                 return (
                     refnode.astext(),
-                    f"#{refnode["refuri"]}",
+                    f"#{refnode['refuri']}",
                     refnode.get("reftitle", title),
                 )
             else:
@@ -332,7 +332,7 @@ class ProcessDiagrams(SphinxTransform):
             filter(None, ["syntax-diagram", image.get("class"), settings.css_class])
         )
         if "align" in image:
-            classes.append(f"align-{image["align"]}")
+            classes.append(f"align-{image['align']}")
 
         settings = dataclasses.replace(
             settings,
@@ -376,7 +376,7 @@ class ProcessDiagrams(SphinxTransform):
             filter(None, ["syntax-diagram", image.get("class"), settings.css_class])
         )
         if "align" in image:
-            classes.append(f"align-{image["align"]}")
+            classes.append(f"align-{image['align']}")
 
         settings = dataclasses.replace(
             settings,
@@ -465,7 +465,7 @@ class ProcessDiagrams(SphinxTransform):
                     type="sphinx_syntax",
                     once=True,
                 )
-            return None
+            return
 
         return converter
 

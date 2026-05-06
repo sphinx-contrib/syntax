@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import pathlib
 import re
 import textwrap
@@ -34,7 +36,7 @@ class LoggingErrorListener(ErrorListener):
     def syntaxError(self, recognizer, offendingSymbol, line, column, msg, e):
         _logger.error(
             msg,
-            location=f"{self._path or "<in-memory>"}:{line + self._offset}",
+            location=f"{self._path or '<in-memory>'}:{line + self._offset}",
             type="sphinx_syntax",
         )
 
@@ -84,7 +86,7 @@ def load_docs(
 
             if not allow_cmd:
                 _logger.error(
-                    f"commands not allowed here",
+                    "commands not allowed here",
                     location=str(position),
                     type="sphinx_syntax",
                 )
@@ -107,14 +109,14 @@ def load_docs(
                     val = int(match["ctx"].strip())
                 except ValueError:
                     _logger.error(
-                        f"importance requires an integer argument",
+                        "importance requires an integer argument",
                         location=str(position),
                         type="sphinx_syntax",
                     )
                     continue
                 if val < 0:
                     _logger.error(
-                        f"importance should not be negative",
+                        "importance should not be negative",
                         location=str(position),
                         type="sphinx_syntax",
                     )
@@ -123,7 +125,7 @@ def load_docs(
                 name = match["ctx"].strip()
                 if not name:
                     _logger.error(
-                        f"name command requires an argument",
+                        "name command requires an argument",
                         location=str(position),
                         type="sphinx_syntax",
                     )
@@ -134,7 +136,7 @@ def load_docs(
                 css_class = match["ctx"].strip()
                 if not name:
                     _logger.error(
-                        f"css-class command requires an argument",
+                        "css-class command requires an argument",
                         location=str(position),
                         type="sphinx_syntax",
                     )

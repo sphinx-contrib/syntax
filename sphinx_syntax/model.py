@@ -13,32 +13,32 @@ import sphinx.util.logging
 import syntax_diagrams
 
 __all__ = [
-    "HrefResolverData",
-    "LoadingOptions",
-    "ModelProvider",
-    "Model",
-    "ModelImpl",
-    "Position",
-    "Section",
-    "RuleBase",
-    "ParserRule",
-    "LexerRule",
-    "RuleContent",
-    "Reference",
-    "Doc",
-    "Wildcard",
-    "Negation",
-    "ZeroPlus",
-    "OnePlus",
-    "Sequence",
-    "Alternative",
-    "Literal",
-    "Range",
-    "CharSet",
     "EMPTY",
     "WILDCARD",
-    "RuleContentVisitor",
+    "Alternative",
     "CachedRuleContentVisitor",
+    "CharSet",
+    "Doc",
+    "HrefResolverData",
+    "LexerRule",
+    "Literal",
+    "LoadingOptions",
+    "Model",
+    "ModelImpl",
+    "ModelProvider",
+    "Negation",
+    "OnePlus",
+    "ParserRule",
+    "Position",
+    "Range",
+    "Reference",
+    "RuleBase",
+    "RuleContent",
+    "RuleContentVisitor",
+    "Section",
+    "Sequence",
+    "Wildcard",
+    "ZeroPlus",
     "register_provider",
 ]
 
@@ -663,7 +663,7 @@ class Doc(RuleContent):
 
 @dataclass(frozen=True, slots=True, weakref_slot=True, init=False)
 @_meta(visitor_relay="visit_wildcard")
-@_meta(precedence=4, formatter=lambda x, f: f".")
+@_meta(precedence=4, formatter=lambda x, f: ".")
 class Wildcard(RuleContent):
     """
     Matches any token.

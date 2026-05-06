@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import pathlib
 import re
 
@@ -32,8 +34,8 @@ from sphinx_syntax.ext.syntax.gen.BisonParserVisitor import (
 from sphinx_syntax.ext.utils import LoggingErrorListener, load_docs
 
 __all__ = [
-    "BisonProvider",
     "PROVIDER",
+    "BisonProvider",
 ]
 
 
@@ -191,7 +193,7 @@ class MetaLoader(ParserVisitor):
                 tokens = [tok]
             else:
                 _logger.error(
-                    f"failed to parse '%token' command",
+                    "failed to parse '%token' command",
                     type="sphinx_syntax",
                     location=str(Position(self._model.get_path(), ctx.start.line)),
                 )
@@ -326,7 +328,7 @@ class ParserRuleLoader(ParserVisitor):
         position = Position(self._model.get_path(), ctx.start.line + 0)
         if doc_info.content:
             _logger.error(
-                f"'content' command can't appear before parser rules",
+                "'content' command can't appear before parser rules",
                 type="sphinx_syntax",
                 location=str(position),
             )

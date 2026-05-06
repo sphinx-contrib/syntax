@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import pathlib
 
 import sphinx.application
@@ -7,37 +9,37 @@ from syntax_diagrams import SvgRenderSettings, TextRenderSettings
 import sphinx_syntax.autodoc
 import sphinx_syntax.diagram
 import sphinx_syntax.domain
-from sphinx_syntax._version import *
-from sphinx_syntax.model import *
+from sphinx_syntax._version import *  # noqa: F403
+from sphinx_syntax.model import *  # noqa: F403
 
 __all__ = [
-    "SvgRenderSettings",
-    "TextRenderSettings",
+    "EMPTY",
+    "WILDCARD",
+    "Alternative",
+    "CachedRuleContentVisitor",
+    "CharSet",
+    "Doc",
     "HrefResolverData",
+    "LexerRule",
+    "Literal",
     "LoadingOptions",
-    "ModelProvider",
     "Model",
     "ModelImpl",
-    "Position",
-    "RuleBase",
-    "ParserRule",
-    "LexerRule",
-    "RuleContent",
-    "Reference",
-    "Doc",
-    "Wildcard",
+    "ModelProvider",
     "Negation",
-    "ZeroPlus",
     "OnePlus",
-    "Sequence",
-    "Alternative",
-    "Literal",
+    "ParserRule",
+    "Position",
     "Range",
-    "CharSet",
-    "WILDCARD",
-    "EMPTY",
+    "Reference",
+    "RuleBase",
+    "RuleContent",
     "RuleContentVisitor",
-    "CachedRuleContentVisitor",
+    "Sequence",
+    "SvgRenderSettings",
+    "TextRenderSettings",
+    "Wildcard",
+    "ZeroPlus",
     "register_provider",
 ]
 
