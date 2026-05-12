@@ -70,6 +70,9 @@ Changelog = "https://github.com/sphinx-contrib/syntax/blob/main/CHANGELOG.md"
 [build-system]
 requires = ["setuptools>=45", "setuptools_scm[toml]>=6.2", "wheel>=0.40"]
 
+[tool.setuptools.packages.find]
+include = ["sphinx_syntax*"]
+
 [tool.setuptools_scm]
 write_to = "sphinx_syntax/_version.py"
 
@@ -80,6 +83,7 @@ exclude = [
     "sphinx_syntax/_version.py",
     "sphinx_syntax/ext/syntax/gen/*",
 ]
+stubPath = "typings"
 typeCheckingMode = "strict"
 pythonVersion = "3.14"
 pythonPlatform = "All"
