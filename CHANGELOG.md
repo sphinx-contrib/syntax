@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+## [1.2.1] - 2026-05-12
+
+- Bumped dependencies.
+- Hardened build and publishing process to lower risk of supply-chain attacks.
+
 ## [1.2.0] - 2026-01-31
 
 - Support Sphinx 9.
@@ -53,4 +58,5 @@
 [1.1.0]: https://github.com/sphinx-contrib/syntax/compare/v1.0.1-post1...v1.1.0
 [1.1.1]: https://github.com/sphinx-contrib/syntax/compare/v1.1.0...v1.1.1
 [1.2.0]: https://github.com/sphinx-contrib/syntax/compare/v1.1.1...v1.2.0
-[unreleased]: https://github.com/sphinx-contrib/syntax/compare/v1.2.0...HEAD
+[1.2.1]: https://github.com/sphinx-contrib/syntax/compare/v1.2.0...v1.2.1
+[unreleased]: https://github.com/sphinx-contrib/syntax/compare/v1.2.1...HEAD
