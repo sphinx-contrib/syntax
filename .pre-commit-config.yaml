@@ -4,14 +4,14 @@ repos:
       - id: ruff-check
         name: ruff check
         language: system
-        entry: scripts/resolve_venv.sh ruff check --force-exclude
+        entry: uv run ruff check --force-exclude
         types_or: [python, pyi]
         require_serial: true
         exclude: "^sphinx_syntax/ext/syntax/gen/.*$"
       - id: ruff-format
         name: ruff format
         language: system
-        entry: scripts/resolve_venv.sh ruff format --force-exclude
+        entry: uv run ruff format --force-exclude
         types_or: [python, pyi]
         require_serial: true
         exclude: "^sphinx_syntax/ext/syntax/gen/.*$"
