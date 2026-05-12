@@ -201,11 +201,11 @@ class ContextManagerMixin(SphinxDirective):
 
         self.options = {
             **(
-                self.env.ref_context.get(f"syntax:autodoc_ctx")
+                self.env.ref_context.get("syntax:autodoc_ctx")
                 or {
                     option: self.env.config[config_name]
                     for option in OPTION_SPEC_AUTORULE
-                    if (config_name := f"syntax_{option.replace("-", "_")}")
+                    if (config_name := f"syntax_{option.replace('-', '_')}")
                     in self.env.config
                 }
             ),
@@ -261,9 +261,9 @@ class ContextManagerMixin(SphinxDirective):
         if fullname:
             self.env.ref_context[f"syntax:{objtype}"] = fullname
 
-        autodoc_ctxs = self.env.ref_context.setdefault(f"syntax:autodoc_ctxs", [])
-        autodoc_ctxs.append(self.env.ref_context.get(f"syntax:autodoc_ctx"))
-        self.env.ref_context[f"syntax:autodoc_ctx"] = {
+        autodoc_ctxs = self.env.ref_context.setdefault("syntax:autodoc_ctxs", [])
+        autodoc_ctxs.append(self.env.ref_context.get("syntax:autodoc_ctx"))
+        self.env.ref_context["syntax:autodoc_ctx"] = {
             name: self.options[name]
             for name in ContextManagerMixin.option_spec
             if name in self.options
@@ -276,14 +276,14 @@ class ContextManagerMixin(SphinxDirective):
         else:
             self.env.ref_context.pop(f"syntax:{objtype}", None)
 
-        autodoc_ctxs = self.env.ref_context.setdefault(f"syntax:autodoc_ctxs", [])
+        autodoc_ctxs = self.env.ref_context.setdefault("syntax:autodoc_ctxs", [])
         if autodoc_ctxs:
-            self.env.ref_context[f"syntax:autodoc_ctx"] = autodoc_ctxs.pop()
+            self.env.ref_context["syntax:autodoc_ctx"] = autodoc_ctxs.pop()
         else:
-            self.env.ref_context.pop(f"syntax:autodoc_ctx", None)
+            self.env.ref_context.pop("syntax:autodoc_ctx", None)
 
     def get_context_grammar(self) -> str | None:
-        return self.env.ref_context.get(f"syntax:grammar")
+        return self.env.ref_context.get("syntax:grammar")
 
 
 class SyntaxObjectDescription(
@@ -301,7 +301,7 @@ class SyntaxObjectDescription(
     def handle_signature(
         self, sig: str, signode: sphinx.addnodes.desc_signature
     ) -> tuple[str, str, str]:
-        prefix = self.env.ref_context.get(f"syntax:grammar", "")
+        prefix = self.env.ref_context.get("syntax:grammar", "")
 
         if prefix:
             fullname = f"{prefix}.{sig}"
@@ -355,17 +355,18 @@ class SyntaxObjectDescription(
                 self.options.get("imports"),
             )
 
-        if "no-index-entry" not in self.options:
-            if index_text := self.get_index_text(name):
-                self.indexnode["entries"].append(
-                    (
-                        "single",
-                        index_text,
-                        id,
-                        "",
-                        None,
-                    )
+        if "no-index-entry" not in self.options and (
+            index_text := self.get_index_text(name)
+        ):
+            self.indexnode["entries"].append(
+                (
+                    "single",
+                    index_text,
+                    id,
+                    "",
+                    None,
                 )
+            )
 
     def get_index_text(self, name: tuple[str, str, str]) -> str:
         _fullname, prefix, objname = name
@@ -414,10 +415,10 @@ class GrammarDescription(SyntaxObjectDescription):
     }
 
     def run(self) -> list[docutils.nodes.Node]:
-        if self.env.ref_context.get(f"syntax:grammar"):
-            raise self.error(f"grammars can't be nested within other grammars")
-        if self.env.ref_context.get(f"syntax:rule"):
-            raise self.error(f"grammars can't be nested within production rules")
+        if self.env.ref_context.get("syntax:grammar"):
+            raise self.error("grammars can't be nested within other grammars")
+        if self.env.ref_context.get("syntax:rule"):
+            raise self.error("grammars can't be nested within production rules")
 
         return super().run()
 
@@ -437,8 +438,8 @@ class GrammarDescription(SyntaxObjectDescription):
 
 class RuleDescription(SyntaxObjectDescription):
     def run(self) -> list[docutils.nodes.Node]:
-        if self.env.ref_context.get(f"syntax:rule"):
-            raise self.error(f"rules can't be nested within other production rules")
+        if self.env.ref_context.get("syntax:rule"):
+            raise self.error("rules can't be nested within other production rules")
 
         return super().run()
 
@@ -452,7 +453,7 @@ class SyntaxXRefRole(XRefRole):
         title: str,
         target: str,
     ) -> tuple[str, str]:
-        refnode[f"syntax:grammar"] = env.ref_context.get(f"syntax:grammar")
+        refnode["syntax:grammar"] = env.ref_context.get("syntax:grammar")
         if not has_explicit_title:
             title = title.lstrip(".")
             target = target.lstrip("~")
@@ -572,17 +573,16 @@ class SyntaxDomain(Domain):
         return self.data["grammars"]
 
     def _find_grammar(self, fullname: str):
-        if result := self.grammars.get(fullname):
-            return result
+        return self.grammars.get(fullname)
 
     def _find_rule(self, fullname: str):
-        if result := self.rules.get(fullname):
-            return result
+        return self.rules.get(fullname)
 
     def _find_obj(self, fullname: str):
         for index in [self.grammars, self.rules]:
             if result := index.get(fullname):
                 return result
+        return None
 
     def _traverse_grammars(self, roots, add_default_grammar):
         stack = list(roots)
@@ -654,8 +654,8 @@ class SyntaxDomain(Domain):
 
         if len(results) > 1 and typ != "_auto":
             candidates = " or ".join(
-                f"{result["syntax:objtype"]} {result["syntax:target"]} "
-                f"from {self.env.doc2path(result["syntax:docname"])}"
+                f"{result['syntax:objtype']} {result['syntax:target']} "
+                f"from {self.env.doc2path(result['syntax:docname'])}"
                 for result in results
             )
             _logger.warning(
@@ -686,10 +686,10 @@ class SyntaxDomain(Domain):
         grammars = self._resolve_grammar(
             env, fromdocname, builder, target, node, contnode
         )
-        results.extend([(f"syntax:grammar", grammar) for grammar in grammars])
+        results.extend([("syntax:grammar", grammar) for grammar in grammars])
 
         rules = self._resolve_rule(env, fromdocname, builder, target, node, contnode)
-        results.extend([(f"syntax:rule", grammar) for grammar in rules])
+        results.extend([("syntax:rule", grammar) for grammar in rules])
 
         return results
 
@@ -722,10 +722,10 @@ class SyntaxDomain(Domain):
             add_default_grammar = False
             grammar_name, rule_name = target.split(".", 1)
             roots = [grammar_name]
-        elif f"syntax:grammar" in node:
+        elif "syntax:grammar" in node:
             # Got rule reference made by SyntaxXRefRole.
             add_default_grammar = True
-            grammar_name, rule_name = node[f"syntax:grammar"], target
+            grammar_name, rule_name = node["syntax:grammar"], target
             roots = [grammar_name] if grammar_name else []
         else:
             # Got rule reference made by AnyXRefRole.
@@ -786,7 +786,7 @@ class SyntaxDomain(Domain):
                 )
 
     def get_full_qualified_name(self, node: docutils.nodes.Element) -> str | None:
-        grammar = node.get(f"syntax:grammar")
+        grammar = node.get("syntax:grammar")
         target = node.get("reftarget")
         if target is None:
             return None

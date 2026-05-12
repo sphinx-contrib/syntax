@@ -1,59 +1,97 @@
-# Contributing
+# Contributing to Sphinx Syntax
 
 ## Set up your environment
 
-1. Clone the repository.
+We use [`uv`] and [`poe`] to run tasks, but it is possible to use pure pip as well.
 
-2. Create a virtual environment with python `3.12` or newer.
+[`uv`]: https://docs.astral.sh/uv/
+[`poe`]: https://poethepoet.natn.io/index.html
 
-3. Install Sphinx Syntax in development mode, and install dev dependencies:
+### Using pip
+
+1. Create a virtual environment with python `3.13` or newer
+   (some of dev tools don't work with older pythons).
+
+2. Make sure your pip is up to date:
+
+   ```shell
+   pip install -U pip
+   ```
+
+2. Install Sphinx Syntax in development mode, and install dev dependencies:
 
    ```shell
    pip install -e . --group dev
    ```
 
-4. Install pre-commit hooks:
+3. Install pre-commit hooks:
 
    ```shell
-   pre-commit install
+   prek install
    ```
 
-## Run tests
+4. [Install `poe`], either globally or in virtual environment:
 
-To run tests, simply run `pytest` and `pyright`:
+   ```shell
+   pip install poethepoet
+   ```
+
+[Install `poe`]: https://poethepoet.natn.io/installation.html
+
+### Using uv
+
+1. Sync your virtual environment:
+
+   ```shell
+   uv sync
+   ```
+
+2. Install pre-commit hooks:
+
+   ```shell
+   uv run prek install
+   ```
+
+3. [Install `poe`] if you don't have it already:
+
+   ```shell
+   uv tool install poethepoet
+   ```
+
+
+## Run commands
+
+We use `poe` for most of the tasks:
 
 ```shell
-pytest  # Run unit tests.
-pyright  # Run type check.
+poe lint  # Lint and fix code style.
+poe test  # Run tests.
+poe test-all  # Run tests for all pythons.
 ```
 
-To fix code style, you can manually run pre-commit hooks:
+You can see all commands in `poe`'s help:
 
 ```shell
-pre-commit run -a  # Fix code style.
+poe --help
 ```
+
 
 ## Build docs
 
-Just run `sphinx` as usual, nothing special is required:
+Use `poe` commands to build docs:
 
 ```shell
-cd docs/
-make html
+poe doc  # Build HTML.
+poe doc-watch  # Run sphinx-autobuild.
 ```
+
 
 ## Release
 
-1. Update `changelog.md`. Make sure to update links at the end of the file.
+1. Run `poe release` to bump the version, update the changelog, and create
+   a release commit and tag.
 
-   Changelog *must* have a section for the new release, otherwise the build
-   will fail.
-
-2. Push a git tag. You'll need a repository admin role to do so.
-
-   All tags should start with prefix `v`, and follow semantic versioning guidelines.
-   This, among other things, means that tags for beta-, post-, etc. releases
-   should have form `v1.0.0-beta0` instead of Python's `v1.0.0b0`.
+2. Push the tag. You'll need a repository admin role to do so.
 
 3. From here, release happens automatically. PyPi package will be uploaded from
    CI job, and documentation will be updated by Read the Docs build.

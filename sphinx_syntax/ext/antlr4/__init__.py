@@ -38,8 +38,8 @@ from sphinx_syntax.ext.syntax.gen.ANTLRv4ParserVisitor import (
 from sphinx_syntax.ext.utils import LoggingErrorListener, load_docs
 
 __all__ = [
-    "Antlr4Provider",
     "PROVIDER",
+    "Antlr4Provider",
 ]
 
 
@@ -463,7 +463,7 @@ class ParserRuleLoader(RuleLoader):
         )
         if doc_info.content:
             _logger.error(
-                f"'content' command can't appear before parser rules",
+                "'content' command can't appear before parser rules",
                 type="sphinx_syntax",
                 location=str(position),
             )

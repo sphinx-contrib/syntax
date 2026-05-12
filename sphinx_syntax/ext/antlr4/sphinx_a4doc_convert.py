@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import argparse
 import difflib
 import glob
@@ -178,7 +180,7 @@ def main():
                 deletions += 1
 
         print(
-            f"  {str(path):<{max_len}} | +{colorize("green", str(additions))} -{colorize("red", str(deletions))}",
+            f"  {str(path):<{max_len}} | +{colorize('green', str(additions))} -{colorize('red', str(deletions))}",
             file=sys.stderr,
         )
         fulldiff += diff
@@ -198,10 +200,10 @@ def main():
 
     if not fulldiff:
         print("", file=sys.stderr)
-        print(colorize("bold", f"No changes detected"), file=sys.stderr)
+        print(colorize("bold", "No changes detected"), file=sys.stderr)
     elif ns.diff:
         print("", file=sys.stderr)
-        print(colorize("bold", f"Diff:"), file=sys.stderr)
+        print(colorize("bold", "Diff:"), file=sys.stderr)
 
         def cl(line: str):
             if (
@@ -225,13 +227,13 @@ def main():
             print(
                 colorize(
                     "bold",
-                    f"Restart with flag --diff to see changes, --run to apply them",
+                    "Restart with flag --diff to see changes, --run to apply them",
                 ),
                 file=sys.stderr,
             )
         else:
             print(
-                colorize("bold", f"Restart with flag --run to apply changes"),
+                colorize("bold", "Restart with flag --run to apply changes"),
                 file=sys.stderr,
             )
 

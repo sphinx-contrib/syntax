@@ -1,6 +1,6 @@
 [project]
 name = "sphinx-syntax"
-authors = [{name = "Tamika Nomara", email = "taminomara@gmail.com"}]
+authors = [{ name = "Tamika Nomara", email = "taminomara@gmail.com" }]
 description = "A Sphinx plugin for documenting grammars"
 dynamic = ["version"]
 readme = "README.md"
@@ -12,6 +12,7 @@ classifiers = [
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
     "Intended Audience :: Developers",
     "Framework :: Sphinx",
     "Framework :: Sphinx :: Extension",
@@ -30,28 +31,34 @@ dependencies = [
 
 [dependency-groups]
 dev = [
-    "pytest-cov==7.0.0",
-    {include-group = "test"},
-    {include-group = "lint"},
-    {include-group = "doc"},
+    { include-group = "ci" },
+    { include-group = "doc" },
+    { include-group = "lint" },
+    { include-group = "test" },
 ]
 test = [
+    "beautifulsoup4==4.14.3",
     "pyright==1.1.407",
+    "pytest-cov==7.0.0",
+    "pytest-regressions==2.9.1",
     "pytest==9.0.2",
     "sybil==9.3.0",
-    "pytest-regressions==2.9.1",
-    "beautifulsoup4==4.14.3"
-]
-lint = [
-    "black==25.12.0",
-    "isort==7.0.0",
-    "pre-commit==4.5.1",
 ]
 doc = [
-    "sybil==9.3.0",
     "furo==2025.12.19",
+    "sphinx-autobuild==2025.8.25",
     "sphinx_design==0.7.0",
     "sphinxcontrib-svg2pdfconverter[CairoSVG]==2.0.0",
+    "sybil==9.3.0",
+]
+lint = [
+    "prek==0.3.8",
+    "ruff==0.15.9",
+]
+ci = [
+    "pytest-cov==7.0.0",
+    "tox==4.34.1",
+    "tox-uv==1.29.0",
 ]
 
 [project.urls]
@@ -60,23 +67,21 @@ Issues = "https://github.com/sphinx-contrib/syntax/issues"
 Source = "https://github.com/sphinx-contrib/syntax/"
 Changelog = "https://github.com/sphinx-contrib/syntax/blob/main/CHANGELOG.md"
 
-
 [build-system]
-requires = ["setuptools>=60", "setuptools_scm[toml]>=8", "wheel>=0.40"]
+requires = ["setuptools>=45", "setuptools_scm[toml]>=6.2", "wheel>=0.40"]
 
 [tool.setuptools_scm]
 write_to = "sphinx_syntax/_version.py"
 
-[tool.pytest.ini_options]
-minversion = "7.0"
-addopts = ["--strict-markers", "-p no:doctest"]
-testpaths = ["test", "sphinx_syntax", "docs"]
-
 [tool.pyright]
 include = ["sphinx_syntax"]
-exclude = ["**/__pycache__", "sphinx_syntax/ext/syntax/gen/*"]
+exclude = [
+    "**/__pycache__",
+    "sphinx_syntax/_version.py",
+    "sphinx_syntax/ext/syntax/gen/*",
+]
 typeCheckingMode = "strict"
-pythonVersion = "3.12"
+pythonVersion = "3.14"
 pythonPlatform = "All"
 
 reportMissingParameterType = "none"
@@ -87,11 +92,55 @@ reportUnknownArgumentType = "none"
 reportUnknownLambdaType = "none"
 reportUnnecessaryIsInstance = "none"
 reportUnnecessaryTypeIgnoreComment = "warning"
+reportPrivateUsage = "none"
+reportUnusedFunction = "none"
+reportConstantRedefinition = "none"
+reportRedeclaration = "none"
+reportDeprecated = "none"
+deprecateTypingAliases = true
 
-[tool.black]
-force-exclude = '/sphinx_syntax/ext/syntax/gen/.*'
+[tool.ruff]
+exclude = ["sphinx_syntax/ext/syntax/gen/*"]
+target-version = "py312"
 
-[tool.isort]
-profile = "black"
-extend_skip_glob = ["/sphinx_syntax/ext/syntax/gen/*"]
-skip_gitignore = true
+[tool.ruff.lint]
+extend-select = ["I", "INP", "T20", "PT", "RET", "SIM", "SLOT", "RUF022"]
+ignore = [
+    "E402",   # Module level import not at top of file
+    "E722",   # Do not use bare `except`
+    "E741",   # Ambiguous variable name
+    "E731",   # Do not assign a `lambda` expression, use a `def`
+    "PT015",  # Assertion is always `False`
+    "PT011",  # Too broad error type
+    "PT012",  # `pytest.raises()` block should contain a single simple statement
+    "PT017",  # Found assertion on exception `e` in `except` block
+    "RET505", # Unnecessary `else` after `return` statement
+    "RET506", # Unnecessary `else` after `raise` statement
+    "RET507", # Unnecessary `else` after `continue` statement
+    "RET508", # Unnecessary `else` after `break` statement
+    "SIM103", # Return the negated condition directly
+    "SIM105", # Use `contextlib.suppress` instead of `try`-`except`-`pass`
+    "SIM108", # Use ternary operator instead of `if`-`else`-block
+    "SIM114", # Combine `if` branches using logical `or` operator
+    "SIM118", # Use `key in dict` instead of `key in dict.keys()`
+]
+extend-safe-fixes = [
+    "RUF022", # Sort `__all__`.
+    "PT006",  # Rewrite arguments for `pytest.mark.parametrize`.
+]
+future-annotations = true
+
+[tool.ruff.lint.per-file-ignores]
+"test/**/*" = ["T20", "I002", "SIM102", "SIM117", "INP001"]
+"docs/**/*" = ["T20", "I002", "INP001"]
+"sphinx_syntax/__init__.py" = ["F405"]
+"sphinx_syntax/ext/antlr4/sphinx_a4doc_convert.py" = ["T20"]
+
+[tool.ruff.lint.isort]
+required-imports = ["from __future__ import annotations"]
+
+[tool.ruff.format]
+docstring-code-format = true
+
+[tool.uv]
+default-groups = ["dev"]
