@@ -37,19 +37,19 @@ dev = [
     { include-group = "test" },
 ]
 test = [
-    "beautifulsoup4==4.14.3",
-    "pyright==1.1.409",
+    "beautifulsoup4==4.15.0",
+    "pyright==1.1.411",
     "pytest-cov==7.1.0",
-    "pytest-regressions==2.10.0",
-    "pytest==9.0.3",
-    "sybil==10.0.1",
+    "pytest-regressions==2.11.0",
+    "pytest==9.1.1",
+    "sybil==10.1.0",
 ]
 doc = [
     "furo==2025.12.19",
     "sphinx-autobuild==2025.8.25",
     "sphinx_design==0.7.0",
     "sphinxcontrib-svg2pdfconverter[CairoSVG]==2.1.0",
-    "sybil==10.0.1",
+    "sybil==10.1.0",
 ]
 lint = [
     "prek==0.3.13",
@@ -57,8 +57,8 @@ lint = [
 ]
 ci = [
     "pytest-cov==7.1.0",
-    "tox==4.53.1",
-    "tox-uv==1.35.2",
+    "tox==4.58.0",
+    "tox-uv==1.36.0",
 ]
 
 [project.urls]
