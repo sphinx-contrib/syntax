@@ -16,7 +16,7 @@ repos:
         require_serial: true
         exclude: "^sphinx_syntax/ext/syntax/gen/.*$"
   - repo: https://github.com/taminomara/cl-keeper
-    rev: v1.0.0
+    rev: v1.0.1
     hooks:
       - id: clk
   - repo: https://github.com/pre-commit/pre-commit-hooks
