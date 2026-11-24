@@ -47,7 +47,7 @@ test = [
 doc = [
     "furo==2025.12.19",
     "sphinx-autobuild==2025.8.25",
-    "sphinx_design==0.7.0",
+    "sphinx_design==0.8.0",
     "sphinxcontrib-svg2pdfconverter[CairoSVG]==2.1.0",
     "sybil==10.1.0",
 ]
